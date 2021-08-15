@@ -32,7 +32,7 @@
             "main": "#73a174",
             "light": "#89a58a",
             "dark": "#28832c",
-            "contrastText": "#fff"
+            "contrastText": "#000"
         },
         "secondary": {
             "light": "#ff4081",
