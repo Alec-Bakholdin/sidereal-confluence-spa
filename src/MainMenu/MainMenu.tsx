@@ -1,6 +1,7 @@
 import { Box, Grid, Typography } from "@mui/material";
 import planet from "assets/images/menacing-planet.png";
 import MenuButton from "./MenuButton";
+import {Link} from "react-router-dom";
 
 export const MainMenu = () => {
   return (
@@ -14,24 +15,18 @@ export const MainMenu = () => {
     >
       <Grid
         container
-        spacing={0}
         direction={"column"}
         alignItems={"center"}
         justifyContent={"center"}
         style={{ minHeight: "100vh" }}
       >
-        <Grid
-          item
-          container
-          justifyContent={"center"}
-          alignItems={"center"}
-          spacing={0}
-          direction={"column"}
-        >
-          <Typography variant={"h1"}>SIDEREAL CONFLUENCE</Typography>
-          <MenuButton onClick={() => console.log("new")} name={"New Game"} />
+        <Typography variant={"h1"}>SIDEREAL CONFLUENCE</Typography>
+        <Link to={"/game"}>
+          <MenuButton name={"New Game"} />
+        </Link>
+        <Link to={"/game"}>
           <MenuButton onClick={() => console.log("join")} name={"Join Game"} />
-        </Grid>
+        </Link>
       </Grid>
     </Box>
   );
