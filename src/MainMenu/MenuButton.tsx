@@ -18,6 +18,7 @@ export function MenuButton({
     <Box
       onMouseEnter={() => setTransition(true)}
       onMouseLeave={() => setTransition(false)}
+      padding={"15px"}
     >
       <Button
         onClick={handleClick}
@@ -25,13 +26,13 @@ export function MenuButton({
         disableRipple={true}
         style={{ backgroundColor: "transparent" }}
       >
-        <Typography variant={"h4"}>{name}</Typography>
+        <Typography variant={"h4"} lineHeight={"0.7"}>{name}</Typography>
       </Button>
       <Zoom in={transition} timeout={transition ? 100 : 0}>
         <Box
           className={"menu-button-horizontal-bar"}
           bgcolor={"divider"}
-          sx={{ height: "1px" }}
+          sx={{ height: "2px" }}
         />
       </Zoom>
     </Box>
