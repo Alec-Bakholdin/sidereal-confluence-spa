@@ -18,15 +18,16 @@ export function MenuButton({
     <Box
       onMouseEnter={() => setTransition(true)}
       onMouseLeave={() => setTransition(false)}
-      padding={"15px"}
+      paddingTop={"15px"}
+      paddingBottom={"15px"}
     >
       <Button
         onClick={handleClick}
         variant={"text"}
         disableRipple={true}
-        style={{ backgroundColor: "transparent" }}
+        style={{ backgroundColor: "transparent", padding: 0, paddingBottom: 10}}
       >
-        <Typography variant={"h4"} lineHeight={"0.7"}>
+        <Typography variant={"h4"} lineHeight={"0.85"}>
           {name}
         </Typography>
       </Button>

@@ -18,7 +18,7 @@ export const themeOptions = function ({
     typography: {
       h1: {
         color: headerColor,
-        fontFamily: "Raleway"
+        fontFamily: "Raleway",
       },
       h2: {
         color: headerColor,
@@ -28,6 +28,7 @@ export const themeOptions = function ({
       },
       h4: {
         color: headerColor,
+        fontFamily: "Play",
       },
       h5: {
         color: headerColor,
