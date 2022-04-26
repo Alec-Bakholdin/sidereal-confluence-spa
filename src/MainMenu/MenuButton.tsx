@@ -1,4 +1,4 @@
-import {Box, Button, Typography, Zoom} from "@mui/material";
+import { Box, Button, Typography, Zoom } from "@mui/material";
 import PropTypes, { InferProps } from "prop-types";
 import { useState } from "react";
 
@@ -26,7 +26,9 @@ export function MenuButton({
         disableRipple={true}
         style={{ backgroundColor: "transparent" }}
       >
-        <Typography variant={"h4"} lineHeight={"0.7"}>{name}</Typography>
+        <Typography variant={"h4"} lineHeight={"0.7"}>
+          {name}
+        </Typography>
       </Button>
       <Zoom in={transition} timeout={transition ? 100 : 0}>
         <Box
