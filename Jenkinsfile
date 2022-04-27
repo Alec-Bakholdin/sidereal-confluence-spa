@@ -25,7 +25,7 @@ pipeline{
                                         cleanRemote: true,
                                         excludes: '',
                                         flatten: false,
-                                        makeEmptyDirs: false,
+                                        makeEmptyDirs: true,
                                         noDefaultExcludes: false,
                                         patternSeparator: '[, ]+',
                                         remoteDirectory: '',
