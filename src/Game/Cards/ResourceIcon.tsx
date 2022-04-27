@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react";
-import { getResourceSprite, ResourceType } from "../assets/types/Resources";
+import { getResourceSprite, ResourceType } from "../../assets/types/Resources";
 import { Icon, Typography } from "@mui/material";
 
 import "./ResourceIcon.css";
@@ -11,6 +11,8 @@ export function ResourceIcon({
   type: ResourceType;
   qty?: number;
 }): ReactElement {
+  const color = type === 'white' || type === 'yellow' ? 'black' : 'white';
+
   if (!qty) {
     return <></>;
   }
@@ -20,7 +22,7 @@ export function ResourceIcon({
       <Icon fontSize={"large"} className={"resource-icon-icon"}>
         {getResourceSprite(type)}
       </Icon>
-      <Typography component={"span"} className={"resource-icon-count"}>
+      <Typography component={"span"} className={"resource-icon-count"} color={color}>
         {qty}
       </Typography>
     </div>
