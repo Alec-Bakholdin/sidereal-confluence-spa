@@ -1,0 +1,16 @@
+.resource-icon-root {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+.resource-icon-icon {
+    font-size: 2.5em;
+}
+.resource-icon-count {
+    position: absolute;
+    line-height: 1;
+    color: #ffffff;
+    top: 0.5em;
+    font-size: 1em;
+}
