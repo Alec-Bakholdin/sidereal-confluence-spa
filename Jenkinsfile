@@ -13,16 +13,7 @@ pipeline{
         }
         stage("Generate .htaccess") {
             steps {
-                sh 'echo "<IfModule mod_rewrite.c>
-                          RewriteEngine On
-                          RewriteBase /
-                          RewriteRule ^index.html$ - [L]
-                          RewriteCond %{REQUEST_FILENAME} !-f
-                          RewriteCond %{REQUEST_FILENAME} !-d
-                          RewriteCond %{REQUEST_FILENAME} !-l
-                          RewriteRule . /index.html [L]
-
-                          </IfModule>" > build/.htaccess'
+                sh 'echo "<IfModule mod_rewrite.c>\nRewriteEngine On\nRewriteBase /\nRewriteRule ^index.html$ - [L]\nRewriteCond %{REQUEST_FILENAME} !-f\nRewriteCond %{REQUEST_FILENAME} !-d\nRewriteCond %{REQUEST_FILENAME} !-l\nRewriteRule . /index.html [L]\n</IfModule>" > build/.htaccess'
             }
         }
         stage("Attempt to upload to FTP") {
