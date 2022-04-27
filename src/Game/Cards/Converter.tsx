@@ -4,6 +4,7 @@ import GamePhase from "assets/types/GamePhase";
 import { Box, Grid } from "@mui/material";
 import { Forward } from "@mui/icons-material";
 import ResourceIcon from "./ResourceIcon";
+import './Converter.css';
 
 function renderResources(resources: Resources): ReactElement {
   return (
@@ -31,37 +32,39 @@ export function Converter({
   output: Resources;
   gamePhase: GamePhase;
 }): ReactElement {
-  const [borderColor, setBorderColor] = useState<string>("transparent");
+  const selectedColor = "white";
+  const unselectedColor = "transparent";
+  const [borderColor, setBorderColor] = useState<string>(unselectedColor);
 
   return (
     <Box
-      height={80}
-      width={370}
+      className={"converter"}
       border={1}
       borderColor={borderColor}
-      borderRadius={1}
-      marginTop={2}
-      onMouseEnter={() => setBorderColor('white')}
-      onMouseLeave={() => setBorderColor('transparent')}
+      onMouseEnter={() => setBorderColor(selectedColor)}
+      onMouseLeave={() => setBorderColor(unselectedColor)}
+      sx={{
+        marginTop: 2,
+        paddingTop: 1,
+        paddingLeft: 1,
+        paddingRight: 1,
+
+        borderRadius: 1,
+        height: "100%",
+        display: "inline-block",
+      }}
     >
-      <Grid container height={"100%"}>
-        <Grid
-          container
-          item
-          direction={"row"}
-          alignItems={"center"}
-          justifyContent={"center"}
-        >
-          <Grid container item xs={5} justifyContent={"right"}>
-            {renderResources(input)}
-          </Grid>
-          <Grid item container xs={2} justifyContent={"center"}  color={gamePhase === 'econ' ? 'purple' : 'white'}>
-            <Forward/>
-          </Grid>
-          <Grid container item xs={5} justifyContent={"left"}>
-            {renderResources(output)}
-          </Grid>
-        </Grid>
+      <Grid
+        container
+        direction={"row"}
+        alignItems={"center"}
+        justifyContent={"center"}
+      >
+        <Box>{renderResources(input)}</Box>
+        <Box color={gamePhase === "econ" ? "purple" : "white"}>
+          <Forward />
+        </Box>
+        <Box>{renderResources(output)}</Box>
       </Grid>
     </Box>
   );

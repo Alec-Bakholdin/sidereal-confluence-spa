@@ -12,25 +12,29 @@ export const Game = function (): ReactElement {
     >
       <Card sx={{ width: 400 }}>
         <CardContent>
-          <Typography>Name of the Converter Card</Typography>
-          <Converter
-            input={{
-              green: 10,
-              brown: 10,
-              white: 10,
-            }}
-            output={{
-              green: 10,
-              octagon: 10,
-              points: 10,
-            }}
-            gamePhase={"confluence"}
-          />
-          <Converter
-            input={{ green: 3, brown: 33, yellow: 3 }}
-            output={{ points: 5 }}
-            gamePhase={"econ"}
-          />
+          <Typography variant={"h5"} textAlign={"center"}>
+            Converter Card
+          </Typography>
+          <Grid container alignItems={"center"} justifyContent={"center"}>
+            <Converter
+              input={{
+                green: 10,
+                brown: 10,
+                white: 10,
+              }}
+              output={{
+                green: 10,
+                octagon: 10,
+                points: 10,
+              }}
+              gamePhase={"confluence"}
+            />
+            <Converter
+              input={{ green: 3, brown: 33, yellow: 3 }}
+              output={{ points: 5 }}
+              gamePhase={"econ"}
+            />
+          </Grid>
         </CardContent>
       </Card>
     </Grid>
