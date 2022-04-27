@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6c2c2976-bf04-4be4-a8c3-66314c3dfbe8" name="Changes" comment="ftp upload attempt">
-      <change beforePath="$PROJECT_DIR$/Jenkinsfile" beforeDir="false" afterPath="$PROJECT_DIR$/Jenkinsfile" afterDir="false" />
-    </list>
+    <list default="true" id="6c2c2976-bf04-4be4-a8c3-66314c3dfbe8" name="Changes" comment="trying to get recursion" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -278,7 +276,21 @@
       <option name="project" value="LOCAL" />
       <updated>1651021078562</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="fixed braces">
+      <created>1651021141408</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1651021141408</updated>
+    </task>
+    <task id="LOCAL-00028" summary="trying to get recursion">
+      <created>1651021344262</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1651021344262</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -307,7 +319,9 @@
     <MESSAGE value="updated Jenkinsfile" />
     <MESSAGE value="added npm install and yarn build to Jenkinsfile" />
     <MESSAGE value="ftp upload attempt" />
-    <option name="LAST_COMMIT_MESSAGE" value="ftp upload attempt" />
+    <MESSAGE value="fixed braces" />
+    <MESSAGE value="trying to get recursion" />
+    <option name="LAST_COMMIT_MESSAGE" value="trying to get recursion" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
