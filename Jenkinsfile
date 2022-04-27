@@ -11,6 +11,20 @@ pipeline{
                 sh 'yarn build'
             }
         }
+        stage("Generate .htaccess") {
+            steps {
+                sh 'echo "<IfModule mod_rewrite.c>
+                          RewriteEngine On
+                          RewriteBase /
+                          RewriteRule ^index.html$ - [L]
+                          RewriteCond %{REQUEST_FILENAME} !-f
+                          RewriteCond %{REQUEST_FILENAME} !-d
+                          RewriteCond %{REQUEST_FILENAME} !-l
+                          RewriteRule . /index.html [L]
+
+                          </IfModule>" > build/.htaccess'
+            }
+        }
         stage("Attempt to upload to FTP") {
             steps{
                 ftpPublisher alwaysPublishFromMaster: true,
