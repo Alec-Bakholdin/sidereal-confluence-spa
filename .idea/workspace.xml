@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6c2c2976-bf04-4be4-a8c3-66314c3dfbe8" name="Changes" comment="created Jenkinsfile">
+    <list default="true" id="6c2c2976-bf04-4be4-a8c3-66314c3dfbe8" name="Changes" comment="added npm install and yarn build to Jenkinsfile">
       <change beforePath="$PROJECT_DIR$/Jenkinsfile" beforeDir="false" afterPath="$PROJECT_DIR$/Jenkinsfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -250,7 +250,21 @@
       <option name="project" value="LOCAL" />
       <updated>1651019599980</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="updated Jenkinsfile">
+      <created>1651019861074</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1651019861074</updated>
+    </task>
+    <task id="LOCAL-00024" summary="added npm install and yarn build to Jenkinsfile">
+      <created>1651019948896</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1651019948896</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -276,7 +290,9 @@
     <MESSAGE value="file formatting" />
     <MESSAGE value="added routing to game object" />
     <MESSAGE value="created Jenkinsfile" />
-    <option name="LAST_COMMIT_MESSAGE" value="created Jenkinsfile" />
+    <MESSAGE value="updated Jenkinsfile" />
+    <MESSAGE value="added npm install and yarn build to Jenkinsfile" />
+    <option name="LAST_COMMIT_MESSAGE" value="added npm install and yarn build to Jenkinsfile" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
