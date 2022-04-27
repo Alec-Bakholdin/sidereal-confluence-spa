@@ -1,11 +1,13 @@
-import { PaletteColorOptions, PaletteMode, ThemeOptions } from "@mui/material";
+import {PaletteColorOptions, PaletteMode, ThemeOptions, TypeBackground} from "@mui/material";
 
 export const themeOptions = function ({
   mode,
   primary,
+  background,
   headerColor,
 }: {
   mode: PaletteMode;
+  background: Partial<TypeBackground>;
   primary: PaletteColorOptions;
   headerColor: string;
 }): ThemeOptions {
@@ -13,6 +15,7 @@ export const themeOptions = function ({
     palette: {
       mode: mode,
       primary: primary,
+      background: background,
       divider: headerColor,
     },
     typography: {

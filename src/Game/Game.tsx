@@ -1,5 +1,6 @@
-import { Card, CardContent, Grid, Typography } from "@mui/material";
 import { ReactElement } from "react";
+import ConverterCard from "./Cards/ConverterCard/ConverterCard";
+import { Grid } from "@mui/material";
 import Converter from "./Cards/Converter/Converter";
 
 export const Game = function (): ReactElement {
@@ -10,33 +11,35 @@ export const Game = function (): ReactElement {
       direction={"column"}
       sx={{}}
     >
-      <Card sx={{ width: 400 }}>
-        <CardContent>
-          <Typography variant={"h5"} textAlign={"center"}>
-            Converter Card
-          </Typography>
-          <Grid container alignItems={"center"} justifyContent={"center"}>
-            <Converter
-              input={{
-                green: 10,
-                brown: 10,
-                white: 10,
-              }}
-              output={{
-                green: 10,
-                octagon: 10,
-                points: 10,
-              }}
-              gamePhase={"confluence"}
-            />
-            <Converter
-              input={{ green: 3, brown: 33, yellow: 3 }}
-              output={{ points: 5 }}
-              gamePhase={"econ"}
-            />
-          </Grid>
-        </CardContent>
-      </Card>
+      <ConverterCard
+        name={"Name"}
+        upgradedName={"Upgraded"}
+        baseConverters={[
+          <Converter
+            input={{ green: 1 }}
+            output={{ yellow: 1 }}
+            gamePhase={"econ"}
+          />,
+        ]}
+        upgradedConverters={[
+          <Converter
+            input={{ green: 1 }}
+            output={{ yellow: 3 }}
+            gamePhase={"econ"}
+          />,
+        ]}
+        acquisitionConverters={[
+          <Converter
+            input={{ black: 1, yellow: 2 }}
+            output={{ points: 1 }}
+            gamePhase={"trade"}
+          />,
+        ]}
+        upgradeOptions={[
+          <Converter input={{ green: 1 }} output={{}} gamePhase={"trade"} />,
+          <Converter input={{ white: 1 }} output={{}} gamePhase={"trade"} />,
+        ]}
+      />
     </Grid>
   );
 };

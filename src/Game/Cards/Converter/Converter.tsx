@@ -44,7 +44,6 @@ export function Converter({
       onMouseEnter={() => setBorderColor(selectedColor)}
       onMouseLeave={() => setBorderColor(unselectedColor)}
       sx={{
-        marginTop: 2,
         paddingTop: 1,
         paddingLeft: 1,
         paddingRight: 1,
@@ -57,11 +56,10 @@ export function Converter({
       <Grid
         container
         direction={"row"}
-        alignItems={"center"}
-        justifyContent={"center"}
+        className={"center-box"}
       >
         <Box>{renderResources(input)}</Box>
-        <Box color={gamePhase === "econ" ? "purple" : "white"}>
+        <Box color={gamePhase === "trade" ? "purple" : "white"}>
           <Forward />
         </Box>
         <Box>{renderResources(output)}</Box>
@@ -69,5 +67,30 @@ export function Converter({
     </Box>
   );
 }
+
+
+export const getConverter = function (
+  index: number,
+  converters?: Array<ReactElement<typeof Converter>>
+): ReactElement {
+  if (!converters || index >= converters.length) {
+    return <></>;
+  }
+  return converters[index] ? converters[index] : <></>;
+};
+export const getConverters = function (
+  converters?: Array<ReactElement<typeof Converter>>
+): Array<ReactElement> {
+  if (!converters) {
+    return [];
+  }
+  return converters.map((converter, index) => {
+    return (
+      <Grid item key={index}>
+        {converter}
+      </Grid>
+    );
+  });
+};
 
 export default Converter;

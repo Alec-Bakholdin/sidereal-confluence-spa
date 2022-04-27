@@ -6,6 +6,10 @@ export const dark = createTheme(
   themeOptions({
     mode: "dark",
     primary: blueGrey,
+    background: {
+      default: "#212121",
+      paper: blueGrey[500],
+    },
     headerColor: "#6FF4FF",
   })
 );
