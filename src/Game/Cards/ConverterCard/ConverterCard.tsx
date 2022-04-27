@@ -24,10 +24,8 @@ export function ConverterCard(props: {
       className={"center-box"}
       bgcolor={"background.paper"}
       sx={{
-        marginTop: 40,
-        marginLeft: 40,
         border: "1px solid",
-        maxWidth: 350,
+        width: 350,
         padding: 1,
       }}
     >
