@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6c2c2976-bf04-4be4-a8c3-66314c3dfbe8" name="Changes" comment="trying to get main to work on pulls">
+    <list default="true" id="6c2c2976-bf04-4be4-a8c3-66314c3dfbe8" name="Changes" comment="Created first converter card in game screen">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/ResourceIcon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/ResourceIcon.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,14 +16,16 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
+        <option value="TypeScript React Component With Props" />
+        <option value="TypeScript React Component" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <branch-grouping />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="creating-game-interface" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -63,7 +68,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="fileTemplates" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="typescript.add.unambiguous.imports.on.the.fly" value="true" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -102,7 +107,8 @@
       <workItem from="1650901613375" duration="1361000" />
       <workItem from="1650902983619" duration="1579000" />
       <workItem from="1650989436494" duration="5390000" />
-      <workItem from="1651002424473" duration="3217000" />
+      <workItem from="1651002424473" duration="5297000" />
+      <workItem from="1651035408394" duration="1512000" />
     </task>
     <task id="LOCAL-00001" summary="Remade the project into a React projectt">
       <created>1650902999003</created>
@@ -146,175 +152,21 @@
       <option name="project" value="LOCAL" />
       <updated>1651004068832</updated>
     </task>
-    <task id="LOCAL-00007" summary="created Jenkinsfile">
-      <created>1651015819179</created>
+    <task id="LOCAL-00007" summary="added routing to game object">
+      <created>1651012530629</created>
       <option name="number" value="00007" />
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
-      <updated>1651015819179</updated>
+      <updated>1651012530629</updated>
     </task>
-    <task id="LOCAL-00008" summary="created Jenkinsfile">
-      <created>1651015868658</created>
+    <task id="LOCAL-00008" summary="Created first converter card in game screen">
+      <created>1651036515270</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1651015868658</updated>
+      <updated>1651036515270</updated>
     </task>
-    <task id="LOCAL-00009" summary="created Jenkinsfile">
-      <created>1651016032501</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1651016032501</updated>
-    </task>
-    <task id="LOCAL-00010" summary="created Jenkinsfile">
-      <created>1651016069490</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1651016069490</updated>
-    </task>
-    <task id="LOCAL-00011" summary="created Jenkinsfile">
-      <created>1651016161463</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1651016161463</updated>
-    </task>
-    <task id="LOCAL-00012" summary="created Jenkinsfile">
-      <created>1651016451191</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1651016451191</updated>
-    </task>
-    <task id="LOCAL-00013" summary="created Jenkinsfile">
-      <created>1651017787342</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1651017787342</updated>
-    </task>
-    <task id="LOCAL-00014" summary="created Jenkinsfile">
-      <created>1651018535163</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1651018535163</updated>
-    </task>
-    <task id="LOCAL-00015" summary="created Jenkinsfile">
-      <created>1651018731303</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1651018731303</updated>
-    </task>
-    <task id="LOCAL-00016" summary="created Jenkinsfile">
-      <created>1651019037869</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1651019037869</updated>
-    </task>
-    <task id="LOCAL-00017" summary="created Jenkinsfile">
-      <created>1651019168852</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1651019168852</updated>
-    </task>
-    <task id="LOCAL-00018" summary="created Jenkinsfile">
-      <created>1651019219143</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1651019219143</updated>
-    </task>
-    <task id="LOCAL-00019" summary="created Jenkinsfile">
-      <created>1651019260879</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1651019260879</updated>
-    </task>
-    <task id="LOCAL-00020" summary="created Jenkinsfile">
-      <created>1651019433482</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1651019433482</updated>
-    </task>
-    <task id="LOCAL-00021" summary="created Jenkinsfile">
-      <created>1651019517254</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1651019517254</updated>
-    </task>
-    <task id="LOCAL-00022" summary="created Jenkinsfile">
-      <created>1651019599980</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1651019599980</updated>
-    </task>
-    <task id="LOCAL-00023" summary="updated Jenkinsfile">
-      <created>1651019861074</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1651019861074</updated>
-    </task>
-    <task id="LOCAL-00024" summary="added npm install and yarn build to Jenkinsfile">
-      <created>1651019948896</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1651019948896</updated>
-    </task>
-    <task id="LOCAL-00025" summary="ftp upload attempt">
-      <created>1651020713813</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1651020713813</updated>
-    </task>
-    <task id="LOCAL-00026" summary="ftp upload attempt">
-      <created>1651021078562</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1651021078562</updated>
-    </task>
-    <task id="LOCAL-00027" summary="fixed braces">
-      <created>1651021141408</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1651021141408</updated>
-    </task>
-    <task id="LOCAL-00028" summary="trying to get recursion">
-      <created>1651021344262</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1651021344262</updated>
-    </task>
-    <task id="LOCAL-00029" summary="trying to get recursion again">
-      <created>1651030448139</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1651030448139</updated>
-    </task>
-    <task id="LOCAL-00030" summary="trying to get main to work on pulls">
-      <created>1651031562779</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1651031562779</updated>
-    </task>
-    <option name="localTasksCounter" value="31" />
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -331,7 +183,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="creating-jenkinsfile" />
+                        <option value="adding-jenkinsfile" />
                       </list>
                     </value>
                   </entry>
@@ -351,15 +203,9 @@
     <MESSAGE value="changed spacing of menu buttons" />
     <MESSAGE value="file formatting" />
     <MESSAGE value="added routing to game object" />
-    <MESSAGE value="created Jenkinsfile" />
-    <MESSAGE value="updated Jenkinsfile" />
-    <MESSAGE value="added npm install and yarn build to Jenkinsfile" />
-    <MESSAGE value="ftp upload attempt" />
-    <MESSAGE value="fixed braces" />
-    <MESSAGE value="trying to get recursion" />
-    <MESSAGE value="trying to get recursion again" />
-    <MESSAGE value="trying to get main to work on pulls" />
-    <option name="LAST_COMMIT_MESSAGE" value="trying to get main to work on pulls" />
+    <MESSAGE value="started creating card in Game.tsx" />
+    <MESSAGE value="Created first converter card in game screen" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created first converter card in game screen" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
