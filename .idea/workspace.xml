@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6c2c2976-bf04-4be4-a8c3-66314c3dfbe8" name="Changes" comment="added npm install and yarn build to Jenkinsfile">
+    <list default="true" id="6c2c2976-bf04-4be4-a8c3-66314c3dfbe8" name="Changes" comment="ftp upload attempt">
       <change beforePath="$PROJECT_DIR$/Jenkinsfile" beforeDir="false" afterPath="$PROJECT_DIR$/Jenkinsfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -264,7 +264,21 @@
       <option name="project" value="LOCAL" />
       <updated>1651019948896</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="ftp upload attempt">
+      <created>1651020713813</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1651020713813</updated>
+    </task>
+    <task id="LOCAL-00026" summary="ftp upload attempt">
+      <created>1651021078562</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1651021078562</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -292,7 +306,8 @@
     <MESSAGE value="created Jenkinsfile" />
     <MESSAGE value="updated Jenkinsfile" />
     <MESSAGE value="added npm install and yarn build to Jenkinsfile" />
-    <option name="LAST_COMMIT_MESSAGE" value="added npm install and yarn build to Jenkinsfile" />
+    <MESSAGE value="ftp upload attempt" />
+    <option name="LAST_COMMIT_MESSAGE" value="ftp upload attempt" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
