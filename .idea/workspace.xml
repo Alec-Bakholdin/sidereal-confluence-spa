@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6c2c2976-bf04-4be4-a8c3-66314c3dfbe8" name="Changes" comment="trying to get recursion" />
+    <list default="true" id="6c2c2976-bf04-4be4-a8c3-66314c3dfbe8" name="Changes" comment="trying to get main to work on pulls">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,6 +17,7 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <branch-grouping />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="main" />
@@ -29,6 +32,13 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="GithubProjectSettings">
+    <option name="branchProtectionPatterns">
+      <list>
+        <option value="main" />
+      </list>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -290,7 +300,21 @@
       <option name="project" value="LOCAL" />
       <updated>1651021344262</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="trying to get recursion again">
+      <created>1651030448139</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1651030448139</updated>
+    </task>
+    <task id="LOCAL-00030" summary="trying to get main to work on pulls">
+      <created>1651031562779</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1651031562779</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -301,7 +325,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="creating-jenkinsfile" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -321,7 +357,9 @@
     <MESSAGE value="ftp upload attempt" />
     <MESSAGE value="fixed braces" />
     <MESSAGE value="trying to get recursion" />
-    <option name="LAST_COMMIT_MESSAGE" value="trying to get recursion" />
+    <MESSAGE value="trying to get recursion again" />
+    <MESSAGE value="trying to get main to work on pulls" />
+    <option name="LAST_COMMIT_MESSAGE" value="trying to get main to work on pulls" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
