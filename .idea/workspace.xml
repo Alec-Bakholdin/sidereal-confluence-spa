@@ -1,22 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6c2c2976-bf04-4be4-a8c3-66314c3dfbe8" name="Changes" comment="trying to get main to work on pulls">
-      <change afterPath="$PROJECT_DIR$/src/Game/Converter.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/ResourceIcon.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/resources/black.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/resources/blue.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/resources/brown.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/resources/green.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/resources/octagon.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/resources/points.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/resources/white.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/resources/yellow.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/types/GamePhase.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/types/Resources.tsx" afterDir="false" />
+    <list default="true" id="6c2c2976-bf04-4be4-a8c3-66314c3dfbe8" name="Changes" comment="Created first converter card in game screen">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Game.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Game.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/ResourceIcon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/ResourceIcon.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -120,7 +108,7 @@
       <workItem from="1650902983619" duration="1579000" />
       <workItem from="1650989436494" duration="5390000" />
       <workItem from="1651002424473" duration="5297000" />
-      <workItem from="1651035408394" duration="860000" />
+      <workItem from="1651035408394" duration="1512000" />
     </task>
     <task id="LOCAL-00001" summary="Remade the project into a React projectt">
       <created>1650902999003</created>
@@ -171,7 +159,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651012530629</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Created first converter card in game screen">
+      <created>1651036515270</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1651036515270</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -209,7 +204,8 @@
     <MESSAGE value="file formatting" />
     <MESSAGE value="added routing to game object" />
     <MESSAGE value="started creating card in Game.tsx" />
-    <option name="LAST_COMMIT_MESSAGE" value="started creating card in Game.tsx" />
+    <MESSAGE value="Created first converter card in game screen" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created first converter card in game screen" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
