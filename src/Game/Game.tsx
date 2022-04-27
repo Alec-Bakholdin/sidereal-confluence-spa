@@ -1,6 +1,6 @@
 import { Card, CardContent, Grid, Typography } from "@mui/material";
 import { ReactElement } from "react";
-import Converter from "./Cards/Converter";
+import Converter from "./Cards/Converter/Converter";
 
 export const Game = function (): ReactElement {
   return (

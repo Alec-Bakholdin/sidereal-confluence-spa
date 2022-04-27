@@ -3,7 +3,7 @@ import Resources from "assets/types/Resources";
 import GamePhase from "assets/types/GamePhase";
 import { Box, Grid } from "@mui/material";
 import { Forward } from "@mui/icons-material";
-import ResourceIcon from "./ResourceIcon";
+import ResourceIcon from "../ResourceIcon/ResourceIcon";
 import './Converter.css';
 
 function renderResources(resources: Resources): ReactElement {
