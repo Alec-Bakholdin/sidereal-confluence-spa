@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ThemeProvider } from "@mui/material";
+import {CssBaseline, ThemeProvider} from "@mui/material";
 import dark from "assets/themes/dark";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -10,6 +10,7 @@ import Game from "./Game/Game";
 function App() {
   return (
     <ThemeProvider theme={dark}>
+      <CssBaseline/>
       <BrowserRouter basename={"/sidereal-confluence"}>
         <Routes>
           <Route path={"/"} element={<MainMenu/>}/>
