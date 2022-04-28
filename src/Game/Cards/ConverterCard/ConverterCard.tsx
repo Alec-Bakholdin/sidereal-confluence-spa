@@ -10,7 +10,6 @@ export function ConverterCard(props: {
   acquisitionConverters?: Array<ReactElement<typeof Converter>>;
   upgradeOptions: Array<ReactElement<typeof Converter>>;
 
-
   upgradedName: string;
   upgradedConverters: Array<ReactElement<typeof Converter>>;
 }): ReactElement {
