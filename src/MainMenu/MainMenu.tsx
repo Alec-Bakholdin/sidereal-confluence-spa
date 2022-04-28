@@ -25,7 +25,10 @@ export const MainMenu = () => {
           <MenuButton name={"New Game"} />
         </Link>
         <Link to={"/game"}>
-          <MenuButton onClick={() => console.log("join")} name={"Join Game"} />
+          <MenuButton name={"Join Game"} />
+        </Link>
+        <Link to={"/daniel"}>
+          <MenuButton name={"Daniel"}/>
         </Link>
       </Grid>
     </Box>
