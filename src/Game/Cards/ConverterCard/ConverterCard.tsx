@@ -1,8 +1,8 @@
 import { ReactElement, useState } from "react";
 import Converter from "../Converter/Converter";
-import { Box } from "@mui/material";
 import UpgradedConverterCard from "./UpgradedConverterCard";
 import BaseConverterCard from "./BaseConverterCard";
+import CardBase from "../CardBase";
 
 export function ConverterCard(props: {
   name: string;
@@ -19,22 +19,13 @@ export function ConverterCard(props: {
   };
 
   return (
-    <Box
-      borderRadius={3}
-      className={"center-box"}
-      bgcolor={"background.paper"}
-      sx={{
-        border: "1px solid",
-        width: 350,
-        padding: 1,
-      }}
-    >
+    <CardBase>
       {showUpgradedSide ? (
         <UpgradedConverterCard {...props} flipCard={flipCard} />
       ) : (
         <BaseConverterCard {...props} flipCard={flipCard} />
       )}
-    </Box>
+    </CardBase>
   );
 }
 
