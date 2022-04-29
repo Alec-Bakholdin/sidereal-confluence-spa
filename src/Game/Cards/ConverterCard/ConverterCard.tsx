@@ -1,10 +1,18 @@
-import {ReactElement, useState} from "react";
+import { ReactElement, useState } from "react";
 import Converter from "../Converter/Converter";
-import UpgradedConverterCard from "./UpgradedConverterCard";
-import BaseConverterCard from "./BaseConverterCard";
 import CardBase from "../CardBase";
+import { Box, Grid, Icon, IconButton, Stack, Typography } from "@mui/material";
+import ResourceIcon from "../ResourceIcon/ResourceIcon";
+import { Cached } from "@mui/icons-material";
 
-export function ConverterCard(props: {
+export function ConverterCard({
+  name,
+  baseConverters,
+  acquisitionConverters,
+  upgradeOptions,
+  upgradedName,
+  upgradedConverters,
+}: {
   name: string;
   baseConverters: Array<ReactElement<typeof Converter>>;
   acquisitionConverters?: Array<ReactElement<typeof Converter>>;
@@ -19,13 +27,23 @@ export function ConverterCard(props: {
   };
 
   return (
-    <CardBase>
-      {showUpgradedSide ? (
-        <UpgradedConverterCard {...props} flipCard={flipCard} />
-      ) : (
-        <BaseConverterCard {...props} flipCard={flipCard} />
-      )}
-    </CardBase>
+    <Box margin={"10px"}>
+      <CardBase>
+        <Grid item container className={"center-box"} direction={"row"}>
+          <IconButton>
+            <ResourceIcon type={"acquisition"} />
+          </IconButton>
+          <Box display={"flex"}>
+            <Typography variant={"h5"}>{name}</Typography>
+          </Box>
+          <IconButton>
+            <ResourceIcon type={"upgrade"} />
+          </IconButton>
+
+          {showUpgradedSide ? upgradedConverters : baseConverters}
+        </Grid>
+      </CardBase>
+    </Box>
   );
 }
 

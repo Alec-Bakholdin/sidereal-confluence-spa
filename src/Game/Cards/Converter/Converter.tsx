@@ -4,7 +4,7 @@ import GamePhase from "assets/types/GamePhase";
 import { Box, Grid } from "@mui/material";
 import { Forward } from "@mui/icons-material";
 import ResourceIcon from "../ResourceIcon/ResourceIcon";
-import "./Converter.css";
+import "./Converter.scss";
 
 function renderResources(
   resources: Resources,
@@ -54,15 +54,6 @@ export function Converter({
       borderColor={borderColor}
       onMouseEnter={() => setBorderColor(selectedColor)}
       onMouseLeave={() => setBorderColor(unselectedColor)}
-      sx={{
-        paddingTop: 1,
-        paddingLeft: 1,
-        paddingRight: 1,
-
-        borderRadius: 1,
-        height: "100%",
-        display: "inline-block",
-      }}
     >
       <Grid container direction={"row"} className={"center-box"}>
         <Box>{renderResources(input)}</Box>
@@ -74,29 +65,5 @@ export function Converter({
     </Box>
   );
 }
-
-export const getConverter = function (
-  index: number,
-  converters?: Array<ReactElement<typeof Converter>>
-): ReactElement {
-  if (!converters || index >= converters.length) {
-    return <></>;
-  }
-  return converters[index] ? converters[index] : <></>;
-};
-export const getConverters = function (
-  converters?: Array<ReactElement<typeof Converter>>
-): Array<ReactElement> {
-  if (!converters) {
-    return [];
-  }
-  return converters.map((converter, index) => {
-    return (
-      <Grid item key={index}>
-        {converter}
-      </Grid>
-    );
-  });
-};
 
 export default Converter;
