@@ -33,11 +33,12 @@ export const Game = function (): ReactElement {
             input={{ black: 1, yellow: 2 }}
             output={{ points: 1 }}
             gamePhase={"trade"}
+            acquisition
           />,
         ]}
         upgradeOptions={[
-          <Converter input={{ green: 1 }} output={{}} gamePhase={"trade"} />,
-          <Converter input={{ white: 1 }} output={{}} gamePhase={"trade"} />,
+          <Converter input={{ green: 1 }} output={{}} gamePhase={"trade"} upgrade/>,
+          <Converter input={{ white: 1 }} output={{}} gamePhase={"trade"} upgrade/>,
         ]}
       />
     </Grid>
