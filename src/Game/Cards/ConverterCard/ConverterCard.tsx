@@ -14,12 +14,12 @@ export function ConverterCard({
   upgradedConverters,
 }: {
   name: string;
-  baseConverters: Array<ReactElement<typeof Converter>>;
-  acquisitionConverters?: Array<ReactElement<typeof Converter>>;
-  upgradeOptions: Array<ReactElement<typeof Converter>>;
+  baseConverters: ReactElement<typeof Converter>[];
+  acquisitionConverters?: ReactElement<typeof Converter>[];
+  upgradeOptions: ReactElement<typeof Converter>[];
 
   upgradedName: string;
-  upgradedConverters: Array<ReactElement<typeof Converter>>;
+  upgradedConverters: ReactElement<typeof Converter>[];
 }): ReactElement {
   const [showUpgradedSide, setShowUpgradedSide] = useState<boolean>(false);
   const displayedConverters = showUpgradedSide
