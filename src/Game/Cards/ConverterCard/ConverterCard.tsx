@@ -1,31 +1,62 @@
-import {ReactElement, useState} from "react";
+import { ReactElement, useState } from "react";
 import Converter from "../Converter/Converter";
-import UpgradedConverterCard from "./UpgradedConverterCard";
-import BaseConverterCard from "./BaseConverterCard";
 import CardBase from "../CardBase";
+import { Box, Grid, IconButton, Typography } from "@mui/material";
+import ResourceIcon from "../ResourceIcon/ResourceIcon";
+import { Cached } from "@mui/icons-material";
+import ConverterModal from "../ConverterModal/ConverterModal";
 
-export function ConverterCard(props: {
+export function ConverterCard({
+  name,
+  baseConverters,
+  acquisitionConverters,
+  upgradeOptions,
+  upgradedName,
+  upgradedConverters,
+}: {
   name: string;
-  baseConverters: Array<ReactElement<typeof Converter>>;
-  acquisitionConverters?: Array<ReactElement<typeof Converter>>;
-  upgradeOptions: Array<ReactElement<typeof Converter>>;
+  baseConverters: ReactElement<typeof Converter>[];
+  acquisitionConverters?: ReactElement<typeof Converter>[];
+  upgradeOptions: ReactElement<typeof Converter>[];
 
   upgradedName: string;
-  upgradedConverters: Array<ReactElement<typeof Converter>>;
+  upgradedConverters: ReactElement<typeof Converter>[];
 }): ReactElement {
   const [showUpgradedSide, setShowUpgradedSide] = useState<boolean>(false);
-  const flipCard = function () {
-    setShowUpgradedSide(!showUpgradedSide);
-  };
+
+  const displayedConverters = showUpgradedSide
+    ? upgradedConverters
+    : baseConverters;
+  const displayedName = showUpgradedSide ? upgradedName : name;
 
   return (
-    <CardBase>
-      {showUpgradedSide ? (
-        <UpgradedConverterCard {...props} flipCard={flipCard} />
-      ) : (
-        <BaseConverterCard {...props} flipCard={flipCard} />
-      )}
-    </CardBase>
+    <>
+      <CardBase>
+        <Grid container className={"center-box"} direction={"row"}>
+          <IconButton onClick={() => {}}>
+            <ResourceIcon type={"acquisition"} />
+          </IconButton>
+          <Box display={"flex"}>
+            <Typography variant={"h5"}>{displayedName}</Typography>
+          </Box>
+          <IconButton onClick={() => {}}>
+            <ResourceIcon type={"upgrade"} />
+          </IconButton>
+        </Grid>
+        <Grid container className={"center-box"} direction={"column"}>
+          {displayedConverters.map((converter) => (
+            <Grid item xs={10} key={converter.props.name}>
+              {converter}
+            </Grid>
+          ))}
+          <Grid item xs={2}>
+            <IconButton onClick={() => setShowUpgradedSide(!showUpgradedSide)}>
+              <Cached />
+            </IconButton>
+          </Grid>
+        </Grid>
+      </CardBase>
+    </>
   );
 }
 

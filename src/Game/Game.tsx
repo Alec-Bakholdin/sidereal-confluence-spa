@@ -1,30 +1,64 @@
 import { ReactElement } from "react";
-import { Button, Grid } from "@mui/material";
-import {
-  increment,
-  decrement,
-  incrementByAmount,
-} from "redux/reducers/gameState";
-import { useAppDispatch, useAppSelector } from "redux/hooks";
+import ConverterCard from "./Cards/ConverterCard/ConverterCard";
+import { Grid } from "@mui/material";
+import Converter from "./Cards/Converter/Converter";
 
 export const Game = function (): ReactElement {
-  const count = useAppSelector((state) => state.gameState.value);
-  const dispatch = useAppDispatch();
-
   return (
-    <Grid
-      justifyContent={"center"}
-      alignItems={"center"}
-      direction={"column"}
-      sx={{}}
-    >
-      <Button onClick={() => dispatch(increment())}>Increment</Button>
-      <Button onClick={() => dispatch(decrement())}>Decrement</Button>
-      <Button onClick={() => dispatch(incrementByAmount(5))}>
-        Increment by 5
-      </Button>
-      <div>{count}</div>
-    </Grid>
+    <div>
+      <Grid
+        justifyContent={"center"}
+        alignItems={"center"}
+        direction={"column"}
+        sx={{}}
+      >
+        <ConverterCard
+          name={"Name"}
+          upgradedName={"Upgraded"}
+          baseConverters={[
+            <Converter
+              input={{ black: 2, white: 1 }}
+              output={{ octagon: 1, points: 1 }}
+              gamePhase={"econ"}
+            />,
+            <Converter
+              input={{ green: 1 }}
+              output={{ yellow: 1 }}
+              gamePhase={"econ"}
+            />,
+          ]}
+          upgradedConverters={[
+            <Converter
+              input={{ green: 1 }}
+              output={{ yellow: 3 }}
+              gamePhase={"econ"}
+            />,
+          ]}
+          acquisitionConverters={[
+            <Converter
+              input={{ black: 1, yellow: 2 }}
+              output={{ points: 1 }}
+              gamePhase={"trade"}
+              acquisition
+            />,
+          ]}
+          upgradeOptions={[
+            <Converter
+              input={{ green: 1 }}
+              output={{}}
+              gamePhase={"trade"}
+              upgrade
+            />,
+            <Converter
+              input={{ white: 1 }}
+              output={{}}
+              gamePhase={"trade"}
+              upgrade
+            />,
+          ]}
+        />
+      </Grid>
+    </div>
   );
 };
 

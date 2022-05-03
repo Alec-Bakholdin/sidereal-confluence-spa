@@ -10,7 +10,8 @@ export const dark = createTheme(
       default: "#212121",
       paper: blueGrey[500],
     },
-    headerColor: "#6FF4FF",
+    header1234color: "#6FF4FF",
+    header56color: "#FFF",
   })
 );
 
