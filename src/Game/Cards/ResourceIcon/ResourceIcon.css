@@ -1,14 +1,12 @@
 .resource-icon-root {
-    position: relative;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 }
-.resource-icon-icon {
-    font-size: 2.5em;
-}
+
 .resource-icon-count {
-    position: absolute;
-    line-height: 1;
-    font-size: 1em;
+  position: absolute;
 }
+
+/*# sourceMappingURL=ResourceIcon.css.map */

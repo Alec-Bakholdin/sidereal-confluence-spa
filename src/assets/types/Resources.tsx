@@ -6,6 +6,8 @@ import {ReactComponent as Octagon} from "assets/images/resources/octagon.svg";
 import {ReactComponent as White} from "assets/images/resources/white.svg";
 import {ReactComponent as Yellow} from "assets/images/resources/yellow.svg";
 import {ReactComponent as Points} from "assets/images/resources/points.svg";
+import {ReactComponent as Upgrade} from "assets/images/resources/u.svg";
+import {ReactComponent as Acquisition} from "assets/images/resources/a.svg";
 import {ReactElement} from "react";
 
 export interface Resources {
@@ -30,7 +32,9 @@ export type ResourceType =
   | "blue"
   | "yellow"
   | "octagon"
-  | "points";
+  | "points"
+  | "upgrade"
+  | "acquisition";
 
 export function getResourceSprite(resourceType: ResourceType): ReactElement{
   switch(resourceType) {
@@ -50,6 +54,10 @@ export function getResourceSprite(resourceType: ResourceType): ReactElement{
       return <Octagon />;
     case "points":
       return <Points />;
+    case "upgrade":
+      return <Upgrade />;
+    case "acquisition":
+      return <Acquisition />;
     default:
       return <></>;
   }
