@@ -6,8 +6,8 @@ import dark from "assets/themes/dark";
 import store from "redux/store";
 
 import { Routes, Route, HashRouter } from "react-router-dom";
-import MainMenu from "./MainMenu/MainMenu";
-import Game from "./Game/Game";
+import MainMenu from "./components/MainMenu/MainMenu";
+import Game from "./components/Game/Game";
 import { Provider } from "react-redux";
 
 function App() {
