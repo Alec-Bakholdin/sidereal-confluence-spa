@@ -1,28 +1,24 @@
 import { ReactElement, useEffect } from "react";
-import { Button, Grid } from "@mui/material";
-import {
-  increment,
-  decrement,
-  incrementByAmount,
-} from "redux/reducers/gameState";
+import { Grid } from "@mui/material";
 import { fetchCards } from "redux/reducers/cards";
-import { useAppDispatch, useAppSelector } from "redux/hooks";
+import { useAppDispatch } from "redux/hooks";
+
+import "./Game.scss";
 
 export const Game = function (): ReactElement {
-  const count = useAppSelector((state) => state.gameState.value);
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(fetchCards());
   });
 
   return (
-    <Grid container className={"center-box"} direction={"column"} sx={{}}>
-      <Button onClick={() => dispatch(increment())}>Increment</Button>
-      <Button onClick={() => dispatch(decrement())}>Decrement</Button>
-      <Button onClick={() => dispatch(incrementByAmount(5))}>
-        Increment by 5
-      </Button>
-      <div>{count}</div>
+    <Grid container direction={"row"} sx={{ height: "100vh" }}>
+      <Grid item container xs={3} direction={"column"}>
+        <Grid item xs={8}></Grid>
+        <Grid item xs={4}></Grid>
+      </Grid>
+      <Grid item container xs={6}></Grid>
+      <Grid item container xs={3}></Grid>
     </Grid>
   );
 };
