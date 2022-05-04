@@ -1,21 +1,14 @@
 import { Box } from "@mui/material";
-import { ReactElement } from "react";
+import { ReactElement, ReactNode } from "react";
+import cardBackground from "assets/images/card-background.jpg";
+import "./CardBase.scss";
 
-export function CardBase({
-  children,
-}: {
-  children: ReactElement | ReactElement[];
-}): ReactElement {
+export function CardBase({ children }: { children?: ReactNode }): ReactElement {
   return (
     <Box
-      borderRadius={2}
-      className={"center-box"}
-      bgcolor={"background.paper"}
+      className={"card-base"}
       sx={{
-        border: "1px solid",
-        width: 350,
-        height: 200,
-        padding: 1,
+        backgroundImage: `url(${cardBackground})`,
       }}
     >
       {children}
