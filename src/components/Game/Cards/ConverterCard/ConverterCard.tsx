@@ -4,7 +4,6 @@ import CardBase from "../CardBase";
 import { Box, Grid, IconButton, Typography } from "@mui/material";
 import ResourceIcon from "../ResourceIcon/ResourceIcon";
 import { Cached } from "@mui/icons-material";
-import ConverterModal from "../ConverterModal/ConverterModal";
 
 export function ConverterCard({
   name,
