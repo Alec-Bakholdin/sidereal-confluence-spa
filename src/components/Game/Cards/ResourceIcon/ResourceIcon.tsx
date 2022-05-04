@@ -1,8 +1,5 @@
 import React, { ReactElement } from "react";
-import {
-  getResourceSprite,
-  ResourceType,
-} from "../../../assets/types/Resources";
+import { getResourceSprite, ResourceType } from "assets/types/Resources";
 import { Box, Icon, Typography } from "@mui/material";
 
 import "./ResourceIcon.scss";
