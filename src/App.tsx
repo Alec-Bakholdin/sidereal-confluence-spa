@@ -1,15 +1,16 @@
 import React from "react";
+import { Routes, Route, HashRouter } from "react-router-dom";
 
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import dark from "assets/themes/dark";
 
 import store from "redux/store";
+import { Provider } from "react-redux";
 
-import { Routes, Route, HashRouter } from "react-router-dom";
 import MainMenu from "./components/MainMenu/MainMenu";
 import Game from "./components/Game/Game";
-import { Provider } from "react-redux";
 import Modals from "./components/Modals";
+import Snackbars from "./components/Snackbars";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path={"/game"} element={<Game />} />
           </Routes>
           <Modals />
+          <Snackbars />
         </HashRouter>
       </Provider>
     </ThemeProvider>

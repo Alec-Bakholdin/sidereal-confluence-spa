@@ -3,6 +3,7 @@ import { RootState } from "../store";
 import GameState from "assets/types/GameState";
 import api from "api";
 import { ErrorResponse } from "./errors";
+import { AxiosError } from "axios";
 
 export interface JoinGamePayload {
   playerName: string;
@@ -39,7 +40,11 @@ export const joinGame = createAsyncThunk<
     const response = await api.joinGame(payload);
     return response.data;
   } catch (e) {
-    return rejectWithValue(e as ErrorResponse);
+    let er: AxiosError<ErrorResponse> = e as AxiosError<ErrorResponse>;
+    if (!er.response) {
+      throw e;
+    }
+    return rejectWithValue(er.response.data);
   }
 });
 
