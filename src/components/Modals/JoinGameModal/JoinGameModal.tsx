@@ -12,15 +12,19 @@ import { closeJoinGameModal, selectJoinGameModal } from "redux/reducers/modals";
 
 import "./Modals.scss";
 import { joinGame } from "redux/reducers/gameState";
+import { useNavigate } from "react-router-dom";
 
 export function JoinGameModal(): ReactElement {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const open = useAppSelector(selectJoinGameModal);
   const closeModal = () => dispatch(closeJoinGameModal());
 
   const [username, setUsername] = useState<string>("");
   const onJoinGame = () => {
     dispatch(joinGame({ playerName: username }));
+    closeModal();
+    navigate("/game");
   };
   const handleOnChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>

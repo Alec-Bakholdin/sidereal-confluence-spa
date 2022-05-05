@@ -10,7 +10,7 @@ const axiosApi = axios.create({
 const api = {
   allCards: async () =>
     await axiosApi.get<{ [id: string]: ConverterCard }>("/allCards"),
-  newGame: async () => await axiosApi.get<GameState>("/newGame"),
+  newGame: async () => await axiosApi.post<GameState>("/startNewGame"),
   joinGame: async (body: JoinGamePayload) => {
     return await axiosApi.post<JoinGameResponse>("/joinGame", body);
   },

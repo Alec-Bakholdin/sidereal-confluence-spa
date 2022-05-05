@@ -1,10 +1,19 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { joinGame } from "./gameState";
 import { RootState } from "../store";
+import { AxiosError } from "axios";
 
 export interface ErrorResponse {
   httpStatusCode: number;
   error: string;
+}
+
+export function transformApiError(e: any): ErrorResponse {
+  let err: AxiosError<ErrorResponse> = e;
+  if (!err.response) {
+    throw e;
+  }
+  return err.response.data;
 }
 
 interface ErrorsState {

@@ -2,8 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 import GameState from "assets/types/GameState";
 import api from "api";
-import { ErrorResponse } from "./errors";
-import { AxiosError } from "axios";
+import { ErrorResponse, transformApiError } from "./errors";
 
 export interface JoinGamePayload {
   playerName: string;
@@ -26,9 +25,17 @@ const initialState: GameStateState = {
   },
 };
 
-export const newGame = createAsyncThunk("/gameState/newGame", async () => {
-  const response = await api.newGame();
-  return response.data;
+export const newGame = createAsyncThunk<
+  GameState,
+  void,
+  { rejectValue: ErrorResponse }
+>("/gameState/newGame", async (_, { rejectWithValue }) => {
+  try {
+    const response = await api.newGame();
+    return response.data;
+  } catch (e) {
+    return rejectWithValue(transformApiError(e));
+  }
 });
 
 export const joinGame = createAsyncThunk<
@@ -40,11 +47,7 @@ export const joinGame = createAsyncThunk<
     const response = await api.joinGame(payload);
     return response.data;
   } catch (e) {
-    let er: AxiosError<ErrorResponse> = e as AxiosError<ErrorResponse>;
-    if (!er.response) {
-      throw e;
-    }
-    return rejectWithValue(er.response.data);
+    return rejectWithValue(transformApiError(e));
   }
 });
 
