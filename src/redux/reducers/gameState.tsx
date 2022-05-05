@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 import GameState from "assets/types/GameState";
 import api from "api";
+import { ErrorResponse } from "./errors";
 
 export interface JoinGamePayload {
   playerName: string;
@@ -29,13 +30,18 @@ export const newGame = createAsyncThunk("/gameState/newGame", async () => {
   return response.data;
 });
 
-export const joinGame = createAsyncThunk(
-  "/gameState/joinGame",
-  async (payload: JoinGamePayload) => {
+export const joinGame = createAsyncThunk<
+  JoinGameResponse, // response type
+  JoinGamePayload, // payload type
+  { rejectValue: ErrorResponse } // error type
+>("/gameState/joinGame", async (payload, { rejectWithValue }) => {
+  try {
     const response = await api.joinGame(payload);
     return response.data;
+  } catch (e) {
+    return rejectWithValue(e as ErrorResponse);
   }
-);
+});
 
 export const gameStateSlice = createSlice({
   name: "gameState",
@@ -47,9 +53,6 @@ export const gameStateSlice = createSlice({
       state.gameState = action.payload.gameState;
       console.log(`Successfully joined game as player ${state.playerId}`);
       console.log("gameState: ", state.gameState);
-    });
-    builder.addCase(joinGame.rejected, (state, action) => {
-      console.error(`Failed to join game: ${action.error.message}`);
     });
   },
 });
