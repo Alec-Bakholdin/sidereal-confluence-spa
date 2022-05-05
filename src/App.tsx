@@ -9,7 +9,7 @@ import { Routes, Route, HashRouter } from "react-router-dom";
 import MainMenu from "./components/MainMenu/MainMenu";
 import Game from "./components/Game/Game";
 import { Provider } from "react-redux";
-import JoinGameModal from "./components/Modals/JoinGameModal/JoinGameModal";
+import Modals from "./components/Modals";
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
             <Route path={"/"} element={<MainMenu />} />
             <Route path={"/game"} element={<Game />} />
           </Routes>
-          <JoinGameModal />
+          <Modals />
         </HashRouter>
       </Provider>
     </ThemeProvider>
