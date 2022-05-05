@@ -57,7 +57,7 @@ export function Converter({
     >
       <Grid container direction={"row"} className={"center-box"}>
         <Box>{renderResources(input)}</Box>
-        <Box color={gamePhase === "trade" ? "purple" : "white"}>
+        <Box color={gamePhase === "Trade" ? "purple" : "white"}>
           <Forward />
         </Box>
         <Box>{renderResources(output, upgrade, acquisition)}</Box>

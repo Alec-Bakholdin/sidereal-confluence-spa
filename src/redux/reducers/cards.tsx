@@ -3,19 +3,16 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import api from "api";
 import { RootState } from "../store";
 
-interface CardsState {
+const initialState: {
   cards: { [id: string]: ConverterCard };
   status: "idle" | "loading" | "failure" | "success";
-}
-
-const initialState: CardsState = {
+} = {
   cards: {},
   status: "idle",
 };
 
 export const fetchCards = createAsyncThunk("/cards/fetch", async () => {
   const response = await api.allCards();
-  console.log(response.data);
   return response.data;
 });
 

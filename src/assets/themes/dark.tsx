@@ -8,7 +8,6 @@ export const dark = createTheme(
     primary: blueGrey,
     background: {
       default: "#212121",
-      paper: blueGrey[500],
     },
     header1234color: "#6FF4FF",
     header56color: "#FFF",

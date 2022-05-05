@@ -1,2 +1,2 @@
-export type GamePhase = "trade" | "econ" | "confluence";
+export type GamePhase = "Trade" | "Economy" | "Confluence";
 export default GamePhase;
