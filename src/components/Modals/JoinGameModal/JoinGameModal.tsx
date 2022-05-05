@@ -13,10 +13,6 @@ import { closeJoinGameModal, selectJoinGameModal } from "redux/reducers/modals";
 import "./Modals.scss";
 import { joinGame } from "redux/reducers/gameState";
 
-export interface JoinGamePayload {
-  playerName: string;
-}
-
 export function JoinGameModal(): ReactElement {
   const dispatch = useAppDispatch();
   const open = useAppSelector(selectJoinGameModal);
