@@ -1,15 +1,20 @@
 import { ReactElement, useEffect } from "react";
 import { Drawer } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "redux/hooks";
+import { rejoinGame } from "redux/reducers/gameState";
 
 import "./Game.scss";
-import { selectGameState, selectPlayerId } from "redux/reducers/gameState";
 
 export const Game = function (): ReactElement {
   const dispatch = useAppDispatch();
-  useEffect(() => {});
-  const playerId = useAppSelector(selectPlayerId);
-  const gameState = useAppSelector(selectGameState);
+  const { playerId, playerName, isFresh, gameState } = useAppSelector(
+    (state) => state.gameState
+  );
+  useEffect(() => {
+    if (!isFresh && playerId && playerName) {
+      dispatch(rejoinGame({ playerId, playerName }));
+    }
+  });
 
   return (
     <>

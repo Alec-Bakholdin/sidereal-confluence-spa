@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { joinGame } from "./gameState";
+import { joinGame, newGame, rejoinGame } from "./gameState";
 import { RootState } from "../store";
 import { AxiosError } from "axios";
 
@@ -47,7 +47,15 @@ export const errorsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(joinGame.rejected, (state, action) => {
-      console.log("Handling error");
+      console.log("Handling joinGame error");
+      handleError(state, action);
+    });
+    builder.addCase(newGame.rejected, (state, action) => {
+      console.log("Handling newGame error");
+      handleError(state, action);
+    });
+    builder.addCase(rejoinGame.rejected, (state, action) => {
+      console.log("Handling rejoinGame error");
       handleError(state, action);
     });
   },

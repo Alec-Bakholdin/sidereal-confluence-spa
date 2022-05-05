@@ -30,7 +30,8 @@ function App() {
         })
       );
     }
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   useEffect(() => {
     if (playerId) {
       console.log(`Setting playerId cookie to ${playerId}`);

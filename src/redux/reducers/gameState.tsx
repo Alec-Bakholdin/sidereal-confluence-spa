@@ -13,6 +13,11 @@ export interface JoinGameResponse {
   gameState: GameState;
 }
 
+export interface RejoinGamePayload {
+  playerId: string;
+  playerName: string;
+}
+
 interface PlayerInformation {
   playerId: string;
   playerName: string;
@@ -21,10 +26,12 @@ interface PlayerInformation {
 interface GameStateState {
   playerId?: string | undefined;
   playerName?: string | undefined;
+  isFresh: boolean;
   gameState: GameState;
 }
 
 const initialState: GameStateState = {
+  isFresh: false,
   gameState: {
     turn: 1,
     phase: "Trade",
@@ -58,6 +65,19 @@ export const joinGame = createAsyncThunk<
   }
 });
 
+export const rejoinGame = createAsyncThunk<
+  JoinGameResponse,
+  RejoinGamePayload,
+  { rejectValue: ErrorResponse }
+>("/gameState/rejoinGame", async (payload, { rejectWithValue }) => {
+  try {
+    const response = await api.rejoinGame(payload);
+    return response.data;
+  } catch (e) {
+    return rejectWithValue(transformApiError(e));
+  }
+});
+
 export const gameStateSlice = createSlice({
   name: "gameState",
   initialState,
@@ -75,6 +95,22 @@ export const gameStateSlice = createSlice({
       console.log(`Successfully joined game as player ${state.playerId}`);
       console.log("gameState: ", state.gameState);
     });
+    builder.addCase(joinGame.pending, (state) => {
+      state.isFresh = true;
+    });
+    builder.addCase(joinGame.rejected, (state) => {
+      state.isFresh = false;
+    });
+    builder.addCase(rejoinGame.fulfilled, (state, action) => {
+      state.playerId = action.payload.playerId;
+      state.playerName = action.payload.playerName;
+      state.gameState = action.payload.gameState;
+      console.log(`Successfully rejoined game as player ${state.playerId}`);
+      console.log("gameState: ", state.gameState);
+    });
+    builder.addCase(rejoinGame.pending, (state) => {
+      state.isFresh = true;
+    });
   },
 });
 
@@ -82,6 +118,8 @@ export const selectGameState = (state: RootState) => state.gameState.gameState;
 export const selectPlayerName = (state: RootState) =>
   state.gameState.playerName;
 export const selectPlayerId = (state: RootState) => state.gameState.playerId;
+export const selectFreshGameState = (state: RootState) =>
+  state.gameState.isFresh;
 
 export const { setPlayerInformation } = gameStateSlice.actions;
 
