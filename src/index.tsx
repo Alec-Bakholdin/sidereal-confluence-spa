@@ -1,15 +1,27 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import dark from "./assets/themes/dark";
+import store from "./redux/store";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { CookiesProvider } from "react-cookie";
+import { Provider } from "react-redux";
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme={dark}>
+      <CookiesProvider>
+        <Provider store={store}>
+          <CssBaseline />
+          <App />
+        </Provider>
+      </CookiesProvider>
+    </ThemeProvider>
   </React.StrictMode>
 );
 

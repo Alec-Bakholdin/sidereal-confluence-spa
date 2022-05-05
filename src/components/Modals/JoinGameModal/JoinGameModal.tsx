@@ -1,4 +1,4 @@
-import { ReactElement, KeyboardEvent, useState, ChangeEvent } from "react";
+import { ReactElement, KeyboardEvent, useState } from "react";
 import {
   Box,
   Button,
@@ -13,23 +13,20 @@ import { closeJoinGameModal, selectJoinGameModal } from "redux/reducers/modals";
 import "./Modals.scss";
 import { joinGame } from "redux/reducers/gameState";
 import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
 export function JoinGameModal(): ReactElement {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const open = useAppSelector(selectJoinGameModal);
   const closeModal = () => dispatch(closeJoinGameModal());
+  const [cookies] = useCookies(["playerName"]);
 
-  const [username, setUsername] = useState<string>("");
+  const [username, setUsername] = useState<string>(cookies.playerName);
   const onJoinGame = () => {
     dispatch(joinGame({ playerName: username }));
     closeModal();
     navigate("/game");
-  };
-  const handleOnChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setUsername(e.target.value);
   };
   const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
     if (e.key === "Enter") {
@@ -45,7 +42,7 @@ export function JoinGameModal(): ReactElement {
           <TextField
             label={"Username"}
             value={username}
-            onChange={(e) => handleOnChange(e)}
+            onChange={(e) => setUsername(e.target.value)}
             onKeyDown={(e) => handleKeyDown(e)}
           />
           <Button>

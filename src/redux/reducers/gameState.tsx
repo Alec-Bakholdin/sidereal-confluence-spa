@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 import GameState from "assets/types/GameState";
 import api from "api";
@@ -9,11 +9,18 @@ export interface JoinGamePayload {
 }
 export interface JoinGameResponse {
   playerId: string;
+  playerName: string;
   gameState: GameState;
+}
+
+interface PlayerInformation {
+  playerId: string;
+  playerName: string;
 }
 
 interface GameStateState {
   playerId?: string | undefined;
+  playerName?: string | undefined;
   gameState: GameState;
 }
 
@@ -54,10 +61,16 @@ export const joinGame = createAsyncThunk<
 export const gameStateSlice = createSlice({
   name: "gameState",
   initialState,
-  reducers: {},
+  reducers: {
+    setPlayerInformation: (state, action: PayloadAction<PlayerInformation>) => {
+      state.playerId = action.payload.playerId;
+      state.playerName = action.payload.playerName;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(joinGame.fulfilled, (state, action) => {
       state.playerId = action.payload.playerId;
+      state.playerName = action.payload.playerName;
       state.gameState = action.payload.gameState;
       console.log(`Successfully joined game as player ${state.playerId}`);
       console.log("gameState: ", state.gameState);
@@ -66,6 +79,10 @@ export const gameStateSlice = createSlice({
 });
 
 export const selectGameState = (state: RootState) => state.gameState.gameState;
+export const selectPlayerName = (state: RootState) =>
+  state.gameState.playerName;
 export const selectPlayerId = (state: RootState) => state.gameState.playerId;
+
+export const { setPlayerInformation } = gameStateSlice.actions;
 
 export default gameStateSlice.reducer;
