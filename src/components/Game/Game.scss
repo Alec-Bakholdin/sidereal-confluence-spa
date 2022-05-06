@@ -1,3 +1,16 @@
 .MuiGrid-root {
   border: 1px solid white !important;
 }
+
+.self-player-resources {
+  position: absolute;
+  bottom: 0;
+  border: 1px solid white;
+  padding: 10px;
+  * {
+    display: inline;
+  }
+  button {
+    margin-left: 15px;
+  }
+}

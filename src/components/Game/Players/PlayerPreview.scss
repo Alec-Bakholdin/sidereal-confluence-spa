@@ -1,0 +1,15 @@
+.player-preview{
+  height: 100%;
+  padding: 8px;
+  background-color: #41445b !important;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    background-color: #6d74a4 !important;
+  }
+}
+.player-preview-resources {
+  margin: 5px;
+}

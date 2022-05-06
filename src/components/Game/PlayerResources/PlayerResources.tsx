@@ -1,7 +1,7 @@
 import React, { ReactElement } from "react";
 import Resources from "assets/types/Resources";
 import ResourceIcon from "../Cards/ResourceIcon/ResourceIcon";
-import { Grid, Stack, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 
 export function PlayerResources({
   resources,
@@ -12,7 +12,7 @@ export function PlayerResources({
     return <></>;
   }
   return (
-    <Typography variant={"h6"} sx={{ width: "100%" }}>
+    <Box width={"100%"}>
       <ResourceIcon type={"white"} />
       {resources.white ?? 0}
       <ResourceIcon type={"brown"} />
@@ -29,7 +29,7 @@ export function PlayerResources({
       {resources.octagon ?? 0}
       <ResourceIcon type={"points"} />
       {resources.points ?? 0}
-    </Typography>
+    </Box>
   );
 }
 

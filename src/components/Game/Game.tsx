@@ -1,10 +1,12 @@
 import { ReactElement, useEffect } from "react";
-import { Box, Drawer, Grid, Typography } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "redux/hooks";
-import { rejoinGame } from "redux/reducers/gameState";
+import { joinGame, rejoinGame } from "redux/reducers/gameState";
+import PlayerResources from "./PlayerResources/PlayerResources";
 
 import "./Game.scss";
-import PlayerResources from "./PlayerResources/PlayerResources";
+import Players from "./Players/Players";
+import { fetchCards } from "../../redux/reducers/cards";
 
 export const Game = function (): ReactElement {
   const dispatch = useAppDispatch();
@@ -19,33 +21,30 @@ export const Game = function (): ReactElement {
       dispatch(rejoinGame({ playerId, playerName }));
     }
   });
+  useEffect(() => {
+    dispatch(fetchCards());
+  }, []);
+  const addRandomPlayer = () => {
+    dispatch(
+      joinGame({ playerName: `Player ${Math.floor(Math.random() * 1000)}` })
+    );
+  };
 
   return (
     <Box sx={{ height: "100vh" }}>
-      <Grid container height={"100%"}>
-        <Grid item container xs={3} direction={"column"}>
-          <Grid item width={"100%"} xs={3} className={"center-box"}>
-            {isFresh && (
-              <Typography>
-                turn: {gameState.turn}, phase: {gameState.phase}
-              </Typography>
-            )}
-          </Grid>
-          <Grid item width={"100%"} xs={6} className={"center-box"}>
-            converter cards, colonies, research teams
-          </Grid>
-          <Grid item width={"100%"} xs={3}>
-            <Typography variant={"h4"}>My Resources</Typography>
-            <PlayerResources resources={player?.resources} />
-          </Grid>
+      <Grid container height={"100%"} direction={"column"} columns={14}>
+        <Grid item xs={8}>
+          <Players />
         </Grid>
-        <Grid item container xs={6} className={"center-box"}>
-          trading, confluence stuff
-        </Grid>
-        <Grid item container xs={3} className={"center-box"}>
-          players
-        </Grid>
+        <Grid item xs={6}></Grid>
       </Grid>
+      <Typography variant={"h6"} className={"self-player-resources"}>
+        Player Resources
+        {player && <PlayerResources resources={player?.resources} />}
+        <Button onClick={addRandomPlayer} variant={"outlined"}>
+          Add Player
+        </Button>
+      </Typography>
     </Box>
   );
 };

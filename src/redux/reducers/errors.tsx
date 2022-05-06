@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { joinGame, newGame, rejoinGame } from "./gameState";
 import { RootState } from "../store";
 import { AxiosError } from "axios";
+import { fetchCards } from "./cards";
 
 export interface ErrorResponse {
   httpStatusCode: number;
@@ -56,6 +57,10 @@ export const errorsSlice = createSlice({
     });
     builder.addCase(rejoinGame.rejected, (state, action) => {
       console.log("Handling rejoinGame error");
+      handleError(state, action);
+    });
+    builder.addCase(fetchCards.rejected, (state, action) => {
+      console.log("Handling fetchCards error");
       handleError(state, action);
     });
   },
