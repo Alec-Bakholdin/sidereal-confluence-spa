@@ -1,5 +1,5 @@
 import { ReactElement, useEffect } from "react";
-import { Box, Button, Grid, Typography } from "@mui/material";
+import { Box, Button, Stack, Typography } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "redux/hooks";
 import { joinGame, rejoinGame } from "redux/reducers/gameState";
 import PlayerResources from "./PlayerResources/PlayerResources";
@@ -32,15 +32,11 @@ export const Game = function (): ReactElement {
   };
 
   return (
-    <Box sx={{ height: "100vh" }}>
-      <Grid container height={"100%"} direction={"column"} columns={14}>
-        <Grid item xs={6} width={"100%"}>
-          <Players />
-        </Grid>
-        <Grid item xs={8} width={"100%"}>
-          <CurrentPlayerInfo />
-        </Grid>
-      </Grid>
+    <Box sx={{ height: "100vh" }} overflow={"clip"}>
+      <Stack height={"100%"}>
+        <Players />
+        <CurrentPlayerInfo />
+      </Stack>
       <Box className={"self-player-resources"} bgcolor={"background.default"}>
         <Typography
           variant={"h6"}

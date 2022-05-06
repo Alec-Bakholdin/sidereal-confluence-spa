@@ -9,7 +9,7 @@ export function CurrentPlayerInfo(): ReactElement {
   if (!player) return <></>;
 
   return (
-    <Grid container direction={"row"} height={"100%"}>
+    <Grid container direction={"row"}>
       <Grid item xs={6} border={"1px solid white"}>
         <CardList ids={player.cards} />
       </Grid>
