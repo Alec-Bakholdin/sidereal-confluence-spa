@@ -7,7 +7,9 @@ import "./Game.scss";
 import Players from "./Players/Players";
 import { fetchCards } from "redux/reducers/cards";
 import CurrentPlayerInfo from "./CurrentPlayerInfo/CurrentPlayerInfo";
-import { openUpdateResourcesModal } from "../../redux/reducers/modals";
+import { openUpdateResourcesModal } from "redux/reducers/modals";
+import { useStompClient } from "react-stomp-hooks";
+import { APP_START_GAME } from "assets/types/SocketTopics";
 
 export const Game = function (): ReactElement {
   const dispatch = useAppDispatch();
@@ -15,6 +17,7 @@ export const Game = function (): ReactElement {
     (state) => state.gameState
   );
   const player = gameState.players[playerId ?? ""];
+  const stompClient = useStompClient();
 
   // rejoin game if cookies are set and game has not been fetched yet
   useEffect(() => {
@@ -29,6 +32,14 @@ export const Game = function (): ReactElement {
     dispatch(
       joinGame({ playerName: `Player ${Math.floor(Math.random() * 1000)}` })
     );
+  };
+  const startGame = () => {
+    if (stompClient) {
+      stompClient.publish({
+        destination: APP_START_GAME,
+        body: "",
+      });
+    }
   };
 
   return (
@@ -45,9 +56,14 @@ export const Game = function (): ReactElement {
           Resources
           {player && <PlayerResources resources={player?.resources} />}
         </Typography>
-        <Button onClick={addRandomPlayer} variant={"outlined"}>
-          Add Player
-        </Button>
+        {!gameState.gameStarted && (
+          <>
+            <Button onClick={addRandomPlayer} variant={"outlined"}>
+              Add Player
+            </Button>
+            <Button onClick={startGame}>Start Game</Button>
+          </>
+        )}
       </Box>
     </Box>
   );

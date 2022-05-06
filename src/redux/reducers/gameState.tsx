@@ -5,6 +5,7 @@ import api from "api";
 import { ErrorResponse, transformApiError } from "./errors";
 import Player from "../../assets/types/Player";
 import Resources from "../../assets/types/Resources";
+import { UpdateGameStateServerMessage } from "../../assets/types/SocketTopics";
 
 export interface JoinGamePayload {
   playerName: string;
@@ -37,6 +38,15 @@ const initialState: GameStateState = {
   gameState: {
     turn: 1,
     phase: "Trade",
+    gameOver: false,
+    gameStarted: false,
+
+    confluenceList: [],
+    availableColonies: [],
+    availableResearchTeams: [],
+    colonyBidTrack: [],
+    researchTeamBidTrack: [],
+
     players: {},
   },
 };
@@ -102,6 +112,15 @@ export const gameStateSlice = createSlice({
         }
       }
     },
+    updateGameState: (
+      state,
+      action: PayloadAction<UpdateGameStateServerMessage>
+    ) => {
+      console.log(action.payload);
+      if (action.payload) {
+        state.gameState = { ...state.gameState, ...action.payload };
+      }
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(joinGame.fulfilled, (state, action) => {
@@ -137,7 +156,11 @@ export const selectPlayerId = (state: RootState) => state.gameState.playerId;
 export const selectFreshGameState = (state: RootState) =>
   state.gameState.isFresh;
 
-export const { setPlayerInformation, addPlayer, updatePlayerResources } =
-  gameStateSlice.actions;
+export const {
+  setPlayerInformation,
+  addPlayer,
+  updatePlayerResources,
+  updateGameState,
+} = gameStateSlice.actions;
 
 export default gameStateSlice.reducer;

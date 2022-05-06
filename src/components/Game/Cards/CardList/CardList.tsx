@@ -8,7 +8,13 @@ import ColonyElement from "../ColonyElement/ColonyElement";
 import "./CardList.scss";
 import ResearchTeamElement from "../ResearchTeamElement/ResearchTeamElement";
 
-export function CardList({ ids }: { ids: string[] }): ReactElement {
+export function CardList({
+  ids,
+  shipMinima,
+}: {
+  ids: string[];
+  shipMinima?: number[];
+}): ReactElement {
   const cards = useAppSelector(selectCards);
   const renderCard = (card: Card) => {
     switch (card.type) {
@@ -26,9 +32,10 @@ export function CardList({ ids }: { ids: string[] }): ReactElement {
     <Paper className={"card-list"}>
       <Grid container direction={"row"}>
         {ids.map(
-          (id) =>
+          (id, i) =>
             cards[id] && (
-              <Grid item xs={4}>
+              <Grid item>
+                {shipMinima && shipMinima[i]}
                 {renderCard(cards[id])}
               </Grid>
             )
