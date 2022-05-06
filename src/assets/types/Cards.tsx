@@ -20,7 +20,7 @@ export type ConverterCard = {
 export type ResearchTeam = {
   era: number;
   resultingTechnology: string;
-  researchOptions: Resources[];
+  researchOptions: Resources;
   points: number;
   researched: boolean;
 } & Card;

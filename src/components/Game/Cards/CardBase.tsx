@@ -5,9 +5,11 @@ import "./CardBase.scss";
 
 export function CardBase({
   title,
+  era,
   children,
 }: {
   title?: string;
+  era?: number;
   children?: ReactNode;
 }): ReactElement {
   return (
@@ -20,6 +22,7 @@ export function CardBase({
       {title && (
         <Typography variant={"h5"} textAlign={"center"}>
           {title}
+          {era && ` (${era})`}
         </Typography>
       )}
       <Box className={"center-box"}>{children}</Box>

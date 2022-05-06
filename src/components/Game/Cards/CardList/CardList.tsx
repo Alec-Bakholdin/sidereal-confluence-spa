@@ -2,10 +2,11 @@ import { ReactElement } from "react";
 import { Grid, Paper } from "@mui/material";
 import { useAppSelector } from "redux/hooks";
 import { selectCards } from "redux/reducers/cards";
-import { Card, Colony, ConverterCard } from "assets/types/Cards";
+import { Card, Colony, ConverterCard, ResearchTeam } from "assets/types/Cards";
 import ConverterCardElement from "../ConverterCardElement/ConverterCardElement";
 import ColonyElement from "../ColonyElement/ColonyElement";
 import "./CardList.scss";
+import ResearchTeamElement from "../ResearchTeamElement/ResearchTeamElement";
 
 export function CardList({ ids }: { ids: string[] }): ReactElement {
   const cards = useAppSelector(selectCards);
@@ -14,7 +15,7 @@ export function CardList({ ids }: { ids: string[] }): ReactElement {
       case "Colony":
         return <ColonyElement colonyObj={card as Colony} />;
       case "ResearchTeam":
-        return <></>;
+        return <ResearchTeamElement researchTeamObj={card as ResearchTeam} />;
       case "ConverterCard":
         return <ConverterCardElement converterCard={card as ConverterCard} />;
       default:
@@ -26,8 +27,7 @@ export function CardList({ ids }: { ids: string[] }): ReactElement {
       <Grid container direction={"row"}>
         {ids.map(
           (id) =>
-            cards[id] &&
-            cards[id].type !== "ResearchTeam" && (
+            cards[id] && (
               <Grid item xs={4}>
                 {renderCard(cards[id])}
               </Grid>

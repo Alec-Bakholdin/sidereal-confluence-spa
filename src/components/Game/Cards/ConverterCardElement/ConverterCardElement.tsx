@@ -20,7 +20,9 @@ export function ConverterCardElement({
         <Stack>
           {converterCard.frontConverters?.map(converterElementFromObj)}
           {converterCard.backConverters?.map(converterElementFromObj)}
-          {converterCard.upgradeOptions?.map(converterElementFromObj)}
+          {converterCard.upgradeOptions?.map((conv) => (
+            <ConverterElement converter={conv} upgrade />
+          ))}
         </Stack>
       </CardBase>
     </>

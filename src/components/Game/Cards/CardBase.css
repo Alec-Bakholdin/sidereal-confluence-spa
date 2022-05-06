@@ -3,6 +3,7 @@
   width: 300px;
   border-radius: 5px;
   border: 1px solid white;
+  overflow: auto;
 }
 
 /*# sourceMappingURL=CardBase.css.map */
