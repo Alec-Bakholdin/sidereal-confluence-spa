@@ -9,11 +9,11 @@ import {
 } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "redux/hooks";
 import { closeJoinGameModal, selectJoinGameModal } from "redux/reducers/modals";
-
-import "./Modals.scss";
 import { joinGame } from "redux/reducers/gameState";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
+
+import "./JoinGameModal.scss";
 
 export function JoinGameModal(): ReactElement {
   const dispatch = useAppDispatch();
@@ -36,7 +36,10 @@ export function JoinGameModal(): ReactElement {
 
   return (
     <Modal open={open} onClose={closeModal}>
-      <Box className={"modal"} sx={{ backgroundColor: "background.paper" }}>
+      <Box
+        className={"join-game-modal modal"}
+        sx={{ backgroundColor: "background.paper" }}
+      >
         <Stack className={"center-box"} spacing={2}>
           <Typography variant={"h2"}>Join Game</Typography>
           <TextField

@@ -1,10 +1,10 @@
 import React, { ReactElement, useState } from "react";
 import Resources from "assets/types/Resources";
-import GamePhase from "assets/types/GamePhase";
 import { Box, Grid } from "@mui/material";
 import { Forward } from "@mui/icons-material";
 import ResourceIcon from "../ResourceIcon/ResourceIcon";
-import "./Converter.scss";
+import "./ConverterElement.scss";
+import Converter from "../../../../assets/types/Converter";
 
 function renderResources(
   resources: Resources,
@@ -30,18 +30,14 @@ function renderResources(
   );
 }
 
-export function Converter({
-  input,
-  output,
-  gamePhase,
-  acquisition,
+export function ConverterElement({
+  converter,
   upgrade,
+  acquisition,
 }: {
-  input: Resources;
-  output: Resources;
-  gamePhase: GamePhase;
-  acquisition?: boolean;
+  converter: Converter;
   upgrade?: boolean;
+  acquisition?: boolean;
 }): ReactElement {
   const selectedColor = "white";
   const unselectedColor = "transparent";
@@ -56,14 +52,16 @@ export function Converter({
       onMouseLeave={() => setBorderColor(unselectedColor)}
     >
       <Grid container direction={"row"} className={"center-box"}>
-        <Box>{renderResources(input)}</Box>
-        <Box color={gamePhase === "Trade" ? "purple" : "white"}>
+        <Box>{renderResources(converter.input ?? {})}</Box>
+        <Box color={converter.phase === "Trade" ? "purple" : "white"}>
           <Forward />
         </Box>
-        <Box>{renderResources(output, upgrade, acquisition)}</Box>
+        <Box>
+          {renderResources(converter.output ?? {}, upgrade, acquisition)}
+        </Box>
       </Grid>
     </Box>
   );
 }
 
-export default Converter;
+export default ConverterElement;
