@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { Paper } from "@mui/material";
+import { Grid, Paper } from "@mui/material";
 import { useAppSelector } from "redux/hooks";
 import { selectCards } from "redux/reducers/cards";
 import { Card, Colony, ConverterCard } from "assets/types/Cards";
@@ -23,12 +23,17 @@ export function CardList({ ids }: { ids: string[] }): ReactElement {
   };
   return (
     <Paper className={"card-list"}>
-      {ids.map(
-        (id) =>
-          cards[id] &&
-          cards[id].type !== "ResearchTeam" &&
-          renderCard(cards[id])
-      )}
+      <Grid container direction={"row"}>
+        {ids.map(
+          (id) =>
+            cards[id] &&
+            cards[id].type !== "ResearchTeam" && (
+              <Grid item xs={4}>
+                {renderCard(cards[id])}
+              </Grid>
+            )
+        )}
+      </Grid>
     </Paper>
   );
 }

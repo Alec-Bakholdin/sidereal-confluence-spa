@@ -4,7 +4,7 @@ import { Box, Grid } from "@mui/material";
 import { Forward } from "@mui/icons-material";
 import ResourceIcon from "../ResourceIcon/ResourceIcon";
 import "./ConverterElement.scss";
-import Converter from "../../../../assets/types/Converter";
+import Converter from "assets/types/Converter";
 
 function renderResources(
   resources: Resources,
