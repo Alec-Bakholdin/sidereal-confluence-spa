@@ -45,6 +45,9 @@ export const errorsSlice = createSlice({
     resetErrors: (state) => {
       state.errors = [];
     },
+    addError: (state, action: PayloadAction<string>) => {
+      state.errors.push(action.payload);
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(joinGame.rejected, (state, action) => {
@@ -68,6 +71,6 @@ export const errorsSlice = createSlice({
 
 export const errorsSelector = (state: RootState) => state.errors.errors;
 
-export const { resetErrors } = errorsSlice.actions;
+export const { resetErrors, addError } = errorsSlice.actions;
 
 export default errorsSlice.reducer;

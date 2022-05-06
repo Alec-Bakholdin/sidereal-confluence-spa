@@ -3,10 +3,11 @@ import { Box, Button, Grid, Typography } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "redux/hooks";
 import { joinGame, rejoinGame } from "redux/reducers/gameState";
 import PlayerResources from "./PlayerResources/PlayerResources";
-
 import "./Game.scss";
 import Players from "./Players/Players";
-import { fetchCards } from "../../redux/reducers/cards";
+import { fetchCards } from "redux/reducers/cards";
+import CurrentPlayerInfo from "./CurrentPlayerInfo/CurrentPlayerInfo";
+import { openUpdateResourcesModal } from "../../redux/reducers/modals";
 
 export const Game = function (): ReactElement {
   const dispatch = useAppDispatch();
@@ -33,18 +34,25 @@ export const Game = function (): ReactElement {
   return (
     <Box sx={{ height: "100vh" }}>
       <Grid container height={"100%"} direction={"column"} columns={14}>
-        <Grid item xs={8}>
+        <Grid item xs={6} width={"100%"}>
           <Players />
         </Grid>
-        <Grid item xs={6}></Grid>
+        <Grid item xs={8} width={"100%"}>
+          <CurrentPlayerInfo />
+        </Grid>
       </Grid>
-      <Typography variant={"h6"} className={"self-player-resources"}>
-        Player Resources
-        {player && <PlayerResources resources={player?.resources} />}
+      <Box className={"self-player-resources"} bgcolor={"background.default"}>
+        <Typography
+          variant={"h6"}
+          onClick={() => dispatch(openUpdateResourcesModal())}
+        >
+          Resources
+          {player && <PlayerResources resources={player?.resources} />}
+        </Typography>
         <Button onClick={addRandomPlayer} variant={"outlined"}>
           Add Player
         </Button>
-      </Typography>
+      </Box>
     </Box>
   );
 };

@@ -12,6 +12,7 @@ import {
   setPlayerInformation,
 } from "./redux/reducers/gameState";
 import { useCookies } from "react-cookie";
+import SocketActions from "./socket/SocketActions";
 
 function App() {
   const playerId = useAppSelector(selectPlayerId);
@@ -49,6 +50,7 @@ function App() {
         <Route path={"/"} element={<MainMenu />} />
         <Route path={"/game"} element={<Game />} />
       </Routes>
+      <SocketActions />
       <Modals />
       <Snackbars />
     </HashRouter>

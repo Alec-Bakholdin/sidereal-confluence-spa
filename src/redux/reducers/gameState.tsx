@@ -3,6 +3,8 @@ import { RootState } from "../store";
 import GameState from "assets/types/GameState";
 import api from "api";
 import { ErrorResponse, transformApiError } from "./errors";
+import Player from "../../assets/types/Player";
+import Resources from "../../assets/types/Resources";
 
 export interface JoinGamePayload {
   playerName: string;
@@ -86,6 +88,20 @@ export const gameStateSlice = createSlice({
       state.playerId = action.payload.playerId;
       state.playerName = action.payload.playerName;
     },
+    addPlayer: (state, action: PayloadAction<Player>) => {
+      state.gameState.players[action.payload.id] = action.payload;
+    },
+    updatePlayerResources: (
+      state,
+      action: PayloadAction<{ playerId: string; resources: Resources }>
+    ) => {
+      if (action.payload) {
+        const { playerId, resources } = action.payload;
+        if (state.gameState.players[playerId]) {
+          state.gameState.players[playerId].resources = resources;
+        }
+      }
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(joinGame.fulfilled, (state, action) => {
@@ -121,6 +137,7 @@ export const selectPlayerId = (state: RootState) => state.gameState.playerId;
 export const selectFreshGameState = (state: RootState) =>
   state.gameState.isFresh;
 
-export const { setPlayerInformation } = gameStateSlice.actions;
+export const { setPlayerInformation, addPlayer, updatePlayerResources } =
+  gameStateSlice.actions;
 
 export default gameStateSlice.reducer;
