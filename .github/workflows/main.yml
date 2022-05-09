@@ -1,4 +1,4 @@
-name: NodeJS with Webpack
+name: npm install and upload to FTP
 
 on:
   push:
