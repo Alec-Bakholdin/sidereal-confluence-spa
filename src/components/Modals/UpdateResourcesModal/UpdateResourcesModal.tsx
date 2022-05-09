@@ -22,7 +22,7 @@ export function UpdateResourcesModal(): ReactElement {
     if (gameState.players[playerId ?? ""]) {
       setResources(gameState.players[playerId ?? ""].resources);
     }
-  }, [open]);
+  }, [gameState.players, playerId]);
   const handleClose = () => {
     dispatch(closeUpdateResourcesModal());
   };
@@ -59,8 +59,9 @@ export function UpdateResourcesModal(): ReactElement {
         </Typography>
         <Box height={"75%"} overflow={"auto"}>
           <Stack marginTop={"20px"} className={"center-box"} spacing={2}>
-            {types.map((type) => (
+            {types.map((type, i) => (
               <UpdateResourceField
+                key={`resources-field-${i}`}
                 type={type}
                 value={(resources as { [t: string]: number })[type]}
                 onChange={(value) =>

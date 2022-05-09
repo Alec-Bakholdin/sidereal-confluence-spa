@@ -24,10 +24,8 @@ export const Game = function (): ReactElement {
     if (!isFresh && playerId && playerName) {
       dispatch(rejoinGame({ playerId, playerName }));
     }
-  });
-  useEffect(() => {
     dispatch(fetchCards());
-  }, []);
+  });
   const addRandomPlayer = () => {
     dispatch(
       joinGame({ playerName: `Player ${Math.floor(Math.random() * 1000)}` })

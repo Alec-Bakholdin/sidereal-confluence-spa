@@ -34,7 +34,7 @@ export function CardList({
         {ids.map(
           (id, i) =>
             cards[id] && (
-              <Grid item>
+              <Grid item key={id}>
                 {shipMinima && shipMinima[i]}
                 {renderCard(cards[id])}
               </Grid>
