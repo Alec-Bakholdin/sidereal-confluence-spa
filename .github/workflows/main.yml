@@ -1,16 +1,11 @@
-name: NodeJS with Webpack
+name: build and upload to FTP
 
 on:
   push:
     branches: [ main ]
-  pull_request:
-    types:
-      - closed
-    branches: [ main ]
 
 jobs:
   build_and_deploy:
-    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
 
     strategy:
@@ -40,4 +35,12 @@ jobs:
     
     
     
-    
+
+
+
+
+
+
+
+
+
