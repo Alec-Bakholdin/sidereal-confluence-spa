@@ -1,0 +1,19 @@
+.self-player-resources {
+  position: absolute;
+  bottom: 0;
+  border: 1px solid white;
+  padding: 10px;
+  max-height: 10%;
+  cursor: pointer;
+}
+.self-player-resources * {
+  display: inline;
+}
+.self-player-resources button {
+  margin-left: 15px;
+}
+.self-player-resources h6:hover {
+  background-color: #6d74a4;
+}
+
+/*# sourceMappingURL=Game.css.map */

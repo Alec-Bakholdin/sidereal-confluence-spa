@@ -1,0 +1,51 @@
+{
+  "playerId": "a5836d4d-6b96-4f97-829a-ae53de6e5dea",
+  "playerName": "milkudders",
+  "gameState": {
+    "turn": 0,
+    "phase": "Trade",
+    "confluenceList": [],
+    "availableColonies": [],
+    "availableResearchTeams": [],
+    "colonyBidTrack": [],
+    "researchTeamBidTrack": [],
+    "players": {
+      "a5836d4d-6b96-4f97-829a-ae53de6e5dea": {
+        "id": "a5836d4d-6b96-4f97-829a-ae53de6e5dea",
+        "name": "milkudders",
+        "resources": {
+          "green": 1,
+          "black": 3,
+          "yellow": 2,
+          "octagon": 1
+        },
+        "race": {
+          "colonySupport": 1,
+          "tiebreaker": 1,
+          "startingColonies": 1,
+          "startingResearchTeams": 1,
+          "startingResources": {
+            "green": 1,
+            "black": 3,
+            "yellow": 2,
+            "octagon": 1
+          },
+          "startingConverterCards": [
+            "converterCard_1"
+          ],
+          "availableConverterCards": [
+            "converterCard_2"
+          ]
+        },
+        "cards": [
+          "converterCard_1",
+          "colony_279",
+          "researchTeam_325"
+        ],
+        "ready": false
+      }
+    },
+    "gameOver": false,
+    "gameStarted": false
+  }
+}

@@ -1,0 +1,1661 @@
+{
+  "colony_289": {
+    "id": "colony_289",
+    "name": "Benetnasch",
+    "type": "Colony",
+    "frontConverter": {
+      "output": {
+        "green": 1
+      },
+      "phase": "Economy"
+    },
+    "upgradeConverter": {
+      "input": {
+        "blue": 1
+      },
+      "phase": "Trade"
+    },
+    "backConverter": {
+      "output": {
+        "blue": 1
+      },
+      "phase": "Economy"
+    },
+    "frontType": "Ocean",
+    "backType": "Jungle",
+    "upgraded": false
+  },
+  "colony_288": {
+    "id": "colony_288",
+    "name": "Mirfak",
+    "type": "Colony",
+    "frontConverter": {
+      "output": {
+        "green": 1
+      },
+      "phase": "Economy"
+    },
+    "upgradeConverter": {
+      "input": {
+        "black": 1
+      },
+      "phase": "Trade"
+    },
+    "backConverter": {
+      "output": {
+        "black": 1
+      },
+      "phase": "Economy"
+    },
+    "frontType": "Jungle",
+    "backType": "Ice",
+    "upgraded": false
+  },
+  "colony_287": {
+    "id": "colony_287",
+    "name": "Wezen",
+    "type": "Colony",
+    "frontConverter": {
+      "output": {
+        "brown": 1
+      },
+      "phase": "Economy"
+    },
+    "upgradeConverter": {
+      "input": {
+        "black": 1
+      },
+      "phase": "Trade"
+    },
+    "backConverter": {
+      "output": {
+        "black": 1
+      },
+      "phase": "Economy"
+    },
+    "frontType": "Jungle",
+    "backType": "Ocean",
+    "upgraded": false
+  },
+  "colony_286": {
+    "id": "colony_286",
+    "name": "Toliman",
+    "type": "Colony",
+    "frontConverter": {
+      "output": {
+        "white": 1
+      },
+      "phase": "Economy"
+    },
+    "upgradeConverter": {
+      "input": {
+        "black": 1
+      },
+      "phase": "Trade"
+    },
+    "backConverter": {
+      "output": {
+        "black": 1
+      },
+      "phase": "Economy"
+    },
+    "frontType": "Desert",
+    "backType": "Ice",
+    "upgraded": false
+  },
+  "colony_285": {
+    "id": "colony_285",
+    "name": "Miaplacidus",
+    "type": "Colony",
+    "frontConverter": {
+      "output": {
+        "green": 1
+      },
+      "phase": "Economy"
+    },
+    "upgradeConverter": {
+      "input": {
+        "black": 1
+      },
+      "phase": "Trade"
+    },
+    "backConverter": {
+      "output": {
+        "black": 1
+      },
+      "phase": "Economy"
+    },
+    "frontType": "Ocean",
+    "backType": "Desert",
+    "upgraded": false
+  },
+  "colony_284": {
+    "id": "colony_284",
+    "name": "Castor",
+    "type": "Colony",
+    "frontConverter": {
+      "output": {
+        "white": 1
+      },
+      "phase": "Economy"
+    },
+    "upgradeConverter": {
+      "input": {
+        "black": 1
+      },
+      "phase": "Trade"
+    },
+    "backConverter": {
+      "output": {
+        "black": 1
+      },
+      "phase": "Economy"
+    },
+    "frontType": "Ocean",
+    "backType": "Ice",
+    "upgraded": false
+  },
+  "colony_283": {
+    "id": "colony_283",
+    "name": "Regulus",
+    "type": "Colony",
+    "frontConverter": {
+      "output": {
+        "white": 1
+      },
+      "phase": "Economy"
+    },
+    "upgradeConverter": {
+      "input": {
+        "yellow": 1
+      },
+      "phase": "Trade"
+    },
+    "backConverter": {
+      "output": {
+        "yellow": 1
+      },
+      "phase": "Economy"
+    },
+    "frontType": "Jungle",
+    "backType": "Desert",
+    "upgraded": false
+  },
+  "colony_282": {
+    "id": "colony_282",
+    "name": "Mimosa",
+    "type": "Colony",
+    "frontConverter": {
+      "output": {
+        "white": 1
+      },
+      "phase": "Economy"
+    },
+    "upgradeConverter": {
+      "input": {
+        "blue": 1
+      },
+      "phase": "Trade"
+    },
+    "backConverter": {
+      "output": {
+        "blue": 1
+      },
+      "phase": "Economy"
+    },
+    "frontType": "Ice",
+    "backType": "Jungle",
+    "upgraded": false
+  },
+  "colony_281": {
+    "id": "colony_281",
+    "name": "Antares",
+    "type": "Colony",
+    "frontConverter": {
+      "output": {
+        "green": 1
+      },
+      "phase": "Economy"
+    },
+    "upgradeConverter": {
+      "input": {
+        "octagon": 1
+      },
+      "phase": "Trade"
+    },
+    "backConverter": {
+      "input": {
+        "green": 1
+      },
+      "output": {
+        "octagon": 1
+      },
+      "phase": "Economy"
+    },
+    "frontType": "Jungle",
+    "backType": "Ice",
+    "upgraded": false
+  },
+  "colony_280": {
+    "id": "colony_280",
+    "name": "Spica",
+    "type": "Colony",
+    "frontConverter": {
+      "output": {
+        "white": 1
+      },
+      "phase": "Economy"
+    },
+    "upgradeConverter": {
+      "input": {
+        "green": 2
+      },
+      "phase": "Trade"
+    },
+    "backConverter": {
+      "output": {
+        "green": 1,
+        "white": 1
+      },
+      "phase": "Economy"
+    },
+    "frontType": "Ice",
+    "backType": "Ocean",
+    "upgraded": false
+  },
+  "researchTeam_328": {
+    "id": "researchTeam_328",
+    "name": "Gravitic Topologists",
+    "type": "ResearchTeam",
+    "era": 2,
+    "resultingTechnology": "Singularity Control",
+    "researchOptions": {
+      "green": 12,
+      "brown": 12
+    },
+    "points": 4,
+    "researched": false
+  },
+  "researchTeam_329": {
+    "id": "researchTeam_329",
+    "name": "Metaethicists",
+    "type": "ResearchTeam",
+    "era": 2,
+    "resultingTechnology": "Cross Species Ethical Equality",
+    "researchOptions": {
+      "black": 7,
+      "yellow": 7
+    },
+    "points": 4,
+    "researched": false
+  },
+  "researchTeam_326": {
+    "id": "researchTeam_326",
+    "name": "Comparative Physiologists",
+    "type": "ResearchTeam",
+    "era": 2,
+    "resultingTechnology": "Interspecies Medical Exchange",
+    "researchOptions": {
+      "brown": 9,
+      "black": 6
+    },
+    "points": 3,
+    "researched": false
+  },
+  "researchTeam_327": {
+    "id": "researchTeam_327",
+    "name": "N-Space Mathematicians",
+    "type": "ResearchTeam",
+    "era": 2,
+    "resultingTechnology": "Hyperspace Mining",
+    "researchOptions": {
+      "blue": 8,
+      "octagon": 4
+    },
+    "points": 4,
+    "researched": false
+  },
+  "researchTeam_324": {
+    "id": "researchTeam_324",
+    "name": "Sociologists",
+    "type": "ResearchTeam",
+    "era": 1,
+    "resultingTechnology": "Ubiquitous Cultural Repository",
+    "researchOptions": {
+      "white": 6,
+      "black": 4
+    },
+    "points": 1,
+    "researched": false
+  },
+  "researchTeam_325": {
+    "id": "researchTeam_325",
+    "name": "Nuclear Physicists",
+    "type": "ResearchTeam",
+    "era": 1,
+    "resultingTechnology": "Atomic Transmutation",
+    "researchOptions": {
+      "brown": 6,
+      "yellow": 4
+    },
+    "points": 1,
+    "researched": false
+  },
+  "researchTeam_322": {
+    "id": "researchTeam_322",
+    "name": "Organic Chemists",
+    "type": "ResearchTeam",
+    "era": 1,
+    "resultingTechnology": "Genetic Engineering",
+    "researchOptions": {
+      "brown": 6,
+      "blue": 4
+    },
+    "points": 1,
+    "researched": false
+  },
+  "researchTeam_323": {
+    "id": "researchTeam_323",
+    "name": "Pharmaceutical Scientists",
+    "type": "ResearchTeam",
+    "era": 1,
+    "resultingTechnology": "Clinical Immortality",
+    "researchOptions": {
+      "green": 6,
+      "octagon": 2
+    },
+    "points": 1,
+    "researched": false
+  },
+  "researchTeam_320": {
+    "id": "researchTeam_320",
+    "name": "Computational Theoreticians",
+    "type": "ResearchTeam",
+    "era": 1,
+    "resultingTechnology": "Quantum Computers",
+    "researchOptions": {
+      "white": 6,
+      "blue": 4
+    },
+    "points": 1,
+    "researched": false
+  },
+  "researchTeam_321": {
+    "id": "researchTeam_321",
+    "name": "Linguistic Analysts",
+    "type": "ResearchTeam",
+    "era": 1,
+    "resultingTechnology": "Universal Translator",
+    "researchOptions": {
+      "green": 6,
+      "black": 4
+    },
+    "points": 1,
+    "researched": false
+  },
+  "colony_279": {
+    "id": "colony_279",
+    "name": "Acrux",
+    "type": "Colony",
+    "frontConverter": {
+      "output": {
+        "black": 1
+      },
+      "phase": "Economy"
+    },
+    "upgradeConverter": {
+      "input": {
+        "white": 2
+      },
+      "phase": "Trade"
+    },
+    "backConverter": {
+      "output": {
+        "white": 1,
+        "black": 1
+      },
+      "phase": "Economy"
+    },
+    "frontType": "Desert",
+    "backType": "Ice",
+    "upgraded": false
+  },
+  "colony_312": {
+    "id": "colony_312",
+    "name": "Altair",
+    "type": "Colony",
+    "frontConverter": {
+      "output": {
+        "green": 1
+      },
+      "phase": "Economy"
+    },
+    "upgradeConverter": {
+      "input": {
+        "yellow": 1
+      },
+      "phase": "Trade"
+    },
+    "backConverter": {
+      "output": {
+        "yellow": 1
+      },
+      "phase": "Economy"
+    },
+    "frontType": "Ocean",
+    "backType": "Desert",
+    "upgraded": false
+  },
+  "colony_311": {
+    "id": "colony_311",
+    "name": "Vega",
+    "type": "Colony",
+    "frontConverter": {
+      "output": {
+        "brown": 1
+      },
+      "phase": "Economy"
+    },
+    "upgradeConverter": {
+      "input": {
+        "blue": 1
+      },
+      "phase": "Trade"
+    },
+    "backConverter": {
+      "output": {
+        "blue": 1
+      },
+      "phase": "Economy"
+    },
+    "frontType": "Desert",
+    "backType": "Jungle",
+    "upgraded": false
+  },
+  "colony_310": {
+    "id": "colony_310",
+    "name": "Canopus",
+    "type": "Colony",
+    "frontConverter": {
+      "output": {
+        "brown": 1
+      },
+      "phase": "Economy"
+    },
+    "upgradeConverter": {
+      "input": {
+        "octagon": 1
+      },
+      "phase": "Trade"
+    },
+    "backConverter": {
+      "input": {
+        "brown": 1
+      },
+      "output": {
+        "octagon": 1
+      },
+      "phase": "Economy"
+    },
+    "frontType": "Desert",
+    "backType": "Ice",
+    "upgraded": false
+  },
+  "researchTeam_339": {
+    "id": "researchTeam_339",
+    "name": "Chronophysicists",
+    "type": "ResearchTeam",
+    "era": 3,
+    "resultingTechnology": "Temporal Dilation",
+    "researchOptions": {
+      "brown": 18,
+      "octagon": 6
+    },
+    "points": 9,
+    "researched": false
+  },
+  "researchTeam_337": {
+    "id": "researchTeam_337",
+    "name": "Interspecies Managers",
+    "type": "ResearchTeam",
+    "era": 3,
+    "resultingTechnology": "Poly Species Corporations",
+    "researchOptions": {
+      "black": 11,
+      "blue": 11
+    },
+    "points": 8,
+    "researched": false
+  },
+  "researchTeam_338": {
+    "id": "researchTeam_338",
+    "name": "Cultural Diffusionologists",
+    "type": "ResearchTeam",
+    "era": 3,
+    "resultingTechnology": "Xeno Cultural Exchange",
+    "researchOptions": {
+      "green": 15,
+      "yellow": 10
+    },
+    "points": 7,
+    "researched": false
+  },
+  "researchTeam_335": {
+    "id": "researchTeam_335",
+    "name": "Subquantum Manipulators",
+    "type": "ResearchTeam",
+    "era": 3,
+    "resultingTechnology": "Matter Generation",
+    "researchOptions": {
+      "green": 18,
+      "white": 18
+    },
+    "points": 9,
+    "researched": false
+  },
+  "researchTeam_336": {
+    "id": "researchTeam_336",
+    "name": "Memetic Artists",
+    "type": "ResearchTeam",
+    "era": 3,
+    "resultingTechnology": "Galactic Telecomm Control",
+    "researchOptions": {
+      "white": 18,
+      "brown": 18
+    },
+    "points": 9,
+    "researched": false
+  },
+  "researchTeam_333": {
+    "id": "researchTeam_333",
+    "name": "Stellar Architectural Planners",
+    "type": "ResearchTeam",
+    "era": 3,
+    "resultingTechnology": "Megastructures",
+    "researchOptions": {
+      "yellow": 14,
+      "blue": 14
+    },
+    "points": 11,
+    "researched": false
+  },
+  "researchTeam_334": {
+    "id": "researchTeam_334",
+    "name": "Psychohistorians",
+    "type": "ResearchTeam",
+    "era": 3,
+    "resultingTechnology": "Social Exodus",
+    "researchOptions": {
+      "black": 12,
+      "octagon": 6
+    },
+    "points": 9,
+    "researched": false
+  },
+  "researchTeam_331": {
+    "id": "researchTeam_331",
+    "name": "Quantum Statisticians",
+    "type": "ResearchTeam",
+    "era": 2,
+    "resultingTechnology": "Achronal Analysis",
+    "researchOptions": {
+      "white": 12,
+      "octagon": 4
+    },
+    "points": 4,
+    "researched": false
+  },
+  "researchTeam_332": {
+    "id": "researchTeam_332",
+    "name": "Organic Architects",
+    "type": "ResearchTeam",
+    "era": 2,
+    "resultingTechnology": "Organic Construction",
+    "researchOptions": {
+      "white": 9,
+      "yellow": 6
+    },
+    "points": 3,
+    "researched": false
+  },
+  "researchTeam_330": {
+    "id": "researchTeam_330",
+    "name": "Quantum Theoreticians",
+    "type": "ResearchTeam",
+    "era": 2,
+    "resultingTechnology": "Antimatter Power",
+    "researchOptions": {
+      "green": 9,
+      "blue": 6
+    },
+    "points": 3,
+    "researched": false
+  },
+  "colony_318": {
+    "id": "colony_318",
+    "name": "Procyon",
+    "type": "Colony",
+    "frontConverter": {
+      "output": {
+        "brown": 1
+      },
+      "phase": "Economy"
+    },
+    "upgradeConverter": {
+      "input": {
+        "yellow": 1
+      },
+      "phase": "Trade"
+    },
+    "backConverter": {
+      "output": {
+        "yellow": 1
+      },
+      "phase": "Economy"
+    },
+    "frontType": "Desert",
+    "backType": "Ocean",
+    "upgraded": false
+  },
+  "colony_317": {
+    "id": "colony_317",
+    "name": "Achernar",
+    "type": "Colony",
+    "frontConverter": {
+      "output": {
+        "white": 1
+      },
+      "phase": "Economy"
+    },
+    "upgradeConverter": {
+      "input": {
+        "blue": 1
+      },
+      "phase": "Trade"
+    },
+    "backConverter": {
+      "output": {
+        "blue": 1
+      },
+      "phase": "Economy"
+    },
+    "frontType": "Ice",
+    "backType": "Jungle",
+    "upgraded": false
+  },
+  "colony_316": {
+    "id": "colony_316",
+    "name": "Bellatrix",
+    "type": "Colony",
+    "frontConverter": {
+      "output": {
+        "white": 1
+      },
+      "phase": "Economy"
+    },
+    "upgradeConverter": {
+      "input": {
+        "yellow": 1
+      },
+      "phase": "Trade"
+    },
+    "backConverter": {
+      "output": {
+        "yellow": 1
+      },
+      "phase": "Economy"
+    },
+    "frontType": "Ocean",
+    "backType": "Desert",
+    "upgraded": false
+  },
+  "colony_315": {
+    "id": "colony_315",
+    "name": "Deneb",
+    "type": "Colony",
+    "frontConverter": {
+      "output": {
+        "white": 1
+      },
+      "phase": "Economy"
+    },
+    "upgradeConverter": {
+      "input": {
+        "black": 1
+      },
+      "phase": "Trade"
+    },
+    "backConverter": {
+      "output": {
+        "black": 1
+      },
+      "phase": "Economy"
+    },
+    "frontType": "Ice",
+    "backType": "Ocean",
+    "upgraded": false
+  },
+  "colony_314": {
+    "id": "colony_314",
+    "name": "Pollux",
+    "type": "Colony",
+    "frontConverter": {
+      "output": {
+        "white": 1
+      },
+      "phase": "Economy"
+    },
+    "upgradeConverter": {
+      "input": {
+        "blue": 1
+      },
+      "phase": "Trade"
+    },
+    "backConverter": {
+      "output": {
+        "blue": 1
+      },
+      "phase": "Economy"
+    },
+    "frontType": "Desert",
+    "backType": "Ocean",
+    "upgraded": false
+  },
+  "colony_313": {
+    "id": "colony_313",
+    "name": "Suhail",
+    "type": "Colony",
+    "frontConverter": {
+      "output": {
+        "white": 1
+      },
+      "phase": "Economy"
+    },
+    "upgradeConverter": {
+      "input": {
+        "black": 1
+      },
+      "phase": "Trade"
+    },
+    "backConverter": {
+      "output": {
+        "black": 1
+      },
+      "phase": "Economy"
+    },
+    "frontType": "Ocean",
+    "backType": "Ice",
+    "upgraded": false
+  },
+  "colony_301": {
+    "id": "colony_301",
+    "name": "Sirius",
+    "type": "Colony",
+    "frontConverter": {
+      "output": {
+        "green": 1
+      },
+      "phase": "Economy"
+    },
+    "upgradeConverter": {
+      "input": {
+        "black": 1
+      },
+      "phase": "Trade"
+    },
+    "backConverter": {
+      "output": {
+        "black": 1
+      },
+      "phase": "Economy"
+    },
+    "frontType": "Jungle",
+    "backType": "Ice",
+    "upgraded": false
+  },
+  "colony_300": {
+    "id": "colony_300",
+    "name": "Adara",
+    "type": "Colony",
+    "frontConverter": {
+      "output": {
+        "green": 1
+      },
+      "phase": "Economy"
+    },
+    "upgradeConverter": {
+      "input": {
+        "white": 2
+      },
+      "phase": "Trade"
+    },
+    "backConverter": {
+      "output": {
+        "green": 1,
+        "white": 1
+      },
+      "phase": "Economy"
+    },
+    "frontType": "Jungle",
+    "backType": "Ice",
+    "upgraded": false
+  },
+  "researchTeam_348": {
+    "id": "researchTeam_348",
+    "name": "Stellar Plasma Flow Engineers",
+    "type": "ResearchTeam",
+    "era": 4,
+    "resultingTechnology": null,
+    "researchOptions": {
+      "white": 21,
+      "black": 14,
+      "blue": 14
+    },
+    "points": 10,
+    "researched": false
+  },
+  "researchTeam_349": {
+    "id": "researchTeam_349",
+    "name": "Chaos Theoreticians",
+    "type": "ResearchTeam",
+    "era": 4,
+    "resultingTechnology": null,
+    "researchOptions": {
+      "green": 18,
+      "black": 12,
+      "yellow": 12
+    },
+    "points": 8,
+    "researched": false
+  },
+  "researchTeam_346": {
+    "id": "researchTeam_346",
+    "name": "Autonomic Teleoperators",
+    "type": "ResearchTeam",
+    "era": 4,
+    "resultingTechnology": null,
+    "researchOptions": {
+      "black": 12,
+      "yellow": 12,
+      "blue": 12
+    },
+    "points": 8,
+    "researched": false
+  },
+  "researchTeam_347": {
+    "id": "researchTeam_347",
+    "name": "Fractal Microbiologists",
+    "type": "ResearchTeam",
+    "era": 4,
+    "resultingTechnology": null,
+    "researchOptions": {
+      "green": 21,
+      "white": 21,
+      "blue": 14
+    },
+    "points": 10,
+    "researched": false
+  },
+  "researchTeam_344": {
+    "id": "researchTeam_344",
+    "name": "Mesoscale Geoengineers",
+    "type": "ResearchTeam",
+    "era": 4,
+    "resultingTechnology": null,
+    "researchOptions": {
+      "brown": 27,
+      "yellow": 18,
+      "octagon": 9
+    },
+    "points": 14,
+    "researched": false
+  },
+  "researchTeam_345": {
+    "id": "researchTeam_345",
+    "name": "Sapience Developers",
+    "type": "ResearchTeam",
+    "era": 4,
+    "resultingTechnology": null,
+    "researchOptions": {
+      "white": 21,
+      "black": 14,
+      "yellow": 14
+    },
+    "points": 10,
+    "researched": false
+  },
+  "researchTeam_342": {
+    "id": "researchTeam_342",
+    "name": "Abiotic Pathologists",
+    "type": "ResearchTeam",
+    "era": 4,
+    "resultingTechnology": null,
+    "researchOptions": {
+      "white": 24,
+      "yellow": 16,
+      "octagon": 8
+    },
+    "points": 12,
+    "researched": false
+  },
+  "researchTeam_343": {
+    "id": "researchTeam_343",
+    "name": "Interphasal Theoreticians",
+    "type": "ResearchTeam",
+    "era": 4,
+    "resultingTechnology": null,
+    "researchOptions": {
+      "green": 24,
+      "brown": 24,
+      "octagon": 8
+    },
+    "points": 12,
+    "researched": false
+  },
+  "researchTeam_340": {
+    "id": "researchTeam_340",
+    "name": "Cultural Polymorphologists",
+    "type": "ResearchTeam",
+    "era": 4,
+    "resultingTechnology": null,
+    "researchOptions": {
+      "white": 18,
+      "brown": 18,
+      "octagon": 6
+    },
+    "points": 8,
+    "researched": false
+  },
+  "researchTeam_341": {
+    "id": "researchTeam_341",
+    "name": "Reconstructive Paleobotanists",
+    "type": "ResearchTeam",
+    "era": 4,
+    "resultingTechnology": null,
+    "researchOptions": {
+      "green": 21,
+      "white": 21,
+      "octagon": 7
+    },
+    "points": 10,
+    "researched": false
+  },
+  "colony_309": {
+    "id": "colony_309",
+    "name": "Shaula",
+    "type": "Colony",
+    "frontConverter": {
+      "output": {
+        "brown": 1
+      },
+      "phase": "Economy"
+    },
+    "upgradeConverter": {
+      "input": {
+        "green": 2
+      },
+      "phase": "Trade"
+    },
+    "backConverter": {
+      "output": {
+        "green": 1,
+        "brown": 1
+      },
+      "phase": "Economy"
+    },
+    "frontType": "Desert",
+    "backType": "Jungle",
+    "upgraded": false
+  },
+  "colony_308": {
+    "id": "colony_308",
+    "name": "Capella",
+    "type": "Colony",
+    "frontConverter": {
+      "output": {
+        "green": 1
+      },
+      "phase": "Economy"
+    },
+    "upgradeConverter": {
+      "input": {
+        "blue": 1
+      },
+      "phase": "Trade"
+    },
+    "backConverter": {
+      "output": {
+        "blue": 1
+      },
+      "phase": "Economy"
+    },
+    "frontType": "Ocean",
+    "backType": "Jungle",
+    "upgraded": false
+  },
+  "colony_307": {
+    "id": "colony_307",
+    "name": "Hadar",
+    "type": "Colony",
+    "frontConverter": {
+      "output": {
+        "green": 1
+      },
+      "phase": "Economy"
+    },
+    "upgradeConverter": {
+      "input": {
+        "yellow": 1
+      },
+      "phase": "Trade"
+    },
+    "backConverter": {
+      "output": {
+        "yellow": 1
+      },
+      "phase": "Economy"
+    },
+    "frontType": "Ocean",
+    "backType": "Jungle",
+    "upgraded": false
+  },
+  "colony_306": {
+    "id": "colony_306",
+    "name": "Alnitak",
+    "type": "Colony",
+    "frontConverter": {
+      "output": {
+        "green": 1
+      },
+      "phase": "Economy"
+    },
+    "upgradeConverter": {
+      "input": {
+        "octagon": 1
+      },
+      "phase": "Trade"
+    },
+    "backConverter": {
+      "input": {
+        "green": 1
+      },
+      "output": {
+        "octagon": 1
+      },
+      "phase": "Economy"
+    },
+    "frontType": "Ocean",
+    "backType": "Ice",
+    "upgraded": false
+  },
+  "colony_305": {
+    "id": "colony_305",
+    "name": "Atria",
+    "type": "Colony",
+    "frontConverter": {
+      "output": {
+        "green": 1
+      },
+      "phase": "Economy"
+    },
+    "upgradeConverter": {
+      "input": {
+        "yellow": 1
+      },
+      "phase": "Trade"
+    },
+    "backConverter": {
+      "output": {
+        "yellow": 1
+      },
+      "phase": "Economy"
+    },
+    "frontType": "Jungle",
+    "backType": "Desert",
+    "upgraded": false
+  },
+  "colony_304": {
+    "id": "colony_304",
+    "name": "Aldebaran",
+    "type": "Colony",
+    "frontConverter": {
+      "output": {
+        "brown": 1
+      },
+      "phase": "Economy"
+    },
+    "upgradeConverter": {
+      "input": {
+        "yellow": 1
+      },
+      "phase": "Trade"
+    },
+    "backConverter": {
+      "output": {
+        "yellow": 1
+      },
+      "phase": "Economy"
+    },
+    "frontType": "Jungle",
+    "backType": "Desert",
+    "upgraded": false
+  },
+  "colony_303": {
+    "id": "colony_303",
+    "name": "El Nath",
+    "type": "Colony",
+    "frontConverter": {
+      "output": {
+        "green": 1
+      },
+      "phase": "Economy"
+    },
+    "upgradeConverter": {
+      "input": {
+        "blue": 1
+      },
+      "phase": "Trade"
+    },
+    "backConverter": {
+      "output": {
+        "blue": 1
+      },
+      "phase": "Economy"
+    },
+    "frontType": "Jungle",
+    "backType": "Ocean",
+    "upgraded": false
+  },
+  "colony_302": {
+    "id": "colony_302",
+    "name": "Rigel",
+    "type": "Colony",
+    "frontConverter": {
+      "output": {
+        "green": 1
+      },
+      "phase": "Economy"
+    },
+    "upgradeConverter": {
+      "input": {
+        "blue": 1
+      },
+      "phase": "Trade"
+    },
+    "backConverter": {
+      "output": {
+        "blue": 1
+      },
+      "phase": "Economy"
+    },
+    "frontType": "Jungle",
+    "backType": "Ocean",
+    "upgraded": false
+  },
+  "converterCard_1": {
+    "id": "converterCard_1",
+    "name": "Converter Card 1",
+    "type": "ConverterCard",
+    "upgradeOptions": null,
+    "acquisitionOptions": null,
+    "frontConverters": [
+      {
+        "input": {
+          "green": 1,
+          "yellow": 2
+        },
+        "output": {
+          "octagon": 1,
+          "points": 2
+        },
+        "phase": "Economy"
+      }
+    ],
+    "backConverters": null,
+    "upgraded": false,
+    "consumed": false
+  },
+  "converterCard_2": {
+    "id": "converterCard_2",
+    "name": "Converter Card 2",
+    "type": "ConverterCard",
+    "upgradeOptions": null,
+    "acquisitionOptions": null,
+    "frontConverters": [
+      {
+        "input": {
+          "green": 3,
+          "yellow": 2
+        },
+        "output": {
+          "octagon": 1,
+          "points": 2
+        },
+        "phase": "Trade"
+      }
+    ],
+    "backConverters": null,
+    "upgraded": false,
+    "consumed": false
+  },
+  "colony_299": {
+    "id": "colony_299",
+    "name": "Alioth",
+    "type": "Colony",
+    "frontConverter": {
+      "output": {
+        "white": 1
+      },
+      "phase": "Economy"
+    },
+    "upgradeConverter": {
+      "input": {
+        "brown": 2
+      },
+      "phase": "Trade"
+    },
+    "backConverter": {
+      "output": {
+        "white": 1,
+        "brown": 1
+      },
+      "phase": "Economy"
+    },
+    "frontType": "Ice",
+    "backType": "Desert",
+    "upgraded": false
+  },
+  "colony_298": {
+    "id": "colony_298",
+    "name": "Alnair",
+    "type": "Colony",
+    "frontConverter": {
+      "output": {
+        "brown": 1
+      },
+      "phase": "Economy"
+    },
+    "upgradeConverter": {
+      "input": {
+        "black": 1
+      },
+      "phase": "Trade"
+    },
+    "backConverter": {
+      "output": {
+        "black": 1
+      },
+      "phase": "Economy"
+    },
+    "frontType": "Ice",
+    "backType": "Ocean",
+    "upgraded": false
+  },
+  "colony_297": {
+    "id": "colony_297",
+    "name": "Arcturus",
+    "type": "Colony",
+    "frontConverter": {
+      "output": {
+        "brown": 1
+      },
+      "phase": "Economy"
+    },
+    "upgradeConverter": {
+      "input": {
+        "blue": 1
+      },
+      "phase": "Trade"
+    },
+    "backConverter": {
+      "output": {
+        "blue": 1
+      },
+      "phase": "Economy"
+    },
+    "frontType": "Ice",
+    "backType": "Ocean",
+    "upgraded": false
+  },
+  "colony_296": {
+    "id": "colony_296",
+    "name": "Betelgeuse",
+    "type": "Colony",
+    "frontConverter": {
+      "output": {
+        "white": 1
+      },
+      "phase": "Economy"
+    },
+    "upgradeConverter": {
+      "input": {
+        "octagon": 1
+      },
+      "phase": "Trade"
+    },
+    "backConverter": {
+      "input": {
+        "white": 1
+      },
+      "output": {
+        "octagon": 1
+      },
+      "phase": "Economy"
+    },
+    "frontType": "Ice",
+    "backType": "Jungle",
+    "upgraded": false
+  },
+  "colony_295": {
+    "id": "colony_295",
+    "name": "Gacrux",
+    "type": "Colony",
+    "frontConverter": {
+      "output": {
+        "white": 1
+      },
+      "phase": "Economy"
+    },
+    "upgradeConverter": {
+      "input": {
+        "yellow": 1
+      },
+      "phase": "Trade"
+    },
+    "backConverter": {
+      "output": {
+        "yellow": 1
+      },
+      "phase": "Economy"
+    },
+    "frontType": "Ice",
+    "backType": "Desert",
+    "upgraded": false
+  },
+  "colony_294": {
+    "id": "colony_294",
+    "name": "Fomalhaut",
+    "type": "Colony",
+    "frontConverter": {
+      "output": {
+        "brown": 1
+      },
+      "phase": "Economy"
+    },
+    "upgradeConverter": {
+      "input": {
+        "octagon": 1
+      },
+      "phase": "Trade"
+    },
+    "backConverter": {
+      "input": {
+        "brown": 1
+      },
+      "output": {
+        "octagon": 1
+      },
+      "phase": "Economy"
+    },
+    "frontType": "Ice",
+    "backType": "Desert",
+    "upgraded": false
+  },
+  "colony_293": {
+    "id": "colony_293",
+    "name": "Polaris",
+    "type": "Colony",
+    "frontConverter": {
+      "output": {
+        "brown": 1
+      },
+      "phase": "Economy"
+    },
+    "upgradeConverter": {
+      "input": {
+        "yellow": 1
+      },
+      "phase": "Trade"
+    },
+    "backConverter": {
+      "output": {
+        "yellow": 1
+      },
+      "phase": "Economy"
+    },
+    "frontType": "Ocean",
+    "backType": "Desert",
+    "upgraded": false
+  },
+  "colony_292": {
+    "id": "colony_292",
+    "name": "Koo She",
+    "type": "Colony",
+    "frontConverter": {
+      "output": {
+        "brown": 1
+      },
+      "phase": "Economy"
+    },
+    "upgradeConverter": {
+      "input": {
+        "blue": 1
+      },
+      "phase": "Trade"
+    },
+    "backConverter": {
+      "output": {
+        "blue": 1
+      },
+      "phase": "Economy"
+    },
+    "frontType": "Desert",
+    "backType": "Ocean",
+    "upgraded": false
+  },
+  "researchTeam_319": {
+    "id": "researchTeam_319",
+    "name": "Mechanical Engineers",
+    "type": "ResearchTeam",
+    "era": 1,
+    "resultingTechnology": "Nanotechnology",
+    "researchOptions": {
+      "yellow": 4,
+      "octagon": 2
+    },
+    "points": 1,
+    "researched": false
+  },
+  "colony_291": {
+    "id": "colony_291",
+    "name": "Peacock",
+    "type": "Colony",
+    "frontConverter": {
+      "output": {
+        "brown": 1
+      },
+      "phase": "Economy"
+    },
+    "upgradeConverter": {
+      "input": {
+        "black": 1
+      },
+      "phase": "Trade"
+    },
+    "backConverter": {
+      "output": {
+        "black": 1
+      },
+      "phase": "Economy"
+    },
+    "frontType": "Desert",
+    "backType": "Jungle",
+    "upgraded": false
+  },
+  "colony_290": {
+    "id": "colony_290",
+    "name": "Sargas",
+    "type": "Colony",
+    "frontConverter": {
+      "output": {
+        "brown": 1
+      },
+      "phase": "Economy"
+    },
+    "upgradeConverter": {
+      "input": {
+        "yellow": 1
+      },
+      "phase": "Trade"
+    },
+    "backConverter": {
+      "output": {
+        "yellow": 1
+      },
+      "phase": "Economy"
+    },
+    "frontType": "Desert",
+    "backType": "Jungle",
+    "upgraded": false
+  },
+  "researchTeam_359": {
+    "id": "researchTeam_359",
+    "name": "Macroscale Biophysicists",
+    "type": "ResearchTeam",
+    "era": 4,
+    "resultingTechnology": null,
+    "researchOptions": {
+      "brown": 27,
+      "black": 18,
+      "blue": 18
+    },
+    "points": 14,
+    "researched": false
+  },
+  "researchTeam_357": {
+    "id": "researchTeam_357",
+    "name": "Tachyon Astrotechnicians",
+    "type": "ResearchTeam",
+    "era": 4,
+    "resultingTechnology": null,
+    "researchOptions": {
+      "green": 30,
+      "yellow": 20,
+      "blue": 20
+    },
+    "points": 16,
+    "researched": false
+  },
+  "researchTeam_358": {
+    "id": "researchTeam_358",
+    "name": "In Situ Genetic Editors",
+    "type": "ResearchTeam",
+    "era": 4,
+    "resultingTechnology": null,
+    "researchOptions": {
+      "green": 24,
+      "brown": 24,
+      "black": 16
+    },
+    "points": 12,
+    "researched": false
+  },
+  "researchTeam_355": {
+    "id": "researchTeam_355",
+    "name": "Plasma Auxonologists",
+    "type": "ResearchTeam",
+    "era": 4,
+    "resultingTechnology": null,
+    "researchOptions": {
+      "green": 24,
+      "brown": 24,
+      "yellow": 16
+    },
+    "points": 12,
+    "researched": false
+  },
+  "researchTeam_356": {
+    "id": "researchTeam_356",
+    "name": "Psychohistorial Ethicists",
+    "type": "ResearchTeam",
+    "era": 4,
+    "resultingTechnology": null,
+    "researchOptions": {
+      "green": 27,
+      "white": 27,
+      "black": 18
+    },
+    "points": 14,
+    "researched": false
+  },
+  "researchTeam_353": {
+    "id": "researchTeam_353",
+    "name": "Applied Topologists",
+    "type": "ResearchTeam",
+    "era": 4,
+    "resultingTechnology": null,
+    "researchOptions": {
+      "white": 30,
+      "brown": 30,
+      "yellow": 20
+    },
+    "points": 16,
+    "researched": false
+  },
+  "researchTeam_354": {
+    "id": "researchTeam_354",
+    "name": "Metacognitive Ecologists",
+    "type": "ResearchTeam",
+    "era": 4,
+    "resultingTechnology": null,
+    "researchOptions": {
+      "green": 30,
+      "blue": 20,
+      "octagon": 10
+    },
+    "points": 16,
+    "researched": false
+  },
+  "researchTeam_351": {
+    "id": "researchTeam_351",
+    "name": "Recursive Metatheoreticians",
+    "type": "ResearchTeam",
+    "era": 4,
+    "resultingTechnology": null,
+    "researchOptions": {
+      "white": 30,
+      "brown": 30,
+      "black": 20
+    },
+    "points": 16,
+    "researched": false
+  },
+  "researchTeam_352": {
+    "id": "researchTeam_352",
+    "name": "Singularity Control Technicians",
+    "type": "ResearchTeam",
+    "era": 4,
+    "resultingTechnology": null,
+    "researchOptions": {
+      "black": 20,
+      "blue": 20,
+      "octagon": 10
+    },
+    "points": 16,
+    "researched": false
+  },
+  "researchTeam_350": {
+    "id": "researchTeam_350",
+    "name": "Oceanographic Biotechnicians",
+    "type": "ResearchTeam",
+    "era": 4,
+    "resultingTechnology": null,
+    "researchOptions": {
+      "brown": 18,
+      "blue": 12,
+      "octagon": 6
+    },
+    "points": 8,
+    "researched": false
+  }
+}

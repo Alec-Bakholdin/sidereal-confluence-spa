@@ -1,0 +1,12 @@
+{
+  "turn": 0,
+  "phase": "Trade",
+  "confluenceList": [],
+  "availableColonies": [],
+  "availableResearchTeams": [],
+  "colonyBidTrack": [],
+  "researchTeamBidTrack": [],
+  "players": {},
+  "gameOver": false,
+  "gameStarted": false
+}

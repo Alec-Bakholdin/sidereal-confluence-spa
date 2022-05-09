@@ -2,7 +2,7 @@ import Resources from "./Resources";
 import GamePhase from "./GamePhase";
 
 export interface Converter {
-  input: Resources;
+  input?: Resources;
   output?: Resources;
   phase: GamePhase;
 }
