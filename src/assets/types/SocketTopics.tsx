@@ -19,6 +19,7 @@ export type UpdatePlayerResourcesClientMessage = {
 };
 
 export const APP_START_GAME = "/app/startGame";
+export const APP_NEXT_PHASE = "/app/nextPhase";
 
 export const TOPIC_UPDATE_GAME_STATE = "/topic/updateGameState";
 export type UpdateGameStateServerMessage = {

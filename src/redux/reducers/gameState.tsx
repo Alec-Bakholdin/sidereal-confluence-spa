@@ -38,8 +38,8 @@ const initialState: GameStateState = {
   gameState: {
     turn: 1,
     phase: "Trade",
-    gameOver: false,
-    gameStarted: false,
+    isGameOver: false,
+    isGameStarted: false,
 
     confluenceList: [],
     availableColonies: [],

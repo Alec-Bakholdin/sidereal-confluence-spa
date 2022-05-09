@@ -9,7 +9,7 @@ import { fetchCards } from "redux/reducers/cards";
 import CurrentPlayerInfo from "./CurrentPlayerInfo/CurrentPlayerInfo";
 import { openUpdateResourcesModal } from "redux/reducers/modals";
 import { useStompClient } from "react-stomp-hooks";
-import { APP_START_GAME } from "assets/types/SocketTopics";
+import { APP_NEXT_PHASE, APP_START_GAME } from "assets/types/SocketTopics";
 
 export const Game = function (): ReactElement {
   const dispatch = useAppDispatch();
@@ -41,6 +41,14 @@ export const Game = function (): ReactElement {
       });
     }
   };
+  const nextPhase = () => {
+    if (stompClient) {
+      stompClient.publish({
+        destination: APP_NEXT_PHASE,
+        body: "",
+      });
+    }
+  };
 
   return (
     <Box sx={{ height: "100vh" }} overflow={"clip"}>
@@ -56,13 +64,20 @@ export const Game = function (): ReactElement {
           Resources
           {player && <PlayerResources resources={player?.resources} />}
         </Typography>
-        {!gameState.gameStarted && (
+        {(!gameState.isGameStarted || gameState.isGameOver) && (
           <>
             <Button onClick={addRandomPlayer} variant={"outlined"}>
               Add Player
             </Button>
-            <Button onClick={startGame}>Start Game</Button>
+            <Button onClick={startGame} variant={"outlined"}>
+              Start Game
+            </Button>
           </>
+        )}
+        {gameState.isGameStarted && !gameState.isGameOver && (
+          <Button onClick={nextPhase} variant={"outlined"}>
+            Next Phase
+          </Button>
         )}
       </Box>
     </Box>
