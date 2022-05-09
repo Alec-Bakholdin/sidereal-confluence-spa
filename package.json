@@ -1,6 +1,6 @@
 {
   "name": "sidereal-confluence-spa",
-  "homepage": "/",
+  "homepage": "/sidereal-confluence",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
