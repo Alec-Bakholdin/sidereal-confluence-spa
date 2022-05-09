@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x]
+        node-version: [14.x]
     
     steps:
     - uses: actions/checkout@v3
@@ -25,11 +25,9 @@ jobs:
     - name: Build
       run: |
         yarn install
-  deploy:
-    runs-on: ubuntu-latest
-    
-    steps:
-    - uses: SamKirkland/FTP-Deploy-Action@4.3.0
+
+    - name: upload build artifacts to FTP
+      uses: SamKirkland/FTP-Deploy-Action@4.3.0
       with:
         server: ${{ secrets.ftp_server }}
         username: ${{ secrets.ftp_username }}
