@@ -58,6 +58,7 @@ export const newGame = createAsyncThunk<
 >("/gameState/newGame", async (_, { rejectWithValue }) => {
   try {
     const response = await api.newGame();
+    console.log(response);
     return response.data;
   } catch (e) {
     return rejectWithValue(transformApiError(e));

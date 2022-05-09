@@ -55,6 +55,7 @@ export const errorsSlice = createSlice({
       handleError(state, action);
     });
     builder.addCase(newGame.rejected, (state, action) => {
+      console.log(action);
       console.log("Handling newGame error");
       handleError(state, action);
     });
