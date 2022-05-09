@@ -21,20 +21,22 @@ export function PlayerDetailsModal(): ReactElement {
     if (!playerId || !player) {
       handleClose();
     }
-  }, [playerId, player]);
+  });
 
   return (
     <Modal open={show} onClose={handleClose}>
-      {player && (
-        <Box
-          className={"modal player-details-modal"}
-          sx={{ backgroundColor: "background.default" }}
-        >
-          <Typography variant={"h4"}>{player.name}</Typography>
-          <PlayerResources resources={player.resources} />
-          <CardList ids={player.cards} />
-        </Box>
-      )}
+      <>
+        {player && (
+          <Box
+            className={"modal player-details-modal"}
+            sx={{ backgroundColor: "background.default" }}
+          >
+            <Typography variant={"h4"}>{player.name}</Typography>
+            <PlayerResources resources={player.resources} />
+            <CardList ids={player.cards} />
+          </Box>
+        )}
+      </>
     </Modal>
   );
 }

@@ -10,18 +10,23 @@ export function ConverterCardElement({
 }: {
   converterCard: ConverterCard;
 }): ReactElement {
-  const converterElementFromObj = (converterObj: Converter) => (
-    <ConverterElement converter={converterObj} />
-  );
+  const converterElementFromObj =
+    (keyPrefix: string) => (converterObj: Converter, index: number) =>
+      (
+        <ConverterElement
+          converter={converterObj}
+          key={`${keyPrefix}-${index}`}
+        />
+      );
 
   return (
     <>
       <CardBase title={converterCard.name}>
         <Stack>
-          {converterCard.frontConverters?.map(converterElementFromObj)}
-          {converterCard.backConverters?.map(converterElementFromObj)}
-          {converterCard.upgradeOptions?.map((conv) => (
-            <ConverterElement converter={conv} upgrade />
+          {converterCard.frontConverters?.map(converterElementFromObj("front"))}
+          {converterCard.backConverters?.map(converterElementFromObj("back"))}
+          {converterCard.upgradeOptions?.map((conv, i) => (
+            <ConverterElement converter={conv} key={`upgrade-${i}`} upgrade />
           ))}
         </Stack>
       </CardBase>

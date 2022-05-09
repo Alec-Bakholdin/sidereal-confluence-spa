@@ -12,7 +12,10 @@ export function ColonyElement({
   return (
     <CardBase title={colonyObj.name}>
       <Stack>
-        <ConverterElement converter={colonyObj.frontConverter} />
+        <ConverterElement
+          key={"colony-front-converter"}
+          converter={colonyObj.frontConverter}
+        />
       </Stack>
     </CardBase>
   );
