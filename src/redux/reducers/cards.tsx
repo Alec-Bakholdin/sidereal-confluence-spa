@@ -34,4 +34,6 @@ const cardsSlice = createSlice({
 });
 
 export const selectCards = (state: RootState) => state.cards.cards;
+export const selectCard = (id: string) => (state: RootState) =>
+  state.cards.cards[id];
 export default cardsSlice.reducer;

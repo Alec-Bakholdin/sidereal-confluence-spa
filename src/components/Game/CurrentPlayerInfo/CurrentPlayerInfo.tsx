@@ -12,7 +12,7 @@ export function CurrentPlayerInfo(): ReactElement {
   return (
     <Grid container direction={"row"}>
       <Grid item xs={6} border={"1px solid white"}>
-        <CardList ids={player.cards} />
+        <CardList ids={player.cards} currentPlayer />
       </Grid>
       <Grid item xs={6} border={"1px solid white"} paddingLeft={"15px"}>
         <Paper sx={{ overflow: "auto", maxHeight: "450px" }}>

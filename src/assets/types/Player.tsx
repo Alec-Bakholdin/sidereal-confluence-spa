@@ -1,5 +1,5 @@
 import Resources from "./Resources";
-import Race from "./Race";
+import Race, { emptyRace } from "./Race";
 
 export interface Player {
   id: string;
@@ -8,5 +8,13 @@ export interface Player {
   race: Race;
   cards: string[];
 }
+
+export const emptyPlayer: () => Player = () => ({
+  id: "",
+  name: "",
+  resources: {},
+  race: emptyRace(),
+  cards: [],
+});
 
 export default Player;

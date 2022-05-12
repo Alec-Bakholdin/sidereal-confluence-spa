@@ -4,6 +4,7 @@ import PlayerDetailsModal from "./PlayerDetailsModal/PlayerDetailsModal";
 
 import "./Modals.scss";
 import UpdateResourcesModal from "./UpdateResourcesModal/UpdateResourcesModal";
+import CardActionModal from "./CardActionModal/CardActionModal";
 
 export function Modals(): ReactElement {
   return (
@@ -11,6 +12,7 @@ export function Modals(): ReactElement {
       <PlayerDetailsModal />
       <JoinGameModal />
       <UpdateResourcesModal />
+      <CardActionModal />
     </>
   );
 }

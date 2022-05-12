@@ -6,14 +6,17 @@ import {
   addPlayer,
   updateGameState,
   updatePlayerResources,
-} from "../redux/reducers/gameState";
+  transferCard,
+} from "redux/reducers/gameState";
 import {
   TOPIC_PLAYER_JOINED_GAME,
   TOPIC_PLAYER_UPDATED_RESOURCES,
   TOPIC_UPDATE_GAME_STATE,
   UpdateGameStateServerMessage,
   UpdatePlayerResourcesServerMessage,
-} from "../assets/types/SocketTopics";
+  TOPIC_TRANSFER_CARD,
+  TransferCardServerMessage,
+} from "assets/types/SocketTopics";
 
 export function SocketActions(): ReactElement {
   const dispatch = useAppDispatch();
@@ -37,6 +40,14 @@ export function SocketActions(): ReactElement {
       message.body
     ) as UpdateGameStateServerMessage;
     dispatch(updateGameState(gameStateUpdate));
+  });
+
+  useSubscription(TOPIC_TRANSFER_CARD, (message) => {
+    console.log("Transferring card");
+    const transferCardMsg = JSON.parse(
+      message.body
+    ) as TransferCardServerMessage;
+    dispatch(transferCard(transferCardMsg));
   });
 
   return <></>;
