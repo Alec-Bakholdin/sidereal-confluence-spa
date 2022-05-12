@@ -5,7 +5,10 @@ import api from "api";
 import { ErrorResponse, transformApiError } from "./errors";
 import Player from "../../assets/types/Player";
 import Resources from "../../assets/types/Resources";
-import { UpdateGameStateServerMessage } from "../../assets/types/SocketTopics";
+import {
+  TransferCardServerMessage,
+  UpdateGameStateServerMessage,
+} from "../../assets/types/SocketTopics";
 
 export interface JoinGamePayload {
   playerName: string;
@@ -113,6 +116,20 @@ export const gameStateSlice = createSlice({
         }
       }
     },
+    transferCard: (state, action: PayloadAction<TransferCardServerMessage>) => {
+      if (action.payload) {
+        const { currentOwnerPlayerId, newOwnerPlayerId, cardId } =
+          action.payload;
+        const currentOwner = state.gameState.players[currentOwnerPlayerId];
+        const newOwner = state.gameState.players[newOwnerPlayerId];
+        if (currentOwner && newOwner && currentOwner.cards.includes(cardId)) {
+          newOwner.cards.push(cardId);
+          currentOwner.cards = currentOwner.cards.filter(
+            (card) => card !== cardId
+          );
+        }
+      }
+    },
     updateGameState: (
       state,
       action: PayloadAction<UpdateGameStateServerMessage>
@@ -161,6 +178,7 @@ export const {
   setPlayerInformation,
   addPlayer,
   updatePlayerResources,
+  transferCard,
   updateGameState,
 } = gameStateSlice.actions;
 

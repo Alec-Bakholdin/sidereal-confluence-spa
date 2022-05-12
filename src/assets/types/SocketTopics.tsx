@@ -35,3 +35,17 @@ export type UpdateGameStateServerMessage = {
   colonyBidTrack?: number[];
   researchTeamBidTrack?: number[];
 };
+
+export const APP_TRANSFER_CARD = "/app/transferCard";
+export type TransferCardClientMessage = {
+  currentOwnerPlayerId: string;
+  newOwnerPlayerId: string;
+  cardId: string;
+};
+
+export const TOPIC_TRANSFER_CARD = "/topic/transferCard";
+export type TransferCardServerMessage = {
+  currentOwnerPlayerId: string;
+  newOwnerPlayerId: string;
+  cardId: string;
+};

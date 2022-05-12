@@ -1,21 +1,33 @@
-import { ReactElement } from "react";
+import { ReactElement, MouseEvent } from "react";
 import { Grid, Paper } from "@mui/material";
-import { useAppSelector } from "redux/hooks";
+import { useAppDispatch, useAppSelector } from "redux/hooks";
 import { selectCards } from "redux/reducers/cards";
 import { Card, Colony, ConverterCard, ResearchTeam } from "assets/types/Cards";
 import ConverterCardElement from "../ConverterCardElement/ConverterCardElement";
 import ColonyElement from "../ColonyElement/ColonyElement";
 import "./CardList.scss";
 import ResearchTeamElement from "../ResearchTeamElement/ResearchTeamElement";
+import { openCardActionsModal } from "../../../../redux/reducers/modals";
 
 export function CardList({
   ids,
+  currentPlayer,
   shipMinima,
 }: {
   ids: string[];
+  currentPlayer?: boolean;
   shipMinima?: number[];
 }): ReactElement {
   const cards = useAppSelector(selectCards);
+  const dispatch = useAppDispatch();
+
+  const handleClick = (e: MouseEvent<HTMLDivElement>, id: string) => {
+    if (currentPlayer) {
+      e.stopPropagation();
+      dispatch(openCardActionsModal(id));
+    }
+  };
+
   const renderCard = (card: Card) => {
     switch (card.type) {
       case "Colony":
@@ -34,7 +46,14 @@ export function CardList({
         {ids.map(
           (id, i) =>
             cards[id] && (
-              <Grid item key={id}>
+              <Grid
+                className={`card-list-card ${
+                  currentPlayer && "current-player-card"
+                }`}
+                item
+                key={id}
+                onClick={(e) => handleClick(e, id)}
+              >
                 {shipMinima && shipMinima[i]}
                 {renderCard(cards[id])}
               </Grid>

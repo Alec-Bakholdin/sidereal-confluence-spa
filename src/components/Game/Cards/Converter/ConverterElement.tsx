@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement } from "react";
 import Resources from "assets/types/Resources";
 import { Box, Grid } from "@mui/material";
 import { Forward } from "@mui/icons-material";
@@ -51,18 +51,16 @@ export function ConverterElement({
   includeSlashes?: boolean;
   onClick?: () => void;
 }): ReactElement {
-  const selectedColor = "white";
-  const unselectedColor = "transparent";
-  const [borderColor, setBorderColor] = useState<string>(unselectedColor);
-
   return (
     <Box
       className={"converter"}
       border={1}
-      borderColor={borderColor}
-      onMouseEnter={() => setBorderColor(selectedColor)}
-      onMouseLeave={() => setBorderColor(unselectedColor)}
-      onClick={onClick}
+      onClick={(e) => {
+        if (onClick) {
+          onClick();
+        }
+        e.stopPropagation();
+      }}
     >
       <Grid container direction={"row"} className={"center-box"}>
         <Box>
