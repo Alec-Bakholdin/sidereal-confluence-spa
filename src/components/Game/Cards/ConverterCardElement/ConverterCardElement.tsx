@@ -25,7 +25,6 @@ export function ConverterCardElement({
       selected={economyActionsLookup[converterCard.id]?.includes(index)}
       onClick={() => {
         dispatch(
-          // maybe switch to toggling instead of adding/removing
           toggleEconomyAction({
             cardId: converterCard.id,
             converterIndex: index,
