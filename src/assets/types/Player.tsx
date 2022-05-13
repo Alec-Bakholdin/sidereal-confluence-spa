@@ -7,6 +7,7 @@ export interface Player {
   resources: Resources;
   race: Race;
   cards: string[];
+  availableCards: string[];
 }
 
 export const emptyPlayer: () => Player = () => ({
@@ -15,6 +16,7 @@ export const emptyPlayer: () => Player = () => ({
   resources: {},
   race: emptyRace(),
   cards: [],
+  availableCards: [],
 });
 
 export default Player;

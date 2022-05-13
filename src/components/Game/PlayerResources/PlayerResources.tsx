@@ -29,6 +29,8 @@ export function PlayerResources({
       {resources.octagon ?? 0}
       <ResourceIcon type={"points"} />
       {resources.points ?? 0}
+      <ResourceIcon type={"ships"} />
+      {resources.ships ?? 0}
     </Box>
   );
 }

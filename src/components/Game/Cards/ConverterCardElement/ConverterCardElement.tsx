@@ -25,9 +25,6 @@ export function ConverterCardElement({
         <Stack>
           {converterCard.frontConverters?.map(converterElementFromObj("front"))}
           {converterCard.backConverters?.map(converterElementFromObj("back"))}
-          {converterCard.upgradeOptions?.map((conv, i) => (
-            <ConverterElement converter={conv} key={`upgrade-${i}`} upgrade />
-          ))}
         </Stack>
       </CardBase>
     </>

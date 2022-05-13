@@ -7,9 +7,6 @@ export interface Race {
   startingColonies: number;
   startingResearchTeams: number;
   startingResources: Resources;
-
-  startingConverterCards: string[];
-  availableConverterCards: string[];
 }
 
 export const emptyRace: () => Race = () => ({
@@ -19,9 +16,6 @@ export const emptyRace: () => Race = () => ({
   startingColonies: 0,
   startingResearchTeams: 0,
   startingResources: {},
-
-  startingConverterCards: [],
-  availableConverterCards: [],
 });
 
 export default Race;

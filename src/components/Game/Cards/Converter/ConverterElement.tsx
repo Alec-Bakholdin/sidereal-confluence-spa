@@ -12,7 +12,7 @@ function renderResources(
   acquisition?: boolean,
   includeSlashes?: boolean
 ): ReactElement {
-  const { white, brown, green, black, blue, yellow, octagon, points } =
+  const { white, brown, green, black, blue, yellow, octagon, points, ships } =
     resources;
   const resourceIcons = [
     upgrade && <ResourceIcon type={"upgrade"} />,
@@ -23,6 +23,7 @@ function renderResources(
     black && <ResourceIcon type={"black"} qty={black} />,
     blue && <ResourceIcon type={"blue"} qty={blue} />,
     yellow && <ResourceIcon type={"yellow"} qty={yellow} />,
+    ships && <ResourceIcon type={"ships"} qty={ships} />,
     octagon && <ResourceIcon type={"octagon"} qty={octagon} />,
     points && <ResourceIcon type={"points"} qty={points} />,
   ]

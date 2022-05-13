@@ -11,8 +11,16 @@ export interface Card {
 }
 
 export type ConverterCard = {
-  upgradeOptions?: Converter[];
-  acquisitionOptions?: Converter[];
+  era: number;
+
+  isUpgraded: boolean;
+  isConsumed: boolean;
+
+  upgradeTech1?: string;
+  upgradeTech2?: string;
+  upgradedName: string;
+  //acquisitionOptions?: Converter[];
+
   frontConverters: Converter[];
   backConverters: Converter[];
 } & Card;

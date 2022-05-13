@@ -8,8 +8,8 @@ import {
 import Resources, { ResourceType } from "assets/types/Resources";
 import UpdateResourceField from "./UpdateResourceField";
 import { useStompClient } from "react-stomp-hooks";
-import { APP_UPDATE_PLAYER_RESOURCES } from "../../../assets/types/SocketTopics";
-import { addError } from "../../../redux/reducers/errors";
+import { APP_UPDATE_PLAYER_RESOURCES } from "assets/types/SocketTopics";
+import { addError } from "redux/reducers/errors";
 
 export function UpdateResourcesModal(): ReactElement {
   const dispatch = useAppDispatch();
@@ -49,6 +49,7 @@ export function UpdateResourcesModal(): ReactElement {
     "yellow",
     "octagon",
     "points",
+    "ships",
   ];
 
   return (
