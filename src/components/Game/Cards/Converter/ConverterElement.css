@@ -4,12 +4,16 @@
   padding-left: 2px;
   height: 100%;
   display: inline-block;
-  border-color: transparent !important;
+  border: 1px solid transparent !important;
 }
 .converter:hover {
   cursor: pointer;
   border-radius: 1px;
   border: 1px solid white !important;
+}
+
+.selected-converter {
+  border-color: deepskyblue !important;
 }
 
 span {

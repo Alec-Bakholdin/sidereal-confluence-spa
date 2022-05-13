@@ -2,12 +2,12 @@ import { ReactElement, MouseEvent } from "react";
 import { Grid, Paper } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "redux/hooks";
 import { selectCards } from "redux/reducers/cards";
+import { openCardActionsModal } from "redux/reducers/modals";
 import { Card, Colony, ConverterCard, ResearchTeam } from "assets/types/Cards";
 import ConverterCardElement from "../ConverterCardElement/ConverterCardElement";
 import ColonyElement from "../ColonyElement/ColonyElement";
 import "./CardList.scss";
 import ResearchTeamElement from "../ResearchTeamElement/ResearchTeamElement";
-import { openCardActionsModal } from "../../../../redux/reducers/modals";
 
 export function CardList({
   ids,

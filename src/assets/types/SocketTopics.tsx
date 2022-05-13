@@ -6,7 +6,7 @@ import ConfluenceCard from "./ConfluenceCard";
 export const TOPIC_PLAYER_JOINED_GAME = "/topic/joinedGame";
 export type PlayerJoinedGameServerMessage = Player;
 
-export const TOPIC_PLAYER_UPDATED_RESOURCES = "/topic/updatedResources";
+export const TOPIC_PLAYER_UPDATED_RESOURCES = "/topic/updateResources";
 export type UpdatePlayerResourcesServerMessage = {
   playerId: string;
   resources: Resources;
@@ -48,4 +48,14 @@ export type TransferCardServerMessage = {
   currentOwnerPlayerId: string;
   newOwnerPlayerId: string;
   cardId: string;
+};
+
+export const APP_UPDATE_ECONOMY_ACTIONS = "/app/updateEconomyActions";
+export interface EconomyAction {
+  cardId: string;
+  converterIndex: number;
+}
+export type UpdateEconomyActionsClientMessage = {
+  playerId: string;
+  actions: EconomyAction[];
 };

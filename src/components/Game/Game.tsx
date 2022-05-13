@@ -9,13 +9,20 @@ import { fetchCards } from "redux/reducers/cards";
 import CurrentPlayerInfo from "./CurrentPlayerInfo/CurrentPlayerInfo";
 import { openUpdateResourcesModal } from "redux/reducers/modals";
 import { useStompClient } from "react-stomp-hooks";
-import { APP_NEXT_PHASE, APP_START_GAME } from "assets/types/SocketTopics";
+import {
+  APP_NEXT_PHASE,
+  APP_START_GAME,
+  APP_UPDATE_ECONOMY_ACTIONS,
+  UpdateEconomyActionsClientMessage,
+} from "assets/types/SocketTopics";
+import { selectEconomyActions } from "redux/reducers/economy";
 
 export const Game = function (): ReactElement {
   const dispatch = useAppDispatch();
   const { playerId, playerName, isFresh, gameState } = useAppSelector(
     (state) => state.gameState
   );
+  const economyActions = useAppSelector(selectEconomyActions);
   const player = gameState.players[playerId ?? ""];
   const stompClient = useStompClient();
 
@@ -25,7 +32,16 @@ export const Game = function (): ReactElement {
       dispatch(rejoinGame({ playerId, playerName }));
     }
     dispatch(fetchCards());
-  });
+  }, [dispatch, isFresh, playerId, playerName]);
+  useEffect(() => {
+    stompClient?.publish({
+      destination: APP_UPDATE_ECONOMY_ACTIONS,
+      body: JSON.stringify({
+        playerId,
+        actions: economyActions,
+      } as UpdateEconomyActionsClientMessage),
+    });
+  }, [playerId, stompClient, economyActions]);
   const addRandomPlayer = () => {
     dispatch(
       joinGame({ playerName: `Player ${Math.floor(Math.random() * 1000)}` })

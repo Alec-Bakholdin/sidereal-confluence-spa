@@ -3,6 +3,7 @@ import gameStateReducer from "./reducers/gameState";
 import cardsReducer from "./reducers/cards";
 import modalsReducer from "./reducers/modals";
 import errorsReducer from "./reducers/errors";
+import economyReducer from "./reducers/economy";
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     cards: cardsReducer,
     modals: modalsReducer,
     errors: errorsReducer,
+    economy: economyReducer,
   },
 });
 

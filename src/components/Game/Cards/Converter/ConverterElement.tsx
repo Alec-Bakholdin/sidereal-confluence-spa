@@ -41,12 +41,14 @@ function renderResources(
 
 export function ConverterElement({
   converter,
+  selected,
   upgrade,
   acquisition,
   includeSlashes,
   onClick,
 }: {
   converter: Converter;
+  selected?: boolean;
   upgrade?: boolean;
   acquisition?: boolean;
   includeSlashes?: boolean;
@@ -54,7 +56,7 @@ export function ConverterElement({
 }): ReactElement {
   return (
     <Box
-      className={"converter"}
+      className={`converter ${selected ? "selected-converter" : ""}`}
       border={1}
       onClick={(e) => {
         if (onClick) {
