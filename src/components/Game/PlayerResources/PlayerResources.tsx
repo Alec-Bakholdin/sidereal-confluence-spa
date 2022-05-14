@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 import Resources from "assets/types/Resources";
-import ResourceIcon from "../Cards/ResourceIcon/ResourceIcon";
+import ResourceIcon from "../BaseElements/ResourceIcon/ResourceIcon";
 import { Box } from "@mui/material";
 
 export function PlayerResources({

@@ -2,7 +2,7 @@ import React, { ReactElement } from "react";
 import Resources from "assets/types/Resources";
 import { Box, Grid } from "@mui/material";
 import { Forward } from "@mui/icons-material";
-import ResourceIcon from "../ResourceIcon/ResourceIcon";
+import ResourceIcon from "../../BaseElements/ResourceIcon/ResourceIcon";
 import "./ConverterElement.scss";
 import Converter from "assets/types/Converter";
 

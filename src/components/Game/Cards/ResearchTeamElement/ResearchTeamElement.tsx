@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import { ResearchTeam } from "assets/types/Cards";
 import CardBase from "../CardBase";
 import { Stack, Typography } from "@mui/material";
-import ConverterElement from "../Converter/ConverterElement";
+import ConverterElement from "../../BaseElements/Converter/ConverterElement";
 
 export function ResearchTeamElement({
   researchTeamObj,

@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import CardBase from "../CardBase";
 import { Colony } from "assets/types/Cards";
-import ConverterElement from "../Converter/ConverterElement";
+import ConverterElement from "../../BaseElements/Converter/ConverterElement";
 import { Stack } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "redux/hooks";
 import {

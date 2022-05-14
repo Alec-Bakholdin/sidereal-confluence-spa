@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import ResourceIcon from "../../Game/Cards/ResourceIcon/ResourceIcon";
+import ResourceIcon from "../../Game/BaseElements/ResourceIcon/ResourceIcon";
 import { ResourceType } from "../../../assets/types/Resources";
 import { TextField } from "@mui/material";
 

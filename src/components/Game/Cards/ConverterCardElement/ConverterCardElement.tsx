@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import CardBase from "../CardBase";
 import { Stack } from "@mui/material";
 import { ConverterCard } from "assets/types/Cards";
-import ConverterElement from "../Converter/ConverterElement";
+import ConverterElement from "../../BaseElements/Converter/ConverterElement";
 import Converter from "assets/types/Converter";
 import { useAppDispatch, useAppSelector } from "redux/hooks";
 import {
