@@ -6,6 +6,8 @@ import { ErrorResponse, transformApiError } from "./errors";
 import Player from "../../assets/types/Player";
 import Resources from "../../assets/types/Resources";
 import {
+  AcquireCardServerMessage,
+  RemoveActiveCardServerMessage,
   TransferCardServerMessage,
   UpdateGameStateServerMessage,
 } from "../../assets/types/SocketTopics";
@@ -45,10 +47,14 @@ const initialState: GameStateState = {
     isGameStarted: false,
 
     confluenceList: [],
+
     availableColonies: [],
     availableResearchTeams: [],
+
     colonyBidTrack: [],
     researchTeamBidTrack: [],
+
+    pendingResearches: [],
 
     players: {},
   },
@@ -130,6 +136,36 @@ export const gameStateSlice = createSlice({
         }
       }
     },
+    acquireCard: (state, action: PayloadAction<AcquireCardServerMessage>) => {
+      if (
+        !action.payload ||
+        !state.gameState.players[action.payload.playerId]
+      ) {
+        return;
+      }
+      const { playerId, cardId } = action.payload;
+      const player = state.gameState.players[playerId];
+      player.inactiveCards = player.inactiveCards.filter(
+        (card) => card !== cardId
+      );
+      if (!player.cards.includes(cardId)) {
+        player.cards.push(cardId);
+      }
+    },
+    removeActiveCard: (
+      state,
+      action: PayloadAction<RemoveActiveCardServerMessage>
+    ) => {
+      if (
+        !action.payload ||
+        !state.gameState.players[action.payload.playerId]
+      ) {
+        return;
+      }
+      const { playerId, cardId } = action.payload;
+      const player = state.gameState.players[playerId];
+      player.cards = player.cards.filter((card) => card !== cardId);
+    },
     updateGameState: (
       state,
       action: PayloadAction<UpdateGameStateServerMessage>
@@ -179,6 +215,8 @@ export const {
   addPlayer,
   updatePlayerResources,
   transferCard,
+  acquireCard,
+  removeActiveCard,
   updateGameState,
 } = gameStateSlice.actions;
 

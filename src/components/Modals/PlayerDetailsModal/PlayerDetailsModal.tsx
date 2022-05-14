@@ -17,7 +17,6 @@ export function PlayerDetailsModal(): ReactElement {
   const dispatch = useAppDispatch();
   const handleClose = () => dispatch(closePlayerDetailsModal());
   useEffect(() => {
-    console.log(playerId, player);
     if (!playerId || !player) {
       handleClose();
     }

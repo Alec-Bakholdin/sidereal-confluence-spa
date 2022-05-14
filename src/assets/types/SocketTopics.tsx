@@ -59,3 +59,22 @@ export type UpdateEconomyActionsClientMessage = {
   playerId: string;
   actions: EconomyAction[];
 };
+
+export const TOPIC_ACQUIRE_CARD = "/topic/acquireCard";
+export type AcquireCardServerMessage = {
+  playerId: string;
+  cardId: string;
+};
+
+export const TOPIC_REMOVE_ACTIVE_CARD = "/topic/removeActiveCard";
+export type RemoveActiveCardServerMessage = {
+  playerId: string;
+  cardId: string;
+};
+
+export const APP_FLIP_RESEARCH_TEAM = "/app/flipResearchTeam";
+export type FlipResearchTeamClientMessage = {
+  playerId: string;
+  cardId: string;
+  cost: Resources;
+};

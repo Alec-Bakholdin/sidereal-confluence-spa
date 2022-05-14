@@ -7,6 +7,8 @@ import {
   updateGameState,
   updatePlayerResources,
   transferCard,
+  acquireCard,
+  removeActiveCard,
 } from "redux/reducers/gameState";
 import {
   TOPIC_PLAYER_JOINED_GAME,
@@ -16,6 +18,9 @@ import {
   UpdatePlayerResourcesServerMessage,
   TOPIC_TRANSFER_CARD,
   TransferCardServerMessage,
+  TOPIC_ACQUIRE_CARD,
+  AcquireCardServerMessage,
+  TOPIC_REMOVE_ACTIVE_CARD,
 } from "assets/types/SocketTopics";
 
 export function SocketActions(): ReactElement {
@@ -48,6 +53,20 @@ export function SocketActions(): ReactElement {
       message.body
     ) as TransferCardServerMessage;
     dispatch(transferCard(transferCardMsg));
+  });
+
+  useSubscription(TOPIC_ACQUIRE_CARD, (message) => {
+    console.log("Acquiring card");
+    const acquireCardMsg = JSON.parse(message.body) as AcquireCardServerMessage;
+    dispatch(acquireCard(acquireCardMsg));
+  });
+
+  useSubscription(TOPIC_REMOVE_ACTIVE_CARD, (message) => {
+    console.log("Removing active card");
+    const removeActiveCardMsg = JSON.parse(
+      message.body
+    ) as AcquireCardServerMessage;
+    dispatch(removeActiveCard(removeActiveCardMsg));
   });
 
   return <></>;
