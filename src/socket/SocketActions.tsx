@@ -21,7 +21,9 @@ import {
   TOPIC_ACQUIRE_CARD,
   AcquireCardServerMessage,
   TOPIC_REMOVE_ACTIVE_CARD,
+  TOPIC_ERROR,
 } from "assets/types/SocketTopics";
+import { addError } from "../redux/reducers/errors";
 
 export function SocketActions(): ReactElement {
   const dispatch = useAppDispatch();
@@ -67,6 +69,12 @@ export function SocketActions(): ReactElement {
       message.body
     ) as AcquireCardServerMessage;
     dispatch(removeActiveCard(removeActiveCardMsg));
+  });
+
+  useSubscription(TOPIC_ERROR, (message) => {
+    console.log("Error: " + message.body);
+    const error = message.body as string;
+    dispatch(addError(error));
   });
 
   return <></>;

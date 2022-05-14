@@ -78,3 +78,5 @@ export type FlipResearchTeamClientMessage = {
   cardId: string;
   cost: Resources;
 };
+
+export const TOPIC_ERROR = "/topic/error";
