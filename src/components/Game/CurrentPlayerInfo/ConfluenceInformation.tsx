@@ -1,13 +1,12 @@
 import { ReactElement } from "react";
-import { Box, Paper, Typography } from "@mui/material";
-import CardList from "../Cards/CardList/CardList";
+import { Paper, Typography } from "@mui/material";
 import { useAppSelector } from "redux/hooks";
 
 export function ConfluenceInformation(): ReactElement {
   const { playerId, gameState } = useAppSelector((state) => state.gameState);
   const player = playerId ? gameState.players[playerId] : null;
   if (!player) return <></>;
-  const { confluenceList, turn } = gameState;
+  const { confluenceList, turn, pendingResearches } = gameState;
 
   return (
     <Paper sx={{ overflow: "auto", maxHeight: "450px" }}>
@@ -21,26 +20,12 @@ export function ConfluenceInformation(): ReactElement {
           Yengii Sharing Bonus: {confluence.yengiiSharingBonus},
         </Typography>
       ))}
-      <Box>
-        {gameState.availableColonies.length > 0 && (
-          <>
-            Colonies
-            <CardList
-              ids={gameState.availableColonies}
-              shipMinima={gameState.colonyBidTrack}
-            />
-          </>
-        )}
-        {gameState.availableResearchTeams.length > 0 && (
-          <>
-            Research Teams
-            <CardList
-              ids={gameState.availableResearchTeams}
-              shipMinima={gameState.researchTeamBidTrack}
-            />
-          </>
-        )}
-      </Box>
+      <Typography variant={"h6"}>Pending Researches</Typography>
+      {pendingResearches.map((research) => (
+        <Typography variant={"body1"} color={"primary"}>
+          {research}
+        </Typography>
+      ))}
     </Paper>
   );
 }

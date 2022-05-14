@@ -80,3 +80,11 @@ export type FlipResearchTeamClientMessage = {
 };
 
 export const TOPIC_ERROR = "/topic/error";
+
+export const APP_UPGRADE_COLONY = "/app/upgradeColony";
+export type UpgradeColonyClientMessage = {
+  playerId: string;
+  cardId: string;
+};
+
+export const TOPIC_UPDATE_CARD = "/topic/updateCard";

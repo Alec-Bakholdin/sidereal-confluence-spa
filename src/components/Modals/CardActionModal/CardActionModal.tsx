@@ -7,8 +7,9 @@ import {
 } from "redux/reducers/modals";
 import { selectCard } from "redux/reducers/cards";
 import GiveCardAction from "./GiveCardAction";
-import ResearchTeamAction from "./ResearchTeamAction";
-import { ResearchTeam } from "../../../assets/types/Cards";
+import ResearchTeamUpgradeAction from "./ResearchTeamUpgradeAction";
+import { Colony, ResearchTeam } from "../../../assets/types/Cards";
+import ColonyUpgradeAction from "./ColonyUpgradeAction";
 
 export function CardActionModal(): ReactElement {
   const { cardId, show } = useAppSelector(selectCardActionsModal);
@@ -26,9 +27,16 @@ export function CardActionModal(): ReactElement {
           <Stack spacing={2}>
             <Typography variant={"h4"}>{card.name}</Typography>
             <GiveCardAction card={card} closeModal={handleClose} />
-            {card.type === "ResearchTeam" && (
-              <ResearchTeamAction
-                researchTeam={card as ResearchTeam}
+            {card.type === "ResearchTeam" &&
+              !(card as ResearchTeam).researched && (
+                <ResearchTeamUpgradeAction
+                  researchTeam={card as ResearchTeam}
+                  closeModal={handleClose}
+                />
+              )}
+            {card.type === "Colony" && !(card as Colony).upgraded && (
+              <ColonyUpgradeAction
+                colony={card as Colony}
                 closeModal={handleClose}
               />
             )}

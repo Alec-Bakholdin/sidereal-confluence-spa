@@ -1,16 +1,16 @@
 import { ReactElement, useState } from "react";
-import { ResearchTeam } from "../../../assets/types/Cards";
+import { ResearchTeam } from "assets/types/Cards";
 import { Box, Button, Stack, Typography } from "@mui/material";
-import ResourcesElement from "../../Game/BaseElements/ResourcesElement/ResourcesElement";
-import Resources from "../../../assets/types/Resources";
+import ResourcesElement from "components/Game/BaseElements/ResourcesElement/ResourcesElement";
+import Resources from "assets/types/Resources";
 import { useStompClient } from "react-stomp-hooks";
 import {
   APP_FLIP_RESEARCH_TEAM,
   FlipResearchTeamClientMessage,
-} from "../../../assets/types/SocketTopics";
-import { useAppSelector } from "../../../redux/hooks";
+} from "assets/types/SocketTopics";
+import { useAppSelector } from "redux/hooks";
 
-export function ResearchTeamAction({
+export function ResearchTeamUpgradeAction({
   researchTeam,
   closeModal,
 }: {
@@ -59,4 +59,4 @@ export function ResearchTeamAction({
   );
 }
 
-export default ResearchTeamAction;
+export default ResearchTeamUpgradeAction;
