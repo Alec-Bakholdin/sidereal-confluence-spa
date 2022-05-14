@@ -16,23 +16,23 @@ export function ResourcesElement({
   const { white, brown, green, black, blue, yellow, octagon, points, ships } =
     resources;
   const resourceIcons = [
-    upgrade && <ResourceIcon type={"upgrade"} />,
-    acquisition && <ResourceIcon type={"acquisition"} />,
-    white && <ResourceIcon type={"white"} qty={white} />,
-    brown && <ResourceIcon type={"brown"} qty={brown} />,
-    green && <ResourceIcon type={"green"} qty={green} />,
-    black && <ResourceIcon type={"black"} qty={black} />,
-    blue && <ResourceIcon type={"blue"} qty={blue} />,
-    yellow && <ResourceIcon type={"yellow"} qty={yellow} />,
-    ships && <ResourceIcon type={"ships"} qty={ships} />,
-    octagon && <ResourceIcon type={"octagon"} qty={octagon} />,
-    points && <ResourceIcon type={"points"} qty={points} />,
+    upgrade && <ResourceIcon key={"upgrade"} type={"upgrade"} />,
+    acquisition && <ResourceIcon key={"acquisition"} type={"acquisition"} />,
+    white && <ResourceIcon key={"white"} type={"white"} qty={white} />,
+    brown && <ResourceIcon key={"brown"} type={"brown"} qty={brown} />,
+    green && <ResourceIcon key={"green"} type={"green"} qty={green} />,
+    black && <ResourceIcon key={"black"} type={"black"} qty={black} />,
+    blue && <ResourceIcon key={"blue"} type={"blue"} qty={blue} />,
+    yellow && <ResourceIcon key={"yellow"} type={"yellow"} qty={yellow} />,
+    ships && <ResourceIcon key={"ships"} type={"ships"} qty={ships} />,
+    octagon && <ResourceIcon key={"octagon"} type={"octagon"} qty={octagon} />,
+    points && <ResourceIcon key={"points"} type={"points"} qty={points} />,
   ]
     .filter((icon) => icon)
     // adds slashes if necessary
     .map((icon, i) => (
       <>
-        {includeSlashes && i > 0 && <span>/</span>}
+        {includeSlashes && i > 0 && <span key={`slash-${i}`}>/</span>}
         {icon}
       </>
     ));

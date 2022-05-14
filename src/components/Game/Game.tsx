@@ -63,11 +63,22 @@ export const Game = function (): ReactElement {
       });
     }
   };
+  const confluenceCard =
+    gameState.confluenceList[
+      gameState.turn > 0 ? gameState.turn - 1 : gameState.turn
+    ];
 
   return (
     <Box sx={{ height: "100vh" }} overflow={"clip"}>
       <Stack height={"100%"}>
         <Players />
+        <Box width={"100%"} height={100} border={"1px solid white"}>
+          <Typography variant={"h4"} textAlign={"center"}>
+            Turn: {gameState.turn}, Phase: {gameState.phase}, Sharing:
+            {confluenceCard?.sharingBonus}, Yengii:
+            {confluenceCard?.yengiiSharingBonus}
+          </Typography>
+        </Box>
         <CurrentPlayerInfo />
       </Stack>
       <Box className={"self-player-resources"} bgcolor={"background.default"}>

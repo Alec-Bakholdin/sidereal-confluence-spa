@@ -1,5 +1,5 @@
 import { ReactElement, MouseEvent } from "react";
-import { Grid, Paper } from "@mui/material";
+import { Grid, Paper, Typography } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "redux/hooks";
 import { selectCards } from "redux/reducers/cards";
 import { openCardActionsModal } from "redux/reducers/modals";
@@ -54,7 +54,9 @@ export function CardList({
                 key={id}
                 onClick={(e) => handleClick(e, id)}
               >
-                {shipMinima && shipMinima[i]}
+                <Typography variant={"h5"} textAlign={"center"}>
+                  {shipMinima && shipMinima[i]}
+                </Typography>
                 {renderCard(cards[id])}
               </Grid>
             )

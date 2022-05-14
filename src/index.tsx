@@ -17,7 +17,7 @@ root.render(
   <React.StrictMode>
     <ThemeProvider theme={dark}>
       <CookiesProvider>
-        <StompSessionProvider url={"http://localhost:8080/ws"}>
+        <StompSessionProvider url={`${process.env.REACT_APP_API_URL}/ws`}>
           <Provider store={store}>
             <CssBaseline />
             <App />

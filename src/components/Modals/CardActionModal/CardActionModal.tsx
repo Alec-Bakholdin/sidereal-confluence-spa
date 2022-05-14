@@ -23,7 +23,7 @@ export function CardActionModal(): ReactElement {
     <Modal open={show} onClose={handleClose}>
       <Box className={"modal"} bgcolor={"background.default"}>
         {card && (
-          <Stack>
+          <Stack spacing={2}>
             <Typography variant={"h4"}>{card.name}</Typography>
             <GiveCardAction card={card} closeModal={handleClose} />
             {card.type === "ResearchTeam" && (

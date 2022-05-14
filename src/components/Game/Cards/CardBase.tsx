@@ -29,5 +29,6 @@ export function CardBase({
     </Box>
   );
 }
+//TODO: fade when card is available next trade phase using filter: grayscale(100%);
 
 export default CardBase;
