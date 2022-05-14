@@ -29,12 +29,11 @@ export function ResourcesElement({
     points && <ResourceIcon type={"points"} qty={points} />,
   ]
     .filter((icon) => icon)
+    // adds slashes if necessary
     .map((icon, i) => (
       <>
+        {includeSlashes && i > 0 && <span>/</span>}
         {icon}
-        {includeSlashes && i < Object.keys(resources).length - 1 && (
-          <span>/</span>
-        )}
       </>
     ));
   return <>{resourceIcons}</>;
