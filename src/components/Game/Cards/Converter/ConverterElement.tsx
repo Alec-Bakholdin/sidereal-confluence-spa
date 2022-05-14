@@ -46,6 +46,7 @@ export function ConverterElement({
   acquisition,
   includeSlashes,
   onClick,
+  allowPropagation,
 }: {
   converter: Converter;
   selected?: boolean;
@@ -53,6 +54,7 @@ export function ConverterElement({
   acquisition?: boolean;
   includeSlashes?: boolean;
   onClick?: () => void;
+  allowPropagation?: boolean;
 }): ReactElement {
   return (
     <Box
@@ -62,7 +64,9 @@ export function ConverterElement({
         if (onClick) {
           onClick();
         }
-        e.stopPropagation();
+        if (!allowPropagation) {
+          e.stopPropagation();
+        }
       }}
     >
       <Grid container direction={"row"} className={"center-box"}>

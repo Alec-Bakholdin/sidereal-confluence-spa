@@ -20,6 +20,7 @@ export function ResearchTeamElement({
               phase: "Trade",
             }}
             includeSlashes
+            allowPropagation
           />
         </div>
         <Typography variant={"body1"}>
