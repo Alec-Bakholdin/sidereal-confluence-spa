@@ -3,35 +3,43 @@ import { RootState } from "../store";
 import GameState from "assets/types/GameState";
 import api from "api";
 import { ErrorResponse, transformApiError } from "./errors";
-import Player from "../../assets/types/Player";
-import Resources from "../../assets/types/Resources";
+import Player from "assets/types/Player";
 import {
+  AcquireCardServerMessage,
+  RemoveActiveCardServerMessage,
   TransferCardServerMessage,
   UpdateGameStateServerMessage,
-} from "../../assets/types/SocketTopics";
+  UpdatePlayerResourcesServerMessage,
+} from "assets/types/SocketTopics";
+import { RaceName } from "../../assets/types/Race";
 
 export interface JoinGamePayload {
   playerName: string;
+  raceName: RaceName;
 }
 export interface JoinGameResponse {
   playerId: string;
   playerName: string;
+  raceName: string;
   gameState: GameState;
 }
 
 export interface RejoinGamePayload {
   playerId: string;
   playerName: string;
+  raceName: RaceName;
 }
 
 interface PlayerInformation {
   playerId: string;
   playerName: string;
+  raceName: RaceName;
 }
 
 interface GameStateState {
-  playerId?: string | undefined;
-  playerName?: string | undefined;
+  playerId?: string;
+  playerName?: string;
+  raceName?: RaceName;
   isFresh: boolean;
   gameState: GameState;
 }
@@ -45,10 +53,14 @@ const initialState: GameStateState = {
     isGameStarted: false,
 
     confluenceList: [],
+
     availableColonies: [],
     availableResearchTeams: [],
+
     colonyBidTrack: [],
     researchTeamBidTrack: [],
+
+    pendingResearches: [],
 
     players: {},
   },
@@ -101,18 +113,20 @@ export const gameStateSlice = createSlice({
     setPlayerInformation: (state, action: PayloadAction<PlayerInformation>) => {
       state.playerId = action.payload.playerId;
       state.playerName = action.payload.playerName;
+      state.raceName = action.payload.raceName;
     },
     addPlayer: (state, action: PayloadAction<Player>) => {
       state.gameState.players[action.payload.id] = action.payload;
     },
     updatePlayerResources: (
       state,
-      action: PayloadAction<{ playerId: string; resources: Resources }>
+      action: PayloadAction<UpdatePlayerResourcesServerMessage>
     ) => {
       if (action.payload) {
-        const { playerId, resources } = action.payload;
+        const { playerId, resources, donations } = action.payload;
         if (state.gameState.players[playerId]) {
           state.gameState.players[playerId].resources = resources;
+          state.gameState.players[playerId].donations = donations;
         }
       }
     },
@@ -130,6 +144,36 @@ export const gameStateSlice = createSlice({
         }
       }
     },
+    acquireCard: (state, action: PayloadAction<AcquireCardServerMessage>) => {
+      if (
+        !action.payload ||
+        !state.gameState.players[action.payload.playerId]
+      ) {
+        return;
+      }
+      const { playerId, cardId } = action.payload;
+      const player = state.gameState.players[playerId];
+      player.inactiveCards = player.inactiveCards.filter(
+        (card) => card !== cardId
+      );
+      if (!player.cards.includes(cardId)) {
+        player.cards.push(cardId);
+      }
+    },
+    removeActiveCard: (
+      state,
+      action: PayloadAction<RemoveActiveCardServerMessage>
+    ) => {
+      if (
+        !action.payload ||
+        !state.gameState.players[action.payload.playerId]
+      ) {
+        return;
+      }
+      const { playerId, cardId } = action.payload;
+      const player = state.gameState.players[playerId];
+      player.cards = player.cards.filter((card) => card !== cardId);
+    },
     updateGameState: (
       state,
       action: PayloadAction<UpdateGameStateServerMessage>
@@ -145,6 +189,7 @@ export const gameStateSlice = createSlice({
       state.playerId = action.payload.playerId;
       state.playerName = action.payload.playerName;
       state.gameState = action.payload.gameState;
+      state.raceName = action.payload.raceName as RaceName;
       console.log(`Successfully joined game as player ${state.playerId}`);
       console.log("gameState: ", state.gameState);
     });
@@ -158,6 +203,7 @@ export const gameStateSlice = createSlice({
       state.playerId = action.payload.playerId;
       state.playerName = action.payload.playerName;
       state.gameState = action.payload.gameState;
+      state.raceName = action.payload.raceName as RaceName;
       console.log(`Successfully rejoined game as player ${state.playerId}`);
       console.log("gameState: ", state.gameState);
     });
@@ -168,6 +214,8 @@ export const gameStateSlice = createSlice({
 });
 
 export const selectGameState = (state: RootState) => state.gameState.gameState;
+export const selectPlayerById = (playerId?: string) => (state: RootState) =>
+  state.gameState.gameState.players[playerId ?? ""] ?? {};
 export const selectPlayerName = (state: RootState) =>
   state.gameState.playerName;
 export const selectPlayerId = (state: RootState) => state.gameState.playerId;
@@ -179,6 +227,8 @@ export const {
   addPlayer,
   updatePlayerResources,
   transferCard,
+  acquireCard,
+  removeActiveCard,
   updateGameState,
 } = gameStateSlice.actions;
 

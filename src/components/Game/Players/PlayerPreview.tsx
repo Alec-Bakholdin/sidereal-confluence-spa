@@ -27,11 +27,13 @@ export function PlayerPreview({ player }: { player: Player }): ReactElement {
 
   return (
     <Box className={"player-preview"} key={playerId} onClick={handleClick}>
-      <Typography variant={"h5"}>{`${player.name} ${
-        player.id === playerId ? "(me)" : ""
-      }`}</Typography>
+      <Typography variant={"h5"}>{player.name}</Typography>
+      <Typography variant={"h6"} color={"secondary"}>
+        {player.race.name}
+      </Typography>
       <div className={"player-preview-resources"}>
         <PlayerResources resources={player.resources} />
+        <PlayerResources resources={player.donations} donations />
         <div>{`Research Teams: ${numCardsOfType("ResearchTeam")}`}</div>
         <div>{`Converter Cards: ${numCardsOfType("ConverterCard")}`}</div>
         <div>{`Colony: ${numCardsOfType("Colony")}`}</div>

@@ -17,7 +17,6 @@ export function PlayerDetailsModal(): ReactElement {
   const dispatch = useAppDispatch();
   const handleClose = () => dispatch(closePlayerDetailsModal());
   useEffect(() => {
-    console.log(playerId, player);
     if (!playerId || !player) {
       handleClose();
     }
@@ -33,6 +32,7 @@ export function PlayerDetailsModal(): ReactElement {
           >
             <Typography variant={"h4"}>{player.name}</Typography>
             <PlayerResources resources={player.resources} />
+            <PlayerResources resources={player.donations} donations />
             <CardList ids={player.cards} />
           </Box>
         )}

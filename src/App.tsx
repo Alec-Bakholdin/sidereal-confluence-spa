@@ -6,28 +6,29 @@ import Game from "./components/Game/Game";
 import Modals from "./components/Modals";
 import Snackbars from "./components/Snackbars";
 import { useAppDispatch, useAppSelector } from "./redux/hooks";
-import {
-  selectPlayerId,
-  selectPlayerName,
-  setPlayerInformation,
-} from "./redux/reducers/gameState";
+import { setPlayerInformation } from "./redux/reducers/gameState";
 import { useCookies } from "react-cookie";
 import SocketActions from "./socket/SocketActions";
+import { RaceName } from "./assets/types/Race";
 
 function App() {
-  const playerId = useAppSelector(selectPlayerId);
-  const playerName = useAppSelector(selectPlayerName);
+  const { playerId, playerName, raceName } = useAppSelector(
+    (state) => state.gameState
+  );
   const dispatch = useAppDispatch();
-  const [cookies, setCookie] = useCookies(["playerId", "playerName"]);
+  const [cookies, setCookie] = useCookies([
+    "playerId",
+    "playerName",
+    "raceName",
+  ]);
   useEffect(() => {
-    if (cookies.playerId && cookies.playerName) {
-      console.log(
-        `Setting playerId: ${cookies.playerId} and playerName: ${cookies.playerName} from cookies`
-      );
+    if (cookies.playerId && cookies.playerName && cookies.raceName) {
+      console.log("Restoring cookies", cookies);
       dispatch(
         setPlayerInformation({
           playerId: cookies.playerId,
           playerName: cookies.playerName,
+          raceName: cookies.raceName as RaceName,
         })
       );
     }
@@ -42,7 +43,11 @@ function App() {
       console.log(`Setting playerName cookie to ${playerName}`);
       setCookie("playerName", playerName);
     }
-  }, [playerId, playerName, setCookie]);
+    if (raceName) {
+      console.log(`Setting raceName cookie to ${raceName}`);
+      setCookie("raceName", raceName);
+    }
+  }, [raceName, playerId, playerName, setCookie]);
 
   return (
     <HashRouter>

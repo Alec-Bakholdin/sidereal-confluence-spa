@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import ResourceIcon from "../../Game/Cards/ResourceIcon/ResourceIcon";
+import ResourceIcon from "../../Game/BaseElements/ResourceIcon/ResourceIcon";
 import { ResourceType } from "../../../assets/types/Resources";
 import { TextField } from "@mui/material";
 
@@ -29,7 +29,7 @@ export function UpdateResourceField({
         onChange={(e) => {
           const changeStr = e.target.value;
           if (!changeStr) onChange(0);
-          const changeInt = parseInt(changeStr, 10);
+          const changeInt = parseInt(changeStr);
           if (changeInt >= 0) onChange(changeInt);
         }}
       />

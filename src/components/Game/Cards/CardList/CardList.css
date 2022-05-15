@@ -9,7 +9,7 @@
   border-radius: 5px;
 }
 
-.current-player-card:hover {
+.interactive-card:hover {
   cursor: pointer;
   border: 1px solid white;
 }

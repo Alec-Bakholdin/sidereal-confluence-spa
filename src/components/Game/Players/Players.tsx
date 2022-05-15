@@ -9,22 +9,24 @@ export function Players({
 }: {
   maxPerRow?: number;
 }): ReactElement {
-  const { gameState } = useAppSelector((state) => state.gameState);
+  const { gameState, playerId } = useAppSelector((state) => state.gameState);
   const playerArr = Object.values(gameState.players);
 
   return (
     <Grid container height={"100%"} direction={"row"} display={"flex"}>
-      {playerArr.map((player: Player) => (
-        <Grid
-          className={"player-preview-grid-item"}
-          item
-          width={`${100 / maxPerRow}%`}
-          padding={"10px"}
-          key={player.id}
-        >
-          <PlayerPreview player={player} key={player.id} />
-        </Grid>
-      ))}
+      {playerArr
+        .filter((player) => player.id !== playerId)
+        .map((player: Player) => (
+          <Grid
+            className={"player-preview-grid-item"}
+            item
+            width={`${100 / maxPerRow}%`}
+            padding={"10px"}
+            key={player.id}
+          >
+            <PlayerPreview player={player} key={player.id} />
+          </Grid>
+        ))}
     </Grid>
   );
 }

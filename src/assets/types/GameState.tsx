@@ -15,6 +15,9 @@ export interface GameState {
 
   colonyBidTrack: number[];
   researchTeamBidTrack: number[];
+
+  pendingResearches: string[];
+
   players: { [id: string]: Player };
 }
 

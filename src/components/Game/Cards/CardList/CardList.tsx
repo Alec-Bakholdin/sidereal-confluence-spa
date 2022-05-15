@@ -1,34 +1,40 @@
 import { ReactElement, MouseEvent } from "react";
-import { Grid, Paper } from "@mui/material";
+import { Grid, Paper, Typography } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "redux/hooks";
 import { selectCards } from "redux/reducers/cards";
+import { openCardActionsModal } from "redux/reducers/modals";
 import { Card, Colony, ConverterCard, ResearchTeam } from "assets/types/Cards";
 import ConverterCardElement from "../ConverterCardElement/ConverterCardElement";
 import ColonyElement from "../ColonyElement/ColonyElement";
 import "./CardList.scss";
 import ResearchTeamElement from "../ResearchTeamElement/ResearchTeamElement";
-import { openCardActionsModal } from "../../../../redux/reducers/modals";
+import { selectGameState } from "../../../../redux/reducers/gameState";
+import CardBase from "../CardBase";
 
 export function CardList({
   ids,
-  currentPlayer,
+  currentPlayerCards,
   shipMinima,
 }: {
   ids: string[];
-  currentPlayer?: boolean;
+  currentPlayerCards?: boolean;
   shipMinima?: number[];
 }): ReactElement {
   const cards = useAppSelector(selectCards);
+  const { phase } = useAppSelector(selectGameState);
   const dispatch = useAppDispatch();
 
   const handleClick = (e: MouseEvent<HTMLDivElement>, id: string) => {
-    if (currentPlayer) {
+    if (currentPlayerCards || (shipMinima && phase === "Confluence")) {
       e.stopPropagation();
       dispatch(openCardActionsModal(id));
     }
   };
 
   const renderCard = (card: Card) => {
+    if (!card) {
+      return <CardBase blank />;
+    }
     switch (card.type) {
       case "Colony":
         return <ColonyElement colonyObj={card as Colony} />;
@@ -43,22 +49,22 @@ export function CardList({
   return (
     <Paper className={"card-list"}>
       <Grid container direction={"row"}>
-        {ids.map(
-          (id, i) =>
-            cards[id] && (
-              <Grid
-                className={`card-list-card ${
-                  currentPlayer && "current-player-card"
-                }`}
-                item
-                key={id}
-                onClick={(e) => handleClick(e, id)}
-              >
-                {shipMinima && shipMinima[i]}
-                {renderCard(cards[id])}
-              </Grid>
-            )
-        )}
+        {ids.map((id, i) => (
+          <Grid
+            className={`card-list-card ${
+              (currentPlayerCards || (shipMinima && phase === "Confluence")) &&
+              "interactive-card"
+            }`}
+            item
+            key={i}
+            onClick={(e) => handleClick(e, id)}
+          >
+            <Typography variant={"h5"} textAlign={"center"}>
+              {shipMinima && shipMinima[i]}
+            </Typography>
+            {renderCard(cards[id])}
+          </Grid>
+        ))}
       </Grid>
     </Paper>
   );
