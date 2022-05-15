@@ -2,7 +2,9 @@ import { ReactElement, KeyboardEvent, useState } from "react";
 import {
   Box,
   Button,
+  MenuItem,
   Modal,
+  Select,
   Stack,
   TextField,
   Typography,
@@ -14,17 +16,19 @@ import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
 import "./JoinGameModal.scss";
+import { RaceName } from "assets/types/Race";
 
 export function JoinGameModal(): ReactElement {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const open = useAppSelector(selectJoinGameModal);
   const closeModal = () => dispatch(closeJoinGameModal());
-  const [cookies] = useCookies(["playerName"]);
+  const [cookies] = useCookies(["playerName", "race"]);
 
   const [username, setUsername] = useState<string>(cookies.playerName);
+  const [race, setRace] = useState<RaceName>("Caylion");
   const onJoinGame = () => {
-    dispatch(joinGame({ playerName: username }));
+    dispatch(joinGame({ playerName: username, raceName: race }));
     closeModal();
     navigate("/game");
   };
@@ -33,6 +37,8 @@ export function JoinGameModal(): ReactElement {
       onJoinGame();
     }
   };
+
+  const raceNames = ["Caylion", "Faderan", "Yengii", "Kjasjavikalimm"];
 
   return (
     <Modal open={open} onClose={closeModal}>
@@ -48,6 +54,17 @@ export function JoinGameModal(): ReactElement {
             onChange={(e) => setUsername(e.target.value)}
             onKeyDown={(e) => handleKeyDown(e)}
           />
+          <Select
+            label={"Race Name"}
+            value={race}
+            onChange={(e) => setRace(e.target.value as RaceName)}
+          >
+            {raceNames.map((name) => (
+              <MenuItem key={name} value={name}>
+                {name}
+              </MenuItem>
+            ))}
+          </Select>
           <Button>
             <Typography variant={"h5"} onClick={() => onJoinGame()}>
               Join

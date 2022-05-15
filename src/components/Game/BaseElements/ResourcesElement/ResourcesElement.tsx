@@ -1,6 +1,7 @@
 import React, { ReactElement } from "react";
 import Resources from "assets/types/Resources";
 import ResourceIcon from "../ResourceIcon/ResourceIcon";
+import { Stack } from "@mui/material";
 
 export function ResourcesElement({
   resources,
@@ -32,13 +33,15 @@ export function ResourcesElement({
   ]
     .filter((icon) => icon)
     // adds slashes if necessary
-    .map((icon, i) => (
-      <>
-        {includeSlashes && i > 0 && <span key={`slash-${i}`}>/</span>}
-        {icon}
-      </>
-    ));
-  return <>{resourceIcons}</>;
+    .map((icon, i) =>
+      includeSlashes && i !== 0 ? [<span key={`span-${i}`}>/</span>] : [icon]
+    )
+    .flatMap((icon) => icon);
+  return (
+    <Stack direction={"row"} key={"resources-element-stack"}>
+      {resourceIcons}
+    </Stack>
+  );
 }
 
 export default ResourcesElement;

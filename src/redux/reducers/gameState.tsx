@@ -11,29 +11,35 @@ import {
   UpdateGameStateServerMessage,
   UpdatePlayerResourcesServerMessage,
 } from "assets/types/SocketTopics";
+import { RaceName } from "../../assets/types/Race";
 
 export interface JoinGamePayload {
   playerName: string;
+  raceName: RaceName;
 }
 export interface JoinGameResponse {
   playerId: string;
   playerName: string;
+  raceName: string;
   gameState: GameState;
 }
 
 export interface RejoinGamePayload {
   playerId: string;
   playerName: string;
+  raceName: RaceName;
 }
 
 interface PlayerInformation {
   playerId: string;
   playerName: string;
+  raceName: RaceName;
 }
 
 interface GameStateState {
-  playerId?: string | undefined;
-  playerName?: string | undefined;
+  playerId?: string;
+  playerName?: string;
+  raceName?: RaceName;
   isFresh: boolean;
   gameState: GameState;
 }
@@ -107,6 +113,7 @@ export const gameStateSlice = createSlice({
     setPlayerInformation: (state, action: PayloadAction<PlayerInformation>) => {
       state.playerId = action.payload.playerId;
       state.playerName = action.payload.playerName;
+      state.raceName = action.payload.raceName;
     },
     addPlayer: (state, action: PayloadAction<Player>) => {
       state.gameState.players[action.payload.id] = action.payload;
@@ -182,6 +189,7 @@ export const gameStateSlice = createSlice({
       state.playerId = action.payload.playerId;
       state.playerName = action.payload.playerName;
       state.gameState = action.payload.gameState;
+      state.raceName = action.payload.raceName as RaceName;
       console.log(`Successfully joined game as player ${state.playerId}`);
       console.log("gameState: ", state.gameState);
     });
@@ -195,6 +203,7 @@ export const gameStateSlice = createSlice({
       state.playerId = action.payload.playerId;
       state.playerName = action.payload.playerName;
       state.gameState = action.payload.gameState;
+      state.raceName = action.payload.raceName as RaceName;
       console.log(`Successfully rejoined game as player ${state.playerId}`);
       console.log("gameState: ", state.gameState);
     });

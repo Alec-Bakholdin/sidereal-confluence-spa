@@ -1,6 +1,9 @@
 import Resources from "./Resources";
 
+export type RaceName = "Caylion" | "Faderan" | "Yengii" | "Kjasjavikalimm";
+
 export interface Race {
+  name: RaceName;
   colonySupport: number;
   tiebreaker: number;
 
@@ -10,6 +13,7 @@ export interface Race {
 }
 
 export const emptyRace: () => Race = () => ({
+  name: "Caylion",
   colonySupport: 0,
   tiebreaker: 0,
 

@@ -20,7 +20,7 @@ import Resources from "../../assets/types/Resources";
 
 export const Game = function (): ReactElement {
   const dispatch = useAppDispatch();
-  const { playerId, playerName, isFresh, gameState } = useAppSelector(
+  const { playerId, playerName, raceName, isFresh, gameState } = useAppSelector(
     (state) => state.gameState
   );
   const economyActions = useAppSelector(selectEconomyActions);
@@ -30,10 +30,12 @@ export const Game = function (): ReactElement {
   // rejoin game if cookies are set and game has not been fetched yet
   useEffect(() => {
     if (!isFresh && playerId && playerName) {
-      dispatch(rejoinGame({ playerId, playerName }));
+      dispatch(
+        rejoinGame({ playerId, playerName, raceName: raceName ?? "Caylion" })
+      );
     }
     dispatch(fetchCards());
-  }, [dispatch, isFresh, playerId, playerName]);
+  }, [dispatch, isFresh, playerId, playerName, raceName]);
   useEffect(() => {
     stompClient?.publish({
       destination: APP_UPDATE_ECONOMY_ACTIONS,
@@ -45,7 +47,10 @@ export const Game = function (): ReactElement {
   }, [playerId, stompClient, economyActions]);
   const addRandomPlayer = () => {
     dispatch(
-      joinGame({ playerName: `Player ${Math.floor(Math.random() * 1000)}` })
+      joinGame({
+        raceName: "Caylion",
+        playerName: `Player ${Math.floor(Math.random() * 1000)}`,
+      })
     );
   };
   const startGame = () => {
@@ -81,7 +86,7 @@ export const Game = function (): ReactElement {
 
   return (
     <Box sx={{ height: "100vh" }} overflow={"clip"}>
-      <Stack height={"100%"}>
+      <Stack height={"100%"} key={"game-overview"}>
         <Players />
         <Box width={"100%"} height={100} border={"1px solid white"}>
           <Typography variant={"h4"} textAlign={"center"}>
@@ -97,9 +102,11 @@ export const Game = function (): ReactElement {
         className={"self-player-summary"}
         bgcolor={"background.default"}
         spacing={2}
+        key={"self-player-summary"}
       >
         <Stack
           className={"self-player-resources"}
+          key={"self-player-resources"}
           direction={"row"}
           onClick={openResourceModal(player?.resources, false)}
         >
@@ -108,6 +115,7 @@ export const Game = function (): ReactElement {
         </Stack>
         <Stack
           className={"self-player-resources"}
+          key={"self-player-donations"}
           direction={"row"}
           onClick={openResourceModal(player?.donations, true)}
         >
