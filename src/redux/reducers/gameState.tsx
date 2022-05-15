@@ -9,6 +9,7 @@ import {
   RemoveActiveCardServerMessage,
   TransferCardServerMessage,
   UpdateGameStateServerMessage,
+  UpdatePlayerReadyStatusServerMessage,
   UpdatePlayerResourcesServerMessage,
 } from "assets/types/SocketTopics";
 import { RaceName } from "../../assets/types/Race";
@@ -130,6 +131,19 @@ export const gameStateSlice = createSlice({
         }
       }
     },
+    updatePlayerReady: (
+      state,
+      action: PayloadAction<UpdatePlayerReadyStatusServerMessage>
+    ) => {
+      if (
+        !action.payload ||
+        !state.gameState.players[action.payload.playerId]
+      ) {
+        return;
+      }
+      const { playerId, ready } = action.payload;
+      state.gameState.players[playerId].ready = ready;
+    },
     transferCard: (state, action: PayloadAction<TransferCardServerMessage>) => {
       if (action.payload) {
         const { currentOwnerPlayerId, newOwnerPlayerId, cardId } =
@@ -217,6 +231,9 @@ export const gameStateSlice = createSlice({
 });
 
 export const selectGameState = (state: RootState) => state.gameState.gameState;
+export const selectPlayer = (state: RootState) =>
+  state.gameState.gameState.players[state.gameState.playerId ?? ""] ??
+  ({} as Player);
 export const selectPlayerById = (playerId?: string) => (state: RootState) =>
   state.gameState.gameState.players[playerId ?? ""] ?? {};
 export const selectPlayerName = (state: RootState) =>
@@ -234,6 +251,7 @@ export const {
   removeActiveCard,
   updateGameState,
   updateGameStateWholesale,
+  updatePlayerReady,
 } = gameStateSlice.actions;
 
 export default gameStateSlice.reducer;

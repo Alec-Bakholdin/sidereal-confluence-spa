@@ -9,6 +9,7 @@ import PlayerResources from "../PlayerResources/PlayerResources";
 import { CardType } from "assets/types/Cards";
 import { selectCards } from "redux/reducers/cards";
 import { openPlayerDetailsModal } from "../../../redux/reducers/modals";
+import { Check } from "@mui/icons-material";
 
 export function PlayerPreview({ player }: { player: Player }): ReactElement {
   const dispatch = useAppDispatch();
@@ -27,7 +28,9 @@ export function PlayerPreview({ player }: { player: Player }): ReactElement {
 
   return (
     <Box className={"player-preview"} key={playerId} onClick={handleClick}>
-      <Typography variant={"h5"}>{player.name}</Typography>
+      <Typography variant={"h5"}>
+        {player.name} {player.ready && <Check color={"success"} />}
+      </Typography>
       <Typography variant={"h6"} color={"secondary"}>
         {player.race.name}
       </Typography>

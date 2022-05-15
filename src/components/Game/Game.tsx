@@ -1,4 +1,4 @@
-import { ReactElement, useEffect } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "redux/hooks";
 import { joinGame, rejoinGame } from "redux/reducers/gameState";
@@ -8,12 +8,16 @@ import Players from "./Players/Players";
 import { fetchCards } from "redux/reducers/cards";
 import CurrentPlayerInfo from "./CurrentPlayerInfo/CurrentPlayerInfo";
 import { openUpdateResourcesModal } from "redux/reducers/modals";
-import { useStompClient } from "react-stomp-hooks";
+import { useStompClient, useSubscription } from "react-stomp-hooks";
 import {
   APP_NEXT_PHASE,
+  APP_UPDATE_READY_STATUS,
   APP_START_GAME,
   APP_UPDATE_ECONOMY_ACTIONS,
+  TOPIC_UPDATE_READY_STATUS,
   UpdateEconomyActionsClientMessage,
+  UpdatePlayerReadyStatusServerMessage,
+  UpdatePlayerReadyStatusClientMessage,
 } from "assets/types/SocketTopics";
 import { selectEconomyActions } from "redux/reducers/economy";
 import Resources from "../../assets/types/Resources";
@@ -24,6 +28,7 @@ export const Game = function (): ReactElement {
     (state) => state.gameState
   );
   const economyActions = useAppSelector(selectEconomyActions);
+  const [ready, setReady] = useState<boolean>(false);
   const player = gameState.players[playerId ?? ""];
   const stompClient = useStompClient();
 
@@ -45,6 +50,15 @@ export const Game = function (): ReactElement {
       } as UpdateEconomyActionsClientMessage),
     });
   }, [playerId, stompClient, economyActions]);
+  useSubscription(TOPIC_UPDATE_READY_STATUS, (message) => {
+    const msg = JSON.parse(
+      message.body
+    ) as UpdatePlayerReadyStatusServerMessage;
+    if (msg.playerId === playerId) {
+      setReady(msg.ready);
+    }
+  });
+
   const addRandomPlayer = () => {
     dispatch(
       joinGame({
@@ -58,6 +72,17 @@ export const Game = function (): ReactElement {
       stompClient.publish({
         destination: APP_START_GAME,
         body: "",
+      });
+    }
+  };
+  const updateReadyState = () => {
+    if (stompClient) {
+      stompClient.publish({
+        destination: APP_UPDATE_READY_STATUS,
+        body: JSON.stringify({
+          playerId,
+          ready: !ready,
+        } as UpdatePlayerReadyStatusClientMessage),
       });
     }
   };
@@ -135,9 +160,19 @@ export const Game = function (): ReactElement {
           </>
         )}
         {gameState.gameStarted && !gameState.gameOver && (
-          <Button onClick={nextPhase} variant={"outlined"}>
-            Next Phase
-          </Button>
+          <>
+            <Button
+              key={"ready-button"}
+              onClick={updateReadyState}
+              variant={"outlined"}
+              color={ready ? "success" : "error"}
+            >
+              {!ready && "NOT "}READY
+            </Button>
+            <Button key={"next phase"} onClick={nextPhase} variant={"outlined"}>
+              Next Phase
+            </Button>
+          </>
         )}
       </Stack>
     </Box>

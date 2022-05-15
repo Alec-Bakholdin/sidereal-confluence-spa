@@ -104,6 +104,18 @@ export type AcquireConfluenceCardClientMessage = {
   cardId: string;
 };
 
+export const APP_UPDATE_READY_STATUS = "/app/updatePlayerReadyStatus";
+export type UpdatePlayerReadyStatusClientMessage = {
+  playerId: string;
+  ready: boolean;
+};
+
+export const TOPIC_UPDATE_READY_STATUS = "/topic/updateReadyStatus";
+export type UpdatePlayerReadyStatusServerMessage = {
+  playerId: string;
+  ready: boolean;
+};
+
 export const TOPIC_UPDATE_GAME_STATE_WHOLESALE =
   "/topic/updateGameStateWholesale";
 export const TOPIC_UPDATE_ALL_CARDS = "/topic/updateAllCards";

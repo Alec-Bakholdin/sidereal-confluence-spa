@@ -9,6 +9,7 @@ import {
   transferCard,
   acquireCard,
   removeActiveCard,
+  updatePlayerReady,
   updateGameStateWholesale,
 } from "redux/reducers/gameState";
 import {
@@ -24,6 +25,8 @@ import {
   TOPIC_REMOVE_ACTIVE_CARD,
   TOPIC_ERROR,
   TOPIC_UPDATE_CARD,
+  TOPIC_UPDATE_READY_STATUS,
+  UpdatePlayerReadyStatusServerMessage,
   TOPIC_UPDATE_GAME_STATE_WHOLESALE,
   TOPIC_UPDATE_ALL_CARDS,
 } from "assets/types/SocketTopics";
@@ -100,6 +103,14 @@ export function SocketActions(): ReactElement {
     const allCards = JSON.parse(message.body) as { [key: string]: Card };
     console.log("Updating all cards", allCards);
     dispatch(updateAllCards(allCards));
+  });
+
+  useSubscription(TOPIC_UPDATE_READY_STATUS, (message) => {
+    const msg = JSON.parse(
+      message.body
+    ) as UpdatePlayerReadyStatusServerMessage;
+    console.log("Updating player ready status: ", msg);
+    dispatch(updatePlayerReady(msg));
   });
 
   return <></>;
