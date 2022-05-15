@@ -40,6 +40,9 @@ const cardsSlice = createSlice({
         state.cards[id] = action.payload as ConverterCard;
       }
     },
+    updateAllCards: (state, action: PayloadAction<{ [id: string]: Card }>) => {
+      state.cards = action.payload;
+    },
   },
   extraReducers: (builder) =>
     builder.addCase(fetchCards.fulfilled, (state, action) => {
@@ -50,5 +53,5 @@ const cardsSlice = createSlice({
 export const selectCards = (state: RootState) => state.cards.cards;
 export const selectCard = (id: string) => (state: RootState) =>
   state.cards.cards[id];
-export const { updateCard } = cardsSlice.actions;
+export const { updateCard, updateAllCards } = cardsSlice.actions;
 export default cardsSlice.reducer;

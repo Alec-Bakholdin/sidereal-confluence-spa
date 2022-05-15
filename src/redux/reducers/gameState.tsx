@@ -49,8 +49,8 @@ const initialState: GameStateState = {
   gameState: {
     turn: 1,
     phase: "Trade",
-    isGameOver: false,
-    isGameStarted: false,
+    gameOver: false,
+    gameStarted: false,
 
     confluenceList: [],
 
@@ -183,6 +183,9 @@ export const gameStateSlice = createSlice({
         state.gameState = { ...state.gameState, ...action.payload };
       }
     },
+    updateGameStateWholesale: (state, action: PayloadAction<GameState>) => {
+      state.gameState = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(joinGame.fulfilled, (state, action) => {
@@ -230,6 +233,7 @@ export const {
   acquireCard,
   removeActiveCard,
   updateGameState,
+  updateGameStateWholesale,
 } = gameStateSlice.actions;
 
 export default gameStateSlice.reducer;

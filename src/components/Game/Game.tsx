@@ -124,7 +124,7 @@ export const Game = function (): ReactElement {
             <PlayerResources resources={player?.donations} donations />
           )}
         </Stack>
-        {(!gameState.isGameStarted || gameState.isGameOver) && (
+        {(!gameState.gameStarted || gameState.gameOver) && (
           <>
             <Button onClick={addRandomPlayer} variant={"outlined"}>
               Add Player
@@ -134,7 +134,7 @@ export const Game = function (): ReactElement {
             </Button>
           </>
         )}
-        {gameState.isGameStarted && !gameState.isGameOver && (
+        {gameState.gameStarted && !gameState.gameOver && (
           <Button onClick={nextPhase} variant={"outlined"}>
             Next Phase
           </Button>
