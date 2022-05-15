@@ -29,11 +29,14 @@ import {
   UpdatePlayerReadyStatusServerMessage,
   TOPIC_UPDATE_GAME_STATE_WHOLESALE,
   TOPIC_UPDATE_ALL_CARDS,
+  TOPIC_REVEAL_BIDS,
+  RevealBidsServerMessage,
 } from "assets/types/SocketTopics";
 import { addError } from "../redux/reducers/errors";
 import { Card } from "../assets/types/Cards";
 import { updateAllCards, updateCard } from "../redux/reducers/cards";
 import GameState from "../assets/types/GameState";
+import { setBids } from "../redux/reducers/bidding";
 
 export function SocketActions(): ReactElement {
   const dispatch = useAppDispatch();
@@ -111,6 +114,12 @@ export function SocketActions(): ReactElement {
     ) as UpdatePlayerReadyStatusServerMessage;
     console.log("Updating player ready status: ", msg);
     dispatch(updatePlayerReady(msg));
+  });
+
+  useSubscription(TOPIC_REVEAL_BIDS, (message) => {
+    const msg = JSON.parse(message.body) as RevealBidsServerMessage;
+    console.log("Revealing bids: ", msg);
+    dispatch(setBids(msg));
   });
 
   return <></>;

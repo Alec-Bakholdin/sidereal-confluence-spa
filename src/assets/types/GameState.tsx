@@ -18,6 +18,8 @@ export interface GameState {
 
   pendingResearches: string[];
 
+  activeBidder?: string;
+  activeBidTrack?: "Colony" | "ResearchTeam";
   players: { [id: string]: Player };
 }
 

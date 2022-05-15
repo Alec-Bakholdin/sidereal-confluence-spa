@@ -8,7 +8,7 @@ import "./PlayerPreview.scss";
 import PlayerResources from "../PlayerResources/PlayerResources";
 import { CardType } from "assets/types/Cards";
 import { selectCards } from "redux/reducers/cards";
-import { openPlayerDetailsModal } from "../../../redux/reducers/modals";
+import { openPlayerDetailsModal } from "redux/reducers/modals";
 import { Check } from "@mui/icons-material";
 
 export function PlayerPreview({ player }: { player: Player }): ReactElement {

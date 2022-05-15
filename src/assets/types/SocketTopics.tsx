@@ -2,6 +2,7 @@ import Player from "./Player";
 import Resources from "./Resources";
 import GamePhase from "./GamePhase";
 import ConfluenceCard from "./ConfluenceCard";
+import { PlayerBid } from "./PlayerBid";
 
 export const TOPIC_PLAYER_JOINED_GAME = "/topic/joinedGame";
 export type PlayerJoinedGameServerMessage = Player;
@@ -34,8 +35,11 @@ export type UpdateGameStateServerMessage = {
 
   availableColonies?: string[];
   availableResearchTeams?: string[];
+
   colonyBidTrack?: number[];
   researchTeamBidTrack?: number[];
+
+  activeBidder?: string;
 };
 
 export const APP_TRANSFER_CARD = "/app/transferCard";
@@ -119,3 +123,15 @@ export type UpdatePlayerReadyStatusServerMessage = {
 export const TOPIC_UPDATE_GAME_STATE_WHOLESALE =
   "/topic/updateGameStateWholesale";
 export const TOPIC_UPDATE_ALL_CARDS = "/topic/updateAllCards";
+
+export const APP_SET_PLAYER_BIDS = "/app/setBids";
+export type SetPlayerBidsClientMessage = {
+  playerId: string;
+  colonyBid: number;
+  researchTeamBid: number;
+};
+
+export const TOPIC_REVEAL_BIDS = "/topic/revealBids";
+export type RevealBidsServerMessage = PlayerBid[];
+
+export const APP_SKIP_BID = "/app/skipBid";

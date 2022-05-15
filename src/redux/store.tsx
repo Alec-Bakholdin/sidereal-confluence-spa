@@ -4,6 +4,7 @@ import cardsReducer from "./reducers/cards";
 import modalsReducer from "./reducers/modals";
 import errorsReducer from "./reducers/errors";
 import economyReducer from "./reducers/economy";
+import biddingReducer from "./reducers/bidding";
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     modals: modalsReducer,
     errors: errorsReducer,
     economy: economyReducer,
+    bidding: biddingReducer,
   },
 });
 

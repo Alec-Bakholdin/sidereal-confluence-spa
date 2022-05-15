@@ -8,24 +8,40 @@ import ConverterCardElement from "../ConverterCardElement/ConverterCardElement";
 import ColonyElement from "../ColonyElement/ColonyElement";
 import "./CardList.scss";
 import ResearchTeamElement from "../ResearchTeamElement/ResearchTeamElement";
-import { selectGameState } from "../../../../redux/reducers/gameState";
+import {
+  selectGameState,
+  selectPlayerId,
+} from "../../../../redux/reducers/gameState";
 import CardBase from "../CardBase";
 
 export function CardList({
   ids,
   currentPlayerCards,
   shipMinima,
+  colonyBidTrack,
+  researchTeamBidTrack,
 }: {
   ids: string[];
   currentPlayerCards?: boolean;
   shipMinima?: number[];
+  colonyBidTrack?: boolean;
+  researchTeamBidTrack?: boolean;
 }): ReactElement {
   const cards = useAppSelector(selectCards);
-  const { phase } = useAppSelector(selectGameState);
+  const { activeBidTrack, activeBidder } = useAppSelector(selectGameState);
+  const playerId = useAppSelector(selectPlayerId);
   const dispatch = useAppDispatch();
+  const isInteractive =
+    currentPlayerCards ||
+    (colonyBidTrack &&
+      activeBidTrack === "Colony" &&
+      activeBidder === playerId) ||
+    (researchTeamBidTrack &&
+      activeBidTrack === "ResearchTeam" &&
+      activeBidder === playerId);
 
   const handleClick = (e: MouseEvent<HTMLDivElement>, id: string) => {
-    if (currentPlayerCards || (shipMinima && phase === "Confluence")) {
+    if (isInteractive) {
       e.stopPropagation();
       dispatch(openCardActionsModal(id));
     }
@@ -51,10 +67,7 @@ export function CardList({
       <Grid container direction={"row"}>
         {ids.map((id, i) => (
           <Grid
-            className={`card-list-card ${
-              (currentPlayerCards || (shipMinima && phase === "Confluence")) &&
-              "interactive-card"
-            }`}
+            className={`card-list-card ${isInteractive && "interactive-card"}`}
             item
             key={i}
             onClick={(e) => handleClick(e, id)}
