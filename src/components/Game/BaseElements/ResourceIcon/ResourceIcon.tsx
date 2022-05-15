@@ -7,11 +7,13 @@ import "./ResourceIcon.scss";
 export function ResourceIcon({
   type,
   qty,
+  donation,
   size = 25,
 }: {
   type: ResourceType;
   qty?: number;
   size?: number;
+  donation?: boolean;
 }): ReactElement {
   const color = type === "white" || type === "yellow" ? "black" : "white";
 
@@ -19,7 +21,9 @@ export function ResourceIcon({
     <Box
       height={size}
       width={size}
-      className={"resource-icon-root"}
+      className={
+        "resource-icon-root" + (donation ? " donation-resource-icon" : "")
+      }
       overflow={"hidden"}
     >
       <Icon

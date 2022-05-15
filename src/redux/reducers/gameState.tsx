@@ -3,14 +3,14 @@ import { RootState } from "../store";
 import GameState from "assets/types/GameState";
 import api from "api";
 import { ErrorResponse, transformApiError } from "./errors";
-import Player from "../../assets/types/Player";
-import Resources from "../../assets/types/Resources";
+import Player from "assets/types/Player";
 import {
   AcquireCardServerMessage,
   RemoveActiveCardServerMessage,
   TransferCardServerMessage,
   UpdateGameStateServerMessage,
-} from "../../assets/types/SocketTopics";
+  UpdatePlayerResourcesServerMessage,
+} from "assets/types/SocketTopics";
 
 export interface JoinGamePayload {
   playerName: string;
@@ -113,12 +113,13 @@ export const gameStateSlice = createSlice({
     },
     updatePlayerResources: (
       state,
-      action: PayloadAction<{ playerId: string; resources: Resources }>
+      action: PayloadAction<UpdatePlayerResourcesServerMessage>
     ) => {
       if (action.payload) {
-        const { playerId, resources } = action.payload;
+        const { playerId, resources, donations } = action.payload;
         if (state.gameState.players[playerId]) {
           state.gameState.players[playerId].resources = resources;
+          state.gameState.players[playerId].donations = donations;
         }
       }
     },

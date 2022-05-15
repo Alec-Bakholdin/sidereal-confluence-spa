@@ -81,13 +81,36 @@ export const Game = function (): ReactElement {
         </Box>
         <CurrentPlayerInfo />
       </Stack>
-      <Box className={"self-player-resources"} bgcolor={"background.default"}>
+      <Stack
+        direction={"row"}
+        className={"self-player-resources"}
+        bgcolor={"background.default"}
+        spacing={2}
+      >
         <Typography
           variant={"h6"}
-          onClick={() => dispatch(openUpdateResourcesModal())}
+          onClick={() =>
+            dispatch(openUpdateResourcesModal({ resources: player.resources }))
+          }
         >
           Resources
           {player && <PlayerResources resources={player?.resources} />}
+        </Typography>
+        <Typography
+          variant={"h6"}
+          onClick={() =>
+            dispatch(
+              openUpdateResourcesModal({
+                resources: player.donations,
+                isDonation: true,
+              })
+            )
+          }
+        >
+          Donations
+          {player && (
+            <PlayerResources resources={player?.donations} donations />
+          )}
         </Typography>
         {(!gameState.isGameStarted || gameState.isGameOver) && (
           <>
@@ -104,7 +127,7 @@ export const Game = function (): ReactElement {
             Next Phase
           </Button>
         )}
-      </Box>
+      </Stack>
     </Box>
   );
 };

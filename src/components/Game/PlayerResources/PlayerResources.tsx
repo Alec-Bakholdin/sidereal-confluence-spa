@@ -5,31 +5,33 @@ import { Box } from "@mui/material";
 
 export function PlayerResources({
   resources,
+  donations,
 }: {
   resources?: Resources;
+  donations?: boolean;
 }): ReactElement {
   if (!resources) {
     return <></>;
   }
   return (
     <Box width={"100%"}>
-      <ResourceIcon type={"white"} />
+      <ResourceIcon donation={donations} type={"white"} />
       {resources.white ?? 0}
-      <ResourceIcon type={"brown"} />
+      <ResourceIcon donation={donations} type={"brown"} />
       {resources.brown ?? 0}
-      <ResourceIcon type={"green"} />
+      <ResourceIcon donation={donations} type={"green"} />
       {resources.green ?? 0}
-      <ResourceIcon type={"black"} />
+      <ResourceIcon donation={donations} type={"black"} />
       {resources.black ?? 0}
-      <ResourceIcon type={"blue"} />
+      <ResourceIcon donation={donations} type={"blue"} />
       {resources.blue ?? 0}
-      <ResourceIcon type={"yellow"} />
+      <ResourceIcon donation={donations} type={"yellow"} />
       {resources.yellow ?? 0}
-      <ResourceIcon type={"octagon"} />
+      <ResourceIcon donation={donations} type={"octagon"} />
       {resources.octagon ?? 0}
-      <ResourceIcon type={"points"} />
+      <ResourceIcon donation={donations} type={"points"} />
       {resources.points ?? 0}
-      <ResourceIcon type={"ships"} />
+      <ResourceIcon donation={donations} type={"ships"} />
       {resources.ships ?? 0}
     </Box>
   );

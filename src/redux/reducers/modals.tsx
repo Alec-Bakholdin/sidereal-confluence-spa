@@ -1,16 +1,26 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import Resources from "../../assets/types/Resources";
+import { RootState } from "../store";
 
 interface modalsState {
   joinGameModal: boolean;
   playerDetailsModal: { playerId: string; show: boolean };
-  updateResourcesModal: boolean;
+  updateResourcesModal: {
+    resources: Resources;
+    isDonation: boolean;
+    show: boolean;
+  };
   cardActionsModal: { cardId: string; show: boolean };
 }
 
 const initialState: modalsState = {
   joinGameModal: false,
   playerDetailsModal: { playerId: "", show: false },
-  updateResourcesModal: false,
+  updateResourcesModal: {
+    resources: {},
+    isDonation: false,
+    show: false,
+  },
   cardActionsModal: { cardId: "", show: false },
 };
 
@@ -31,11 +41,22 @@ export const modalsSlice = createSlice({
     closePlayerDetailsModal: (state) => {
       state.playerDetailsModal.show = false;
     },
-    openUpdateResourcesModal: (state) => {
-      state.updateResourcesModal = true;
+    openUpdateResourcesModal: (
+      state,
+      action: PayloadAction<{ resources: Resources; isDonation?: boolean }>
+    ) => {
+      if (!action.payload) {
+        return;
+      }
+      state.updateResourcesModal = {
+        resources: action.payload.resources,
+        isDonation: action.payload.isDonation ?? false,
+        show: true,
+      };
     },
     closeUpdateResourcesModal: (state) => {
-      state.updateResourcesModal = false;
+      state.updateResourcesModal.show = false;
+      state.updateResourcesModal.resources = {};
     },
     openCardActionsModal: (state, action: PayloadAction<string>) => {
       state.cardActionsModal.cardId = action.payload;
@@ -57,11 +78,12 @@ export const {
   openCardActionsModal,
   closeCardActionsModal,
 } = modalsSlice.actions;
-export const selectJoinGameModal = (state: any) => state.modals.joinGameModal;
-export const selectPlayerDetailsModal = (state: any) =>
+export const selectJoinGameModal = (state: RootState) =>
+  state.modals.joinGameModal;
+export const selectPlayerDetailsModal = (state: RootState) =>
   state.modals.playerDetailsModal;
-export const selectUpdateResourcesModal = (state: any) =>
+export const selectUpdateResourcesModal = (state: RootState) =>
   state.modals.updateResourcesModal;
-export const selectCardActionsModal = (state: any) =>
+export const selectCardActionsModal = (state: RootState) =>
   state.modals.cardActionsModal;
 export default modalsSlice.reducer;

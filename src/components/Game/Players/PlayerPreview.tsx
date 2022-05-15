@@ -32,6 +32,7 @@ export function PlayerPreview({ player }: { player: Player }): ReactElement {
       }`}</Typography>
       <div className={"player-preview-resources"}>
         <PlayerResources resources={player.resources} />
+        <PlayerResources resources={player.donations} donations />
         <div>{`Research Teams: ${numCardsOfType("ResearchTeam")}`}</div>
         <div>{`Converter Cards: ${numCardsOfType("ConverterCard")}`}</div>
         <div>{`Colony: ${numCardsOfType("Colony")}`}</div>

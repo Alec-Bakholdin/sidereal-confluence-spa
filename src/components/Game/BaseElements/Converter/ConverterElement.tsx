@@ -52,6 +52,7 @@ export function ConverterElement({
             acquisition={acquisition}
             includeSlashes={includeSlashes}
           />
+          <ResourcesElement resources={converter.donations ?? {}} donation />
         </Box>
       </Grid>
     </Box>

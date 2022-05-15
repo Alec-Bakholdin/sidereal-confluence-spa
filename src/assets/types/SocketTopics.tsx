@@ -10,12 +10,14 @@ export const TOPIC_PLAYER_UPDATED_RESOURCES = "/topic/updateResources";
 export type UpdatePlayerResourcesServerMessage = {
   playerId: string;
   resources: Resources;
+  donations: Resources;
 };
 
 export const APP_UPDATE_PLAYER_RESOURCES = "/app/updateResources";
 export type UpdatePlayerResourcesClientMessage = {
   playerId: string;
   resources: Resources;
+  donations: boolean;
 };
 
 export const APP_START_GAME = "/app/startGame";

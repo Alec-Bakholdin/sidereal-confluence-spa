@@ -8,21 +8,28 @@ import {
 import Resources, { ResourceType } from "assets/types/Resources";
 import UpdateResourceField from "./UpdateResourceField";
 import { useStompClient } from "react-stomp-hooks";
-import { APP_UPDATE_PLAYER_RESOURCES } from "assets/types/SocketTopics";
+import {
+  APP_UPDATE_PLAYER_RESOURCES,
+  UpdatePlayerResourcesClientMessage,
+} from "assets/types/SocketTopics";
 import { addError } from "redux/reducers/errors";
 
 export function UpdateResourcesModal(): ReactElement {
   const dispatch = useAppDispatch();
   const stompClient = useStompClient();
-  const open = useAppSelector(selectUpdateResourcesModal);
-  const { gameState, playerId } = useAppSelector((state) => state.gameState);
-  const [resources, setResources] = useState<Resources>({});
+  const { show, resources, isDonation } = useAppSelector(
+    selectUpdateResourcesModal
+  );
+  const { playerId } = useAppSelector((state) => state.gameState);
+  const [updatedResources, setUpdatedResources] =
+    useState<Resources>(resources);
 
   useEffect(() => {
-    if (gameState.players[playerId ?? ""]) {
-      setResources(gameState.players[playerId ?? ""].resources);
+    if (show) {
+      setUpdatedResources(resources);
     }
-  }, [gameState.players, playerId]);
+  }, [show, resources]);
+
   const handleClose = () => {
     dispatch(closeUpdateResourcesModal());
   };
@@ -32,8 +39,9 @@ export function UpdateResourcesModal(): ReactElement {
         destination: APP_UPDATE_PLAYER_RESOURCES,
         body: JSON.stringify({
           playerId,
-          resources,
-        }),
+          resources: updatedResources,
+          donations: isDonation,
+        } as UpdatePlayerResourcesClientMessage),
       });
     } else {
       dispatch(addError("Stomp client not connected"));
@@ -53,10 +61,10 @@ export function UpdateResourcesModal(): ReactElement {
   ];
 
   return (
-    <Modal open={open} onClose={handleClose}>
+    <Modal open={show} onClose={handleClose}>
       <Box className={"modal"} height={"60%"} bgcolor={"background.default"}>
         <Typography variant={"h4"} textAlign={"center"}>
-          Update Resources
+          Update Resources {isDonation ? " (Donation)" : ""}
         </Typography>
         <Box height={"75%"} overflow={"auto"}>
           <Stack marginTop={"20px"} className={"center-box"} spacing={2}>
@@ -64,9 +72,9 @@ export function UpdateResourcesModal(): ReactElement {
               <UpdateResourceField
                 key={`resources-field-${i}`}
                 type={type}
-                value={(resources as { [t: string]: number })[type]}
+                value={(updatedResources as { [t: string]: number })[type] ?? 0}
                 onChange={(value) =>
-                  setResources({ ...resources, [type]: value })
+                  setUpdatedResources({ ...updatedResources, [type]: value })
                 }
                 onSubmit={handleSubmit}
               />
