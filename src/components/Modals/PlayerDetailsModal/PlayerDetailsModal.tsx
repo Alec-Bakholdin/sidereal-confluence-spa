@@ -32,6 +32,7 @@ export function PlayerDetailsModal(): ReactElement {
           >
             <Typography variant={"h4"}>{player.name}</Typography>
             <PlayerResources resources={player.resources} />
+            <PlayerResources resources={player.donations} donations />
             <CardList ids={player.cards} />
           </Box>
         )}

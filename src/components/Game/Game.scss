@@ -1,20 +1,17 @@
-.self-player-resources {
+.self-player-summary {
   position: absolute;
   bottom: 0;
   border: 1px solid white;
   padding: 10px;
   max-height: 10%;
   cursor: pointer;
-  * {
-    display: inline;
-  }
   button {
     margin-left: 15px;
   }
+}
 
-  h6{
+.self-player-resources {
     &:hover {
       background-color: #6d74a4;
     }
-  }
 }

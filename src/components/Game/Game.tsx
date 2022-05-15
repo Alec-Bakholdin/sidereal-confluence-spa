@@ -16,6 +16,7 @@ import {
   UpdateEconomyActionsClientMessage,
 } from "assets/types/SocketTopics";
 import { selectEconomyActions } from "redux/reducers/economy";
+import Resources from "../../assets/types/Resources";
 
 export const Game = function (): ReactElement {
   const dispatch = useAppDispatch();
@@ -63,6 +64,16 @@ export const Game = function (): ReactElement {
       });
     }
   };
+  const openResourceModal =
+    (resources: Resources, isDonation: boolean) => () => {
+      dispatch(
+        openUpdateResourcesModal({
+          resources,
+          isDonation,
+        })
+      );
+    };
+
   const confluenceCard =
     gameState.confluenceList[
       gameState.turn > 0 ? gameState.turn - 1 : gameState.turn
@@ -83,35 +94,28 @@ export const Game = function (): ReactElement {
       </Stack>
       <Stack
         direction={"row"}
-        className={"self-player-resources"}
+        className={"self-player-summary"}
         bgcolor={"background.default"}
         spacing={2}
       >
-        <Typography
-          variant={"h6"}
-          onClick={() =>
-            dispatch(openUpdateResourcesModal({ resources: player.resources }))
-          }
+        <Stack
+          className={"self-player-resources"}
+          direction={"row"}
+          onClick={openResourceModal(player?.resources, false)}
         >
-          Resources
+          <Typography variant={"h6"}>Resources</Typography>
           {player && <PlayerResources resources={player?.resources} />}
-        </Typography>
-        <Typography
-          variant={"h6"}
-          onClick={() =>
-            dispatch(
-              openUpdateResourcesModal({
-                resources: player.donations,
-                isDonation: true,
-              })
-            )
-          }
+        </Stack>
+        <Stack
+          className={"self-player-resources"}
+          direction={"row"}
+          onClick={openResourceModal(player?.donations, true)}
         >
-          Donations
+          <Typography variant={"h6"}>Donations</Typography>
           {player && (
             <PlayerResources resources={player?.donations} donations />
           )}
-        </Typography>
+        </Stack>
         {(!gameState.isGameStarted || gameState.isGameOver) && (
           <>
             <Button onClick={addRandomPlayer} variant={"outlined"}>
