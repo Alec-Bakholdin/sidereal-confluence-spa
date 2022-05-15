@@ -5,8 +5,8 @@ import { ConfluenceCard } from "./ConfluenceCard";
 export interface GameState {
   turn: number;
   phase: GamePhase;
-  isGameStarted: boolean;
-  isGameOver: boolean;
+  gameStarted: boolean;
+  gameOver: boolean;
 
   confluenceList: ConfluenceCard[];
 

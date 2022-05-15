@@ -9,6 +9,7 @@ import {
   transferCard,
   acquireCard,
   removeActiveCard,
+  updateGameStateWholesale,
 } from "redux/reducers/gameState";
 import {
   TOPIC_PLAYER_JOINED_GAME,
@@ -23,10 +24,13 @@ import {
   TOPIC_REMOVE_ACTIVE_CARD,
   TOPIC_ERROR,
   TOPIC_UPDATE_CARD,
+  TOPIC_UPDATE_GAME_STATE_WHOLESALE,
+  TOPIC_UPDATE_ALL_CARDS,
 } from "assets/types/SocketTopics";
 import { addError } from "../redux/reducers/errors";
 import { Card } from "../assets/types/Cards";
-import { updateCard } from "../redux/reducers/cards";
+import { updateAllCards, updateCard } from "../redux/reducers/cards";
+import GameState from "../assets/types/GameState";
 
 export function SocketActions(): ReactElement {
   const dispatch = useAppDispatch();
@@ -84,6 +88,18 @@ export function SocketActions(): ReactElement {
     const card = JSON.parse(message.body) as Card;
     console.log("Updating card: ", card);
     dispatch(updateCard(card));
+  });
+
+  useSubscription(TOPIC_UPDATE_GAME_STATE_WHOLESALE, (message) => {
+    const gameState = JSON.parse(message.body) as GameState;
+    console.log("Updating game state wholesale: ", gameState);
+    dispatch(updateGameStateWholesale(gameState));
+  });
+
+  useSubscription(TOPIC_UPDATE_ALL_CARDS, (message) => {
+    const allCards = JSON.parse(message.body) as { [key: string]: Card };
+    console.log("Updating all cards", allCards);
+    dispatch(updateAllCards(allCards));
   });
 
   return <></>;

@@ -103,3 +103,7 @@ export type AcquireConfluenceCardClientMessage = {
   playerId: string;
   cardId: string;
 };
+
+export const TOPIC_UPDATE_GAME_STATE_WHOLESALE =
+  "/topic/updateGameStateWholesale";
+export const TOPIC_UPDATE_ALL_CARDS = "/topic/updateAllCards";
