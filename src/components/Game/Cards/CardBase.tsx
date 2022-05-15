@@ -7,16 +7,18 @@ export function CardBase({
   title,
   era,
   children,
+  blank,
 }: {
   title?: string;
   era?: number;
+  blank?: boolean;
   children?: ReactNode;
 }): ReactElement {
   return (
     <Box
       className={"card-base"}
       sx={{
-        backgroundImage: `url(${cardBackground})`,
+        backgroundImage: blank ? "" : `url(${cardBackground})`,
       }}
     >
       {title && (

@@ -14,7 +14,7 @@ export function CurrentPlayerInfo(): ReactElement {
   return (
     <Grid container direction={"row"}>
       <Grid item xs={6} border={"1px solid white"}>
-        <CardList ids={player.cards} currentPlayer />
+        <CardList ids={player.cards} currentPlayerCards />
       </Grid>
       <Grid item xs={6} border={"1px solid white"}>
         <Grid container direction={"row"}>

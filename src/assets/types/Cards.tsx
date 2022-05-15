@@ -13,8 +13,8 @@ export interface Card {
 export type ConverterCard = {
   era: number;
 
-  isUpgraded: boolean;
-  isConsumed: boolean;
+  upgraded: boolean;
+  consumed: boolean;
 
   upgradeTech1?: string;
   upgradeTech2?: string;

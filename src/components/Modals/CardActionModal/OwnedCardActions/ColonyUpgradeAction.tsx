@@ -1,13 +1,13 @@
 import { ReactElement } from "react";
 import { Button, Stack, Typography } from "@mui/material";
-import ConverterElement from "../../Game/BaseElements/Converter/ConverterElement";
-import { Colony } from "../../../assets/types/Cards";
+import ConverterElement from "components/Game/BaseElements/Converter/ConverterElement";
+import { Colony } from "assets/types/Cards";
 import { useStompClient } from "react-stomp-hooks";
 import {
   APP_UPGRADE_COLONY,
   UpgradeColonyClientMessage,
-} from "../../../assets/types/SocketTopics";
-import { useAppSelector } from "../../../redux/hooks";
+} from "assets/types/SocketTopics";
+import { useAppSelector } from "redux/hooks";
 
 export function ColonyUpgradeAction({
   colony,

@@ -204,6 +204,8 @@ export const gameStateSlice = createSlice({
 });
 
 export const selectGameState = (state: RootState) => state.gameState.gameState;
+export const selectPlayerById = (playerId?: string) => (state: RootState) =>
+  state.gameState.gameState.players[playerId ?? ""] ?? {};
 export const selectPlayerName = (state: RootState) =>
   state.gameState.playerName;
 export const selectPlayerId = (state: RootState) => state.gameState.playerId;

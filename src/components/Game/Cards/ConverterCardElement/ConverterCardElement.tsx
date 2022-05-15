@@ -36,9 +36,15 @@ export function ConverterCardElement({
 
   return (
     <>
-      <CardBase title={converterCard.name}>
+      <CardBase
+        title={
+          converterCard.upgraded
+            ? converterCard.upgradedName
+            : converterCard.name
+        }
+      >
         <Stack>
-          {converterCard.isUpgraded
+          {converterCard.upgraded
             ? converterCard.backConverters?.map(converterElementFromObj)
             : converterCard.frontConverters?.map(converterElementFromObj)}
         </Stack>

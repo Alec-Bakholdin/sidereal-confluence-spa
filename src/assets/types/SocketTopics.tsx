@@ -87,4 +87,17 @@ export type UpgradeColonyClientMessage = {
   cardId: string;
 };
 
+export const APP_UPGRADE_CONVERTER_CARD = "/app/upgradeConverterCard";
+export type UpgradeConverterCardClientMessage = {
+  playerId: string;
+  cardId: string;
+  technology: string;
+};
+
 export const TOPIC_UPDATE_CARD = "/topic/updateCard";
+
+export const APP_ACQUIRE_CONFLUENCE_CARD = "/app/acquireConfluenceCard";
+export type AcquireConfluenceCardClientMessage = {
+  playerId: string;
+  cardId: string;
+};
