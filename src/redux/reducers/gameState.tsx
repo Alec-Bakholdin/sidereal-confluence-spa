@@ -7,10 +7,9 @@ import Player from "assets/types/Player";
 import {
   AcquireCardServerMessage,
   RemoveActiveCardServerMessage,
-  TransferCardServerMessage,
   UpdateGameStateServerMessage,
   UpdatePlayerReadyStatusServerMessage,
-  UpdatePlayerResourcesServerMessage,
+  UpdatePlayerServerMessage,
 } from "assets/types/SocketTopics";
 import { RaceName } from "../../assets/types/Race";
 
@@ -119,16 +118,13 @@ export const gameStateSlice = createSlice({
     addPlayer: (state, action: PayloadAction<Player>) => {
       state.gameState.players[action.payload.id] = action.payload;
     },
-    updatePlayerResources: (
-      state,
-      action: PayloadAction<UpdatePlayerResourcesServerMessage>
-    ) => {
-      if (action.payload) {
-        const { playerId, resources, donations } = action.payload;
-        if (state.gameState.players[playerId]) {
-          state.gameState.players[playerId].resources = resources;
-          state.gameState.players[playerId].donations = donations;
-        }
+    updatePlayer: (state, action: PayloadAction<UpdatePlayerServerMessage>) => {
+      if (action.payload && state.gameState.players[action.payload.playerId]) {
+        const player = state.gameState.players[action.payload.playerId];
+        state.gameState.players[action.payload.playerId] = {
+          ...player,
+          ...action.payload,
+        };
       }
     },
     updatePlayerReady: (
@@ -143,20 +139,6 @@ export const gameStateSlice = createSlice({
       }
       const { playerId, ready } = action.payload;
       state.gameState.players[playerId].ready = ready;
-    },
-    transferCard: (state, action: PayloadAction<TransferCardServerMessage>) => {
-      if (action.payload) {
-        const { currentOwnerPlayerId, newOwnerPlayerId, cardId } =
-          action.payload;
-        const currentOwner = state.gameState.players[currentOwnerPlayerId];
-        const newOwner = state.gameState.players[newOwnerPlayerId];
-        if (currentOwner && newOwner && currentOwner.cards.includes(cardId)) {
-          newOwner.cards.push(cardId);
-          currentOwner.cards = currentOwner.cards.filter(
-            (card) => card !== cardId
-          );
-        }
-      }
     },
     acquireCard: (state, action: PayloadAction<AcquireCardServerMessage>) => {
       if (
@@ -245,13 +227,12 @@ export const selectFreshGameState = (state: RootState) =>
 export const {
   setPlayerInformation,
   addPlayer,
-  updatePlayerResources,
-  transferCard,
   acquireCard,
   removeActiveCard,
   updateGameState,
   updateGameStateWholesale,
   updatePlayerReady,
+  updatePlayer,
 } = gameStateSlice.actions;
 
 export default gameStateSlice.reducer;

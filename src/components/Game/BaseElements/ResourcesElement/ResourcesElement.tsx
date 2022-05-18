@@ -34,7 +34,9 @@ export function ResourcesElement({
     .filter((icon) => icon)
     // adds slashes if necessary
     .map((icon, i) =>
-      includeSlashes && i !== 0 ? [<span key={`span-${i}`}>/</span>] : [icon]
+      includeSlashes && i !== 0
+        ? [<span key={`span-${i}`}>/</span>, icon]
+        : [icon]
     )
     .flatMap((icon) => icon);
   return (

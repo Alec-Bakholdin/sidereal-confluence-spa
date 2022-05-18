@@ -8,6 +8,7 @@ export interface Player {
   donations: Resources;
   ready: boolean;
   race: Race;
+  researchedTechnologies: string[];
   cards: string[];
   inactiveCards: string[];
 }
@@ -19,6 +20,7 @@ export const emptyPlayer: () => Player = () => ({
   donations: {},
   ready: false,
   race: emptyRace(),
+  researchedTechnologies: [],
   cards: [],
   inactiveCards: [],
 });

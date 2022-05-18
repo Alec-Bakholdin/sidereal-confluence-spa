@@ -18,7 +18,10 @@ export function ColonyElement({
   const economyActionsLookup = useAppSelector(selectEconomyActionsLookup);
 
   return (
-    <CardBase title={colonyObj.name}>
+    <CardBase
+      title={colonyObj.name}
+      doubledWithCaylion={colonyObj.doubledWithCaylion}
+    >
       <Stack>
         <ConverterElement
           key={"colony-front-converter"}

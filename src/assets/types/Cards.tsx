@@ -40,4 +40,5 @@ export type Colony = {
   upgradeConverter: Converter;
   backConverter: Converter;
   upgraded: boolean;
+  doubledWithCaylion: boolean;
 } & Card;

@@ -5,21 +5,16 @@ import Player from "../assets/types/Player";
 import {
   addPlayer,
   updateGameState,
-  updatePlayerResources,
-  transferCard,
   acquireCard,
   removeActiveCard,
   updatePlayerReady,
   updateGameStateWholesale,
+  updatePlayer,
 } from "redux/reducers/gameState";
 import {
   TOPIC_PLAYER_JOINED_GAME,
-  TOPIC_PLAYER_UPDATED_RESOURCES,
   TOPIC_UPDATE_GAME_STATE,
   UpdateGameStateServerMessage,
-  UpdatePlayerResourcesServerMessage,
-  TOPIC_TRANSFER_CARD,
-  TransferCardServerMessage,
   TOPIC_ACQUIRE_CARD,
   AcquireCardServerMessage,
   TOPIC_REMOVE_ACTIVE_CARD,
@@ -31,6 +26,8 @@ import {
   TOPIC_UPDATE_ALL_CARDS,
   TOPIC_REVEAL_BIDS,
   RevealBidsServerMessage,
+  TOPIC_UPDATE_PLAYER,
+  UpdatePlayerServerMessage,
 } from "assets/types/SocketTopics";
 import { addError } from "../redux/reducers/errors";
 import { Card } from "../assets/types/Cards";
@@ -46,28 +43,12 @@ export function SocketActions(): ReactElement {
     dispatch(addPlayer(player));
   });
 
-  useSubscription(TOPIC_PLAYER_UPDATED_RESOURCES, (message) => {
-    const playerUpdateMsg = JSON.parse(
-      message.body
-    ) as UpdatePlayerResourcesServerMessage;
-    console.log("Updating player resources", playerUpdateMsg);
-    dispatch(updatePlayerResources(playerUpdateMsg));
-  });
-
   useSubscription(TOPIC_UPDATE_GAME_STATE, (message) => {
     const gameStateUpdate = JSON.parse(
       message.body
     ) as UpdateGameStateServerMessage;
     console.log("Updating game state", gameStateUpdate);
     dispatch(updateGameState(gameStateUpdate));
-  });
-
-  useSubscription(TOPIC_TRANSFER_CARD, (message) => {
-    const transferCardMsg = JSON.parse(
-      message.body
-    ) as TransferCardServerMessage;
-    console.log("Transferring card", transferCardMsg);
-    dispatch(transferCard(transferCardMsg));
   });
 
   useSubscription(TOPIC_ACQUIRE_CARD, (message) => {
@@ -120,6 +101,12 @@ export function SocketActions(): ReactElement {
     const msg = JSON.parse(message.body) as RevealBidsServerMessage;
     console.log("Revealing bids: ", msg);
     dispatch(setBids(msg));
+  });
+
+  useSubscription(TOPIC_UPDATE_PLAYER, (message) => {
+    const msg = JSON.parse(message.body) as UpdatePlayerServerMessage;
+    console.log("Updating player: ", msg);
+    dispatch(updatePlayer(msg));
   });
 
   return <></>;

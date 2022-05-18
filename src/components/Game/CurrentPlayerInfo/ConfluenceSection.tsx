@@ -4,10 +4,10 @@ import CardList from "../Cards/CardList/CardList";
 import ConfluenceInformation from "./ConfluenceInformation";
 import { useAppSelector } from "redux/hooks";
 import BiddingSection from "./BiddingSection";
-import { selectBids } from "../../../redux/reducers/bidding";
-import { selectPlayerId } from "../../../redux/reducers/gameState";
+import { selectBids } from "redux/reducers/bidding";
+import { selectPlayerId } from "redux/reducers/gameState";
 import { useStompClient } from "react-stomp-hooks";
-import { APP_SKIP_BID } from "../../../assets/types/SocketTopics";
+import { APP_SKIP_BID } from "assets/types/SocketTopics";
 
 export function ConfluenceSection(): ReactElement {
   const selectionOptions = [
