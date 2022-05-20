@@ -1,8 +1,7 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 import GameState from "assets/types/GameState";
 import api from "api";
-import { ErrorResponse, transformApiError } from "./errors";
 import Player from "assets/types/Player";
 import {
   AcquireCardServerMessage,
@@ -12,6 +11,7 @@ import {
   UpdatePlayerServerMessage,
 } from "assets/types/SocketTopics";
 import { RaceName } from "../../assets/types/Race";
+import { templateAsyncThunk } from "../utils";
 
 export interface JoinGamePayload {
   playerName: string;
@@ -66,45 +66,12 @@ const initialState: GameStateState = {
   },
 };
 
-export const newGame = createAsyncThunk<
-  GameState,
-  void,
-  { rejectValue: ErrorResponse }
->("/gameState/newGame", async (_, { rejectWithValue }) => {
-  try {
-    const response = await api.newGame();
-    console.log(response);
-    return response.data;
-  } catch (e) {
-    return rejectWithValue(transformApiError(e));
-  }
-});
-
-export const joinGame = createAsyncThunk<
-  JoinGameResponse, // response type
-  JoinGamePayload, // payload type
-  { rejectValue: ErrorResponse } // error type
->("/gameState/joinGame", async (payload, { rejectWithValue }) => {
-  try {
-    const response = await api.joinGame(payload);
-    return response.data;
-  } catch (e) {
-    return rejectWithValue(transformApiError(e));
-  }
-});
-
-export const rejoinGame = createAsyncThunk<
-  JoinGameResponse,
-  RejoinGamePayload,
-  { rejectValue: ErrorResponse }
->("/gameState/rejoinGame", async (payload, { rejectWithValue }) => {
-  try {
-    const response = await api.rejoinGame(payload);
-    return response.data;
-  } catch (e) {
-    return rejectWithValue(transformApiError(e));
-  }
-});
+export const newGame = templateAsyncThunk("/gameState/newGame", api.newGame);
+export const joinGame = templateAsyncThunk("/gameState/joinGame", api.joinGame);
+export const rejoinGame = templateAsyncThunk(
+  "/gameState/rejoinGame",
+  api.rejoinGame
+);
 
 export const gameStateSlice = createSlice({
   name: "gameState",

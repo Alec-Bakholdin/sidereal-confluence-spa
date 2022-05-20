@@ -6,6 +6,7 @@ import joinGame from "./mocks/joinGame.json";
 
 const axiosLiveInstance = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
+  withCredentials: true,
 });
 
 const axiosMockInstance = axios.create();

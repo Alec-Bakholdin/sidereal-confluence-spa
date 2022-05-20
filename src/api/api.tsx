@@ -6,6 +6,10 @@ import {
   RejoinGamePayload,
 } from "redux/reducers/gameState";
 import axiosApi from "./axios";
+import CredentialsDto from "../assets/dto/CredentialsDto";
+import UserDto from "../assets/dto/UserDto";
+import SignUpDto from "../assets/dto/SignUpDto";
+import { AxiosResponse } from "axios";
 
 export const api = {
   allCards: async () =>
@@ -16,6 +20,20 @@ export const api = {
   },
   rejoinGame: async (body: RejoinGamePayload) => {
     return await axiosApi.post<JoinGameResponse>("/rejoinGame", body);
+  },
+  test: async () => {
+    await axiosApi.get<string>("/test");
+  },
+  signIn: async (
+    credentialsDto: CredentialsDto
+  ): Promise<AxiosResponse<UserDto>> => {
+    return await axiosApi.post("/signIn", credentialsDto);
+  },
+  user: async (): Promise<AxiosResponse<UserDto>> => {
+    return await axiosApi.get("/user");
+  },
+  signUp: async (signUpDto: SignUpDto): Promise<AxiosResponse<UserDto>> => {
+    return await axiosApi.post("/signUp", signUpDto);
   },
 };
 

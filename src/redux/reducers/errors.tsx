@@ -1,21 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { joinGame, newGame, rejoinGame } from "./gameState";
 import { RootState } from "../store";
-import { AxiosError } from "axios";
-import { fetchCards } from "./cards";
-
-export interface ErrorResponse {
-  httpStatusCode: number;
-  error: string;
-}
-
-export function transformApiError(e: any): ErrorResponse {
-  let err: AxiosError<ErrorResponse> = e;
-  if (!err.response) {
-    throw e;
-  }
-  return err.response.data;
-}
+import { signIn, signUp } from "./auth";
+import ErrorDto from "../../assets/dto/ErrorDto";
 
 interface ErrorsState {
   errors: string[];
@@ -23,19 +9,6 @@ interface ErrorsState {
 
 const initialState: ErrorsState = {
   errors: [],
-};
-
-const handleError = (
-  state: ErrorsState,
-  action: PayloadAction<ErrorResponse | undefined>
-) => {
-  if (action.payload) {
-    state.errors.push(action.payload.error);
-    console.error(action.payload.error);
-  } else {
-    state.errors.push("Unknown error");
-    console.error("Unknown error");
-  }
 };
 
 export const errorsSlice = createSlice({
@@ -50,23 +23,15 @@ export const errorsSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(joinGame.rejected, (state, action) => {
-      console.log("Handling joinGame error");
-      handleError(state, action);
-    });
-    builder.addCase(newGame.rejected, (state, action) => {
-      console.log(action);
-      console.log("Handling newGame error");
-      handleError(state, action);
-    });
-    builder.addCase(rejoinGame.rejected, (state, action) => {
-      console.log("Handling rejoinGame error");
-      handleError(state, action);
-    });
-    builder.addCase(fetchCards.rejected, (state, action) => {
-      console.log("Handling fetchCards error");
-      handleError(state, action);
-    });
+    const handleError = (
+      state: ErrorsState,
+      action: PayloadAction<ErrorDto | undefined>
+    ) => {
+      state.errors.push(action.payload?.message ?? "Unknown Error");
+    };
+    builder
+      .addCase(signIn.rejected, handleError)
+      .addCase(signUp.rejected, handleError);
   },
 });
 

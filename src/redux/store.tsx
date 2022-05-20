@@ -5,6 +5,7 @@ import modalsReducer from "./reducers/modals";
 import errorsReducer from "./reducers/errors";
 import economyReducer from "./reducers/economy";
 import biddingReducer from "./reducers/bidding";
+import auth from "./reducers/auth";
 
 const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
     errors: errorsReducer,
     economy: economyReducer,
     bidding: biddingReducer,
+    auth,
   },
 });
 
