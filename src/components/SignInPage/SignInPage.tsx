@@ -2,7 +2,7 @@ import { KeyboardEvent, ReactElement, useState } from "react";
 import { useAppDispatch } from "../../redux/hooks";
 import { Box, Stack, TextField } from "@mui/material";
 import planet from "../../assets/images/menacing-planet.png";
-import MenuButton from "../MainMenu/MenuButton";
+import SiderealButton from "../SiderealButton/SiderealButton";
 import { signIn } from "../../redux/reducers/auth";
 
 export function SignInPage(): ReactElement {
@@ -48,8 +48,8 @@ export function SignInPage(): ReactElement {
             onChange={(e) => setPassword(e.target.value)}
           />
           <Stack direction={"row"} spacing={3} justifyContent={"space-evenly"}>
-            <MenuButton onClick={handleSignIn} name={"Sign In"} />
-            <MenuButton onClick={() => {}} name={"Register"} />
+            <SiderealButton onClick={handleSignIn} name={"Sign In"} />
+            <SiderealButton onClick={() => {}} name={"Register"} />
           </Stack>
         </Stack>
       </Box>

@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { Routes, Route, HashRouter } from "react-router-dom";
 
-import MainMenu from "./components/MainMenu/MainMenu";
-import Modals from "./components/Modals";
+import MainMenu from "./layout/MainMenu/MainMenu";
+import Modals from "./Modals";
 import Snackbars from "./components/Snackbars";
 import SocketActions from "./socket/SocketActions";
 import { useAppDispatch, useAppSelector } from "./redux/hooks";

@@ -1,6 +1,6 @@
 import { Box, Grid, Typography } from "@mui/material";
 import planet from "assets/images/menacing-planet.png";
-import MenuButton from "./MenuButton";
+import SiderealButton from "../../components/SiderealButton/SiderealButton";
 
 export const MainMenu = () => {
   return (
@@ -19,7 +19,7 @@ export const MainMenu = () => {
         style={{ minHeight: "100vh" }}
       >
         <Typography variant={"h1"}>SIDEREAL CONFLUENCE</Typography>
-        <MenuButton onClick={() => console.log("test")} name={"Test"} />
+        <SiderealButton onClick={() => console.log("test")} name={"Test"} />
       </Grid>
     </Box>
   );

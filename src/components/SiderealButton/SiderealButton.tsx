@@ -2,10 +2,10 @@ import { Box, Button, Typography, Zoom } from "@mui/material";
 import PropTypes, { InferProps } from "prop-types";
 import { useState } from "react";
 
-export function MenuButton({
+export function SiderealButton({
   name,
   onClick,
-}: InferProps<typeof MenuButton.propTypes>) {
+}: InferProps<typeof SiderealButton.propTypes>) {
   const [transition, setTransition] = useState(false);
 
   const handleClick = () => {
@@ -25,7 +25,11 @@ export function MenuButton({
         onClick={handleClick}
         variant={"text"}
         disableRipple={true}
-        style={{ backgroundColor: "transparent", padding: 0, paddingBottom: 10}}
+        style={{
+          backgroundColor: "transparent",
+          padding: 0,
+          paddingBottom: 10,
+        }}
       >
         <Typography variant={"h4"} lineHeight={"0.85"}>
           {name}
@@ -42,9 +46,9 @@ export function MenuButton({
   );
 }
 
-MenuButton.propTypes = {
+SiderealButton.propTypes = {
   name: PropTypes.string,
   onClick: PropTypes.func,
 };
 
-export default MenuButton;
+export default SiderealButton;
