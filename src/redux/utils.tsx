@@ -10,8 +10,7 @@ export function templateAsyncThunk<In, Out>(
     thunkName,
     async (input, { rejectWithValue }) => {
       try {
-        const response = await apiFunction(input);
-        return response.data;
+        return (await apiFunction(input)).data;
       } catch (e) {
         return rejectWithValue(axiosErrorToDto(e));
       }

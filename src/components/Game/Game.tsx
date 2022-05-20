@@ -36,7 +36,7 @@ export const Game = function (): ReactElement {
         rejoinGame({ playerId, playerName, raceName: raceName ?? "Caylion" })
       );
     }
-    dispatch(fetchCards());
+    dispatch(fetchCards({}));
   }, [dispatch, isFresh, playerId, playerName, raceName]);
   useEffect(() => {
     stompClient?.publish({

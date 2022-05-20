@@ -1,27 +1,15 @@
 import { Card, Colony, ConverterCard, ResearchTeam } from "assets/types/Cards";
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import api from "api";
 import { RootState } from "../store";
-import { ErrorResponse, transformApiError } from "./errors";
+import { templateAsyncThunk } from "../utils";
 
 const initialState: {
   cards: { [id: string]: Card };
 } = {
   cards: {},
 };
-
-export const fetchCards = createAsyncThunk<
-  { [id: string]: Card },
-  void,
-  { rejectValue: ErrorResponse }
->("/cards/fetch", async (_, { rejectWithValue }) => {
-  try {
-    const response = await api.allCards();
-    return response.data;
-  } catch (e) {
-    return rejectWithValue(transformApiError(e));
-  }
-});
+export const fetchCards = templateAsyncThunk("/cards/fetch", api.allCards);
 
 const cardsSlice = createSlice({
   name: "cards",
