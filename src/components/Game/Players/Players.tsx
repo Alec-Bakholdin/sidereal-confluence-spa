@@ -1,7 +1,6 @@
 import { ReactElement } from "react";
 import { Grid } from "@mui/material";
-import { useAppSelector } from "redux/hooks";
-import Player from "assets/types/Player";
+import Player, { emptyPlayer } from "assets/types/Player";
 import PlayerPreview from "./PlayerPreview";
 
 export function Players({
@@ -9,13 +8,12 @@ export function Players({
 }: {
   maxPerRow?: number;
 }): ReactElement {
-  const { gameState, playerId } = useAppSelector((state) => state.gameState);
-  const playerArr = Object.values(gameState.players);
+  const playerArr: Player[] = [emptyPlayer()];
 
   return (
     <Grid container height={"100%"} direction={"row"} display={"flex"}>
       {playerArr
-        .filter((player) => player.id !== playerId)
+        .filter((player) => player.id !== "")
         .map((player: Player) => (
           <Grid
             className={"player-preview-grid-item"}
