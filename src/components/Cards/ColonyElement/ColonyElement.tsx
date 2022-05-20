@@ -3,20 +3,12 @@ import CardBase from "../CardBase";
 import { Colony } from "assets/types/Cards";
 import ConverterElement from "../../BaseElements/Converter/ConverterElement";
 import { Stack } from "@mui/material";
-import { useAppDispatch, useAppSelector } from "redux/hooks";
-import {
-  selectEconomyActionsLookup,
-  toggleEconomyAction,
-} from "redux/reducers/economy";
 
 export function ColonyElement({
   colonyObj,
 }: {
   colonyObj: Colony;
 }): ReactElement {
-  const dispatch = useAppDispatch();
-  const economyActionsLookup = useAppSelector(selectEconomyActionsLookup);
-
   return (
     <CardBase
       title={colonyObj.name}
@@ -30,15 +22,8 @@ export function ColonyElement({
               ? colonyObj.backConverter
               : colonyObj.frontConverter
           }
-          selected={economyActionsLookup[colonyObj.id]?.includes(0)}
-          onClick={() => {
-            dispatch(
-              toggleEconomyAction({
-                cardId: colonyObj.id,
-                converterIndex: 0,
-              })
-            );
-          }}
+          selected={true}
+          onClick={() => {}}
         />
       </Stack>
     </CardBase>

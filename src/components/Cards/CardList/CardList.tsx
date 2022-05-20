@@ -1,17 +1,12 @@
 import { ReactElement, MouseEvent } from "react";
 import { Grid, Paper, Typography } from "@mui/material";
-import { useAppDispatch, useAppSelector } from "redux/hooks";
-import { selectCards } from "redux/reducers/cards";
+import { useAppDispatch } from "redux/hooks";
 import { openCardActionsModal } from "redux/reducers/modals";
 import { Card, Colony, ConverterCard, ResearchTeam } from "assets/types/Cards";
 import ConverterCardElement from "../ConverterCardElement/ConverterCardElement";
 import ColonyElement from "../ColonyElement/ColonyElement";
 import "./CardList.scss";
 import ResearchTeamElement from "../ResearchTeamElement/ResearchTeamElement";
-import {
-  selectGameState,
-  selectPlayerId,
-} from "../../../../redux/reducers/gameState";
 import CardBase from "../CardBase";
 
 export function CardList({
@@ -27,18 +22,13 @@ export function CardList({
   colonyBidTrack?: boolean;
   researchTeamBidTrack?: boolean;
 }): ReactElement {
-  const cards = useAppSelector(selectCards);
+  /*const cards = useAppSelector(selectCards);
   const { activeBidTrack, activeBidder } = useAppSelector(selectGameState);
-  const playerId = useAppSelector(selectPlayerId);
+  const playerId = useAppSelector(selectPlayerId);*/
   const dispatch = useAppDispatch();
+  // this should actually only be interactive if active player is current player
   const isInteractive =
-    currentPlayerCards ||
-    (colonyBidTrack &&
-      activeBidTrack === "Colony" &&
-      activeBidder === playerId) ||
-    (researchTeamBidTrack &&
-      activeBidTrack === "ResearchTeam" &&
-      activeBidder === playerId);
+    currentPlayerCards || colonyBidTrack || researchTeamBidTrack;
 
   const handleClick = (e: MouseEvent<HTMLDivElement>, id: string) => {
     if (isInteractive) {
@@ -75,7 +65,11 @@ export function CardList({
             <Typography variant={"h5"} textAlign={"center"}>
               {shipMinima && shipMinima[i]}
             </Typography>
-            {renderCard(cards[id])}
+            {renderCard({
+              type: "ConverterCard",
+              id: "testid",
+              name: "name" /*cards[id]*/,
+            })}
           </Grid>
         ))}
       </Grid>

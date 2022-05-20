@@ -14,7 +14,7 @@ function App() {
   const dispatch = useAppDispatch();
   const { loading, authenticated } = useAppSelector(selectAuth);
   useEffect(() => {
-    dispatch(testAuth(""));
+    dispatch(testAuth({}));
   }, [dispatch]);
 
   return (
@@ -26,13 +26,14 @@ function App() {
         </Box>
       )}
       {authenticated && !loading && (
-        <Routes>
-          <Route path={"/"} element={<MainMenu />} />
-        </Routes>
+        <>
+          <Routes>
+            <Route path={"/"} element={<MainMenu />} />
+          </Routes>
+          <SocketActions />
+          <Modals />
+        </>
       )}
-
-      <SocketActions />
-      <Modals />
       <Snackbars />
     </HashRouter>
   );
