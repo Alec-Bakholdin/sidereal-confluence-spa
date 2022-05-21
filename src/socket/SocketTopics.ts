@@ -8,4 +8,5 @@ export const TOPIC_GAME_ERRORS = (gameId: number) =>
   `/topic/game/${gameId}/errors`;
 export const USER_ERRORS = "/user/queue/errors";
 
-export const APP_CHOOSE_RACE = "/app/chooseRace";
+export const APP_CHOOSE_RACE = "/app/player/chooseRace";
+export const APP_PLAYER_READY = "/app/player/ready";

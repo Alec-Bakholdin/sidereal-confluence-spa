@@ -27,15 +27,26 @@ const gameSlice = createSlice({
   reducers: {
     updateGame: (state, action: PayloadAction<UpdateGameDto>) => {
       if (state.game) {
-        state.game = { ...state.game, ...action.payload };
+        const gameDict: any = state.game;
+        const updateDict = action.payload as any;
+        Object.keys(state.game).forEach((key) => {
+          if (updateDict[key] !== undefined && updateDict[key] !== null) {
+            gameDict[key as keyof GameDto] = updateDict[key];
+          }
+        });
       }
     },
     updatePlayer: (state, action: PayloadAction<UpdatePlayerDto>) => {
       if (state.game) {
         const { username } = action.payload.user;
+        const updateDict = action.payload as any;
         const player = state.game.players[username];
         if (player) {
-          state.game.players[username] = { ...player, ...action.payload };
+          Object.keys(player).forEach((key) => {
+            if (updateDict[key] !== undefined && updateDict[key] !== null) {
+              player[key as keyof PlayerDto] = updateDict[key];
+            }
+          });
         }
       }
     },
@@ -88,5 +99,7 @@ const gameSlice = createSlice({
 
 export const { updateGame, updatePlayer, addPlayer } = gameSlice.actions;
 export const selectGame = (state: RootState) => state.game.game;
+export const selectSelf = (state: RootState): PlayerDto | undefined =>
+  state.game.game?.players[state.user.user?.username ?? ""];
 
 export default gameSlice.reducer;

@@ -19,6 +19,7 @@ import { addError } from "../redux/reducers/errors";
 export function SocketActions({ game }: { game: GameDto }): ReactElement {
   const dispatch = useAppDispatch();
 
+  // errors
   useSubscription(TOPIC_GAME_ERRORS(game.id), (message) => {
     const errorDto = JSON.parse(message.body) as ErrorDto;
     dispatch(addError(errorDto));
@@ -27,12 +28,15 @@ export function SocketActions({ game }: { game: GameDto }): ReactElement {
     const errorDto = JSON.parse(message.body) as ErrorDto;
     dispatch(addError(errorDto));
   });
+
+  // game updates
   useSubscription(TOPIC_GAME_UPDATE_GAME(game.id), (message) => {
     const updateGameDto = JSON.parse(message.body) as UpdateGameDto;
     dispatch(updateGame(updateGameDto));
   });
   useSubscription(TOPIC_GAME_UPDATE_PLAYER(game.id), (message) => {
     const updatePlayerDto = JSON.parse(message.body) as UpdatePlayerDto;
+    console.log(game.players, updatePlayerDto);
     dispatch(updatePlayer(updatePlayerDto));
   });
   useSubscription(TOPIC_GAME_PLAYER_JOINED(game.id), (message) => {

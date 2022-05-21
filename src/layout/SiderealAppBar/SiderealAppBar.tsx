@@ -2,7 +2,6 @@ import React, { ReactElement, useState } from "react";
 import {
   AppBar,
   Box,
-  Button,
   IconButton,
   Menu,
   MenuItem,
@@ -14,6 +13,7 @@ import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { selectUser } from "../../redux/reducers/user";
 import { signOut } from "../../redux/reducers/auth";
 import { destroyGame, selectGame } from "../../redux/reducers/game";
+import SiderealButton from "../../components/SiderealButton/SiderealButton";
 
 export function SiderealAppBar(): ReactElement {
   const dispatch = useAppDispatch();
@@ -40,11 +40,9 @@ export function SiderealAppBar(): ReactElement {
       <Toolbar variant={"dense"}>
         {game && (
           <>
-            <Button onClick={handleDestroyGame}>
-              <Typography variant={"h6"}>Destroy Game</Typography>
-            </Button>
+            <SiderealButton name={"destroy game"} onClick={handleDestroyGame} />
             <Box sx={{ flexGrow: 1 }} />
-            <Typography variant={"h6"}>Game Id: {game.id}</Typography>
+            <Typography variant={"h4"}>Game Id: {game.id}</Typography>
           </>
         )}
         <Box sx={{ flexGrow: 1 }} />

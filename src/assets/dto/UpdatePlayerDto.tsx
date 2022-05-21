@@ -4,6 +4,7 @@ import RaceDto from "./RaceDto";
 
 export interface UpdatePlayerDto {
   user: UserDto;
+  ready?: boolean;
   resources?: ResourcesDto;
   donations?: ResourcesDto;
   race?: RaceDto;

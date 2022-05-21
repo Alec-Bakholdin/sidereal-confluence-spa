@@ -18,6 +18,14 @@ type typographyVariant =
   | "subtitle1"
   | "subtitle2";
 
+const barHeight = (variant: typographyVariant) => {
+  if (["body1", "body2", "button", "caption"].includes(variant)) {
+    return "1px";
+  } else {
+    return "2px";
+  }
+};
+
 export function SiderealButton({
   name,
   onClick,
@@ -53,8 +61,6 @@ export function SiderealButton({
       onMouseLeave={handleLoseFocus}
       onFocus={handleFocus}
       onBlur={handleLoseFocus}
-      paddingTop={"15px"}
-      paddingBottom={"15px"}
     >
       <Button
         onClick={handleClick}
@@ -62,8 +68,6 @@ export function SiderealButton({
         disableRipple={true}
         style={{
           backgroundColor: "transparent",
-          padding: 0,
-          paddingBottom: 10,
         }}
       >
         <Typography variant={textVariant} lineHeight={"0.85"}>
@@ -74,7 +78,7 @@ export function SiderealButton({
         <Box
           className={"menu-button-horizontal-bar"}
           bgcolor={"divider"}
-          sx={{ height: "2px" }}
+          sx={{ height: barHeight(textVariant) }}
         />
       </Zoom>
     </Box>
