@@ -1,27 +1,29 @@
 import { ReactElement } from "react";
 import { useSubscription } from "react-stomp-hooks";
 import {
-  USER_PLAYER_JOINED,
-  USER_UPDATE_GAME,
-  USER_UPDATE_PLAYER,
+  TOPIC_GAME_PLAYER_JOINED,
+  TOPIC_GAME_UPDATE_GAME,
+  TOPIC_GAME_UPDATE_PLAYER,
 } from "./SocketTopics";
 import { useAppDispatch } from "../redux/hooks";
 import UpdateGameDto from "../assets/dto/UpdateGameDto";
 import UpdatePlayerDto from "../assets/dto/UpdatePlayerDto";
 import { addPlayer, updateGame, updatePlayer } from "../redux/reducers/game";
 import PlayerDto from "../assets/dto/PlayerDto";
+import GameDto from "../assets/dto/GameDto";
 
-export function SocketActions(): ReactElement {
+export function SocketActions({ game }: { game: GameDto }): ReactElement {
   const dispatch = useAppDispatch();
-  useSubscription(USER_UPDATE_GAME, (message) => {
+
+  useSubscription(TOPIC_GAME_UPDATE_GAME(game.id), (message) => {
     const updateGameDto = JSON.parse(message.body) as UpdateGameDto;
     dispatch(updateGame(updateGameDto));
   });
-  useSubscription(USER_UPDATE_PLAYER, (message) => {
+  useSubscription(TOPIC_GAME_UPDATE_PLAYER(game.id), (message) => {
     const updatePlayerDto = JSON.parse(message.body) as UpdatePlayerDto;
     dispatch(updatePlayer(updatePlayerDto));
   });
-  useSubscription(USER_PLAYER_JOINED, (message) => {
+  useSubscription(TOPIC_GAME_PLAYER_JOINED(game.id), (message) => {
     const playerDto = JSON.parse(message.body) as PlayerDto;
     dispatch(addPlayer(playerDto));
   });

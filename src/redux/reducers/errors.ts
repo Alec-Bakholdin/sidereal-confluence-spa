@@ -3,6 +3,7 @@ import { RootState } from "../store";
 import { signIn, signOut, signUp } from "./auth";
 import ErrorDto from "assets/dto/ErrorDto";
 import { createGame, destroyGame, joinGame } from "./game";
+import { getRaces } from "./races";
 
 interface ErrorsState {
   errors: string[];
@@ -37,7 +38,9 @@ export const errorsSlice = createSlice({
 
       .addCase(createGame.rejected, handleError)
       .addCase(joinGame.rejected, handleError)
-      .addCase(destroyGame.rejected, handleError);
+      .addCase(destroyGame.rejected, handleError)
+
+      .addCase(getRaces.rejected, handleError);
   },
 });
 

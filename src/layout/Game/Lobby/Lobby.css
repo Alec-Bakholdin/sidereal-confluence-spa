@@ -1,0 +1,13 @@
+.lobby-stack {
+  padding-top: 55px;
+  height: 100%;
+}
+.lobby-stack .lobby-section {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  border: 1px solid white;
+  overflow: auto;
+}
+
+/*# sourceMappingURL=Lobby.css.map */

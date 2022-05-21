@@ -5,6 +5,7 @@ import SignUpDto from "../assets/dto/SignUpDto";
 import GameDto from "../assets/dto/GameDto";
 import JoinGameDto from "../assets/dto/JoinGameDto";
 import DestroyGameDto from "../assets/dto/DestroyGameDto";
+import RaceDto from "../assets/dto/RaceDto";
 
 export const api = {
   signIn: (credentialsDto: CredentialsDto) =>
@@ -22,6 +23,8 @@ export const api = {
     destroy: (destroyGameDto: DestroyGameDto) =>
       axiosApi.post("/game/destroy", destroyGameDto),
   },
+
+  races: () => axiosApi.get<RaceDto[]>("/races"),
 };
 
 export default api;

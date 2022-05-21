@@ -1,13 +1,18 @@
-import { ReactElement } from "react";
-import { useAppSelector } from "redux/hooks";
+import { ReactElement, useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "redux/hooks";
 import { selectGame } from "redux/reducers/game";
 import { Box } from "@mui/material";
 import { StompSessionProvider } from "react-stomp-hooks";
 import Lobby from "./Lobby/Lobby";
 import SocketActions from "../../socket/SocketActions";
+import { getRaces } from "../../redux/reducers/races";
 
 export function Game(): ReactElement {
+  const dispatch = useAppDispatch();
   const game = useAppSelector(selectGame);
+  useEffect(() => {
+    dispatch(getRaces({}));
+  }, [dispatch]);
 
   return (
     <StompSessionProvider url={`${process.env.REACT_APP_API_URL}/ws`}>
@@ -18,7 +23,7 @@ export function Game(): ReactElement {
           {game?.state}
         </Box>
       )}
-      <SocketActions />
+      {game && <SocketActions game={game} />}
     </StompSessionProvider>
   );
 }

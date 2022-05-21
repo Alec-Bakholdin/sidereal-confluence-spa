@@ -1,0 +1,15 @@
+.race-selection .race-preview-card {
+  margin: 10px;
+  height: 200px;
+  width: 300px;
+  background-color: lightslategrey;
+  cursor: pointer;
+}
+.race-selection .race-preview-card:hover {
+  background-color: cornflowerblue;
+}
+.race-selection .selected-preview-card {
+  background-color: cornflowerblue;
+}
+
+/*# sourceMappingURL=RaceSelection.css.map */

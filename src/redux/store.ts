@@ -4,6 +4,7 @@ import errors from "./reducers/errors";
 import modals from "./reducers/modals";
 import user from "./reducers/user";
 import game from "./reducers/game";
+import races from "./reducers/races";
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     modals,
     user,
     game,
+    races,
   },
 });
 
