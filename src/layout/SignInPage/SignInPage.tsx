@@ -1,9 +1,10 @@
-import { KeyboardEvent, ReactElement, useState } from "react";
+import { ReactElement, useState } from "react";
 import { useAppDispatch } from "../../redux/hooks";
-import { Box, Stack, TextField } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import planet from "../../assets/images/menacing-planet.png";
-import SiderealButton from "../SiderealButton/SiderealButton";
-import { signIn } from "../../redux/reducers/auth";
+import SiderealButton from "../../components/SiderealButton/SiderealButton";
+import { signIn, signUp } from "../../redux/reducers/auth";
+import SiderealTextField from "../../components/SiderealTextField/SiderealTextField";
 
 export function SignInPage(): ReactElement {
   const dispatch = useAppDispatch();
@@ -13,11 +14,8 @@ export function SignInPage(): ReactElement {
   const handleSignIn = () => {
     dispatch(signIn({ username, password }));
   };
-
-  const handleKeyDown = (e: KeyboardEvent) => {
-    if (e.key === "Enter") {
-      handleSignIn();
-    }
+  const handleSignUp = () => {
+    dispatch(signUp({ username, password }));
   };
 
   return (
@@ -32,24 +30,22 @@ export function SignInPage(): ReactElement {
     >
       <Box width={500} padding={5}>
         <Stack spacing={2}>
-          <TextField
-            variant={"filled"}
+          <SiderealTextField
             label={"username"}
             value={username}
-            onKeyDown={handleKeyDown}
+            onEnterPressed={handleSignIn}
             onChange={(e) => setUsername(e.target.value)}
           />
-          <TextField
-            variant={"filled"}
+          <SiderealTextField
             label={"password"}
             type={"password"}
             value={password}
-            onKeyDown={handleKeyDown}
+            onEnterPressed={handleSignIn}
             onChange={(e) => setPassword(e.target.value)}
           />
           <Stack direction={"row"} spacing={3} justifyContent={"space-evenly"}>
             <SiderealButton onClick={handleSignIn} name={"Sign In"} />
-            <SiderealButton onClick={() => {}} name={"Register"} />
+            <SiderealButton onClick={handleSignUp} name={"Register"} />
           </Stack>
         </Stack>
       </Box>

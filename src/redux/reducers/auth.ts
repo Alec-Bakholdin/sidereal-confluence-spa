@@ -1,21 +1,20 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import api from "../../api";
 import { RootState } from "../store";
 import { templateAsyncThunk } from "../utils";
-import UserDto from "../../assets/dto/UserDto";
 
 export const signIn = templateAsyncThunk("signIn", api.signIn);
 export const signUp = templateAsyncThunk("signUp", api.signUp);
+export const signOut = templateAsyncThunk("signOut", api.signOut);
 export const testAuth = templateAsyncThunk("testAuth", api.user);
 
 interface initialStateType {
-  username?: string;
   loading: boolean;
   authenticated: boolean;
 }
 
 const initialState: initialStateType = {
-  loading: false,
+  loading: true,
   authenticated: false,
 };
 
@@ -27,14 +26,9 @@ const authSlice = createSlice({
     const authPendingReducer = (state: initialStateType) => {
       state.loading = true;
     };
-    const authFulfilledReducer = (
-      state: initialStateType,
-      action: PayloadAction<UserDto>
-    ) => {
-      console.log("successful authentication", action.payload);
+    const authFulfilledReducer = (state: initialStateType) => {
       state.loading = false;
       state.authenticated = true;
-      state.username = action.payload.username;
     };
     const authRejectedReducer = (state: initialStateType) => {
       state.loading = false;
@@ -51,7 +45,13 @@ const authSlice = createSlice({
 
       .addCase(signUp.pending, authPendingReducer)
       .addCase(signUp.fulfilled, authFulfilledReducer)
-      .addCase(signUp.rejected, authRejectedReducer);
+      .addCase(signUp.rejected, authRejectedReducer)
+
+      .addCase(signOut.pending, authPendingReducer)
+      .addCase(signOut.fulfilled, (state) => {
+        state.authenticated = false;
+        state.loading = false;
+      });
   },
 });
 

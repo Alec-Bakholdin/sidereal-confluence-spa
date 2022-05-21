@@ -8,6 +8,8 @@ export const api = {
     axiosApi.post<UserDto>("/signIn", credentialsDto),
   signUp: (signUpDto: SignUpDto) =>
     axiosApi.post<UserDto>("/signUp", signUpDto),
+  signOut: () => axiosApi.post("/signOut"),
+
   user: () => axiosApi.get<UserDto>("/user"),
 };
 

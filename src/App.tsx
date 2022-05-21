@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { Routes, Route, HashRouter } from "react-router-dom";
 
 import MainMenu from "./layout/MainMenu/MainMenu";
 import Modals from "./Modals";
@@ -7,8 +6,10 @@ import Snackbars from "./components/Snackbars";
 import SocketActions from "./socket/SocketActions";
 import { useAppDispatch, useAppSelector } from "./redux/hooks";
 import { selectAuth, testAuth } from "./redux/reducers/auth";
-import SignInPage from "./components/SignInPage/SignInPage";
-import { Box, CircularProgress } from "@mui/material";
+import SignInPage from "./layout/SignInPage/SignInPage";
+import { Box } from "@mui/material";
+import LoadingIndicator from "./components/LoadingIndicator/LoadingIndicator";
+import SiderealAppBar from "./layout/SiderealAppBar/SiderealAppBar";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -18,24 +19,21 @@ function App() {
   }, [dispatch]);
 
   return (
-    <HashRouter>
-      {!authenticated && !loading && <SignInPage />}
-      {loading && (
-        <Box height={"100vh"} className={"center-box"}>
-          <CircularProgress />
-        </Box>
-      )}
-      {authenticated && !loading && (
+    <Box height={"100vh"}>
+      {loading ? (
+        <LoadingIndicator />
+      ) : !authenticated ? (
+        <SignInPage />
+      ) : (
         <>
-          <Routes>
-            <Route path={"/"} element={<MainMenu />} />
-          </Routes>
+          <SiderealAppBar />
+          <MainMenu />
           <SocketActions />
           <Modals />
         </>
       )}
       <Snackbars />
-    </HashRouter>
+    </Box>
   );
 }
 

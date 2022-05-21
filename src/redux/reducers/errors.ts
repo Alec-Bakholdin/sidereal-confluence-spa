@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
-import { signIn, signUp } from "./auth";
-import ErrorDto from "../../assets/dto/ErrorDto";
+import { signIn, signOut, signUp } from "./auth";
+import ErrorDto from "assets/dto/ErrorDto";
 
 interface ErrorsState {
   errors: string[];
@@ -31,7 +31,8 @@ export const errorsSlice = createSlice({
     };
     builder
       .addCase(signIn.rejected, handleError)
-      .addCase(signUp.rejected, handleError);
+      .addCase(signUp.rejected, handleError)
+      .addCase(signOut.rejected, handleError);
   },
 });
 

@@ -8,7 +8,6 @@ import store from "./redux/store";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { CookiesProvider } from "react-cookie";
 import { Provider } from "react-redux";
-import { StompSessionProvider } from "react-stomp-hooks";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -17,12 +16,10 @@ root.render(
   <React.StrictMode>
     <ThemeProvider theme={dark}>
       <CookiesProvider>
-        <StompSessionProvider url={`${process.env.REACT_APP_API_URL}/ws`}>
-          <Provider store={store}>
-            <CssBaseline />
-            <App />
-          </Provider>
-        </StompSessionProvider>
+        <Provider store={store}>
+          <CssBaseline />
+          <App />
+        </Provider>
       </CookiesProvider>
     </ThemeProvider>
   </React.StrictMode>

@@ -14,15 +14,11 @@ export interface Resources {
   green?: number;
   white?: number;
   brown?: number;
-
   black?: number;
   blue?: number;
   yellow?: number;
-
   ships?: number;
-
   octagon?: number;
-
   points?: number;
 }
 

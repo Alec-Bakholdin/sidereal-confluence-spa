@@ -18,6 +18,8 @@ export function SiderealButton({
     <Box
       onMouseEnter={() => setTransition(true)}
       onMouseLeave={() => setTransition(false)}
+      onFocus={() => setTransition(true)}
+      onBlur={() => setTransition(false)}
       paddingTop={"15px"}
       paddingBottom={"15px"}
     >
