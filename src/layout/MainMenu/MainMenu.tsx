@@ -1,18 +1,22 @@
 import { Box, Grid, Typography } from "@mui/material";
 import planet from "assets/images/menacing-planet.png";
 import SiderealButton from "components/SiderealButton/SiderealButton";
-import { useAppDispatch } from "redux/hooks";
+import { useAppDispatch, useAppSelector } from "redux/hooks";
 import { createGame } from "redux/reducers/game";
-import { openJoinGameModal } from "../../redux/reducers/modals";
+import { openJoinGameModal } from "redux/reducers/modals";
 
 export const MainMenu = () => {
   const dispatch = useAppDispatch();
+  const { loading, game } = useAppSelector((state) => state.game);
   const handleCreateGame = () => {
-    dispatch(createGame({}));
+    if (!loading && !game) {
+      dispatch(createGame({}));
+    }
   };
   const handleJoinGame = () => {
-    console.log("joining game???");
-    dispatch(openJoinGameModal());
+    if (!loading && !game) {
+      dispatch(openJoinGameModal());
+    }
   };
   return (
     <Box
@@ -27,7 +31,7 @@ export const MainMenu = () => {
         container
         direction={"column"}
         className={"center-box"}
-        style={{ minHeight: "100vh" }}
+        style={{ height: "100vh" }}
       >
         <Typography variant={"h1"}>SIDEREAL CONFLUENCE</Typography>
         <SiderealButton

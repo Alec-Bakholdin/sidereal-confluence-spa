@@ -32,7 +32,6 @@ export const modalsSlice = createSlice({
       state.joinGameModal = true;
     },
     closeJoinGameModal: (state) => {
-      console.log("closing join game modal");
       state.joinGameModal = false;
     },
     openPlayerDetailsModal: (state, action: PayloadAction<string>) => {

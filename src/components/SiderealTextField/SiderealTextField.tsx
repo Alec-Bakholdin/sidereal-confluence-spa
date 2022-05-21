@@ -13,6 +13,7 @@ export function SiderealTextField({
   variant = "filled",
   onEnterPressed,
   onChange,
+  autoFocus,
 }: {
   value?: unknown;
   label?: string;
@@ -20,6 +21,7 @@ export function SiderealTextField({
   variant?: "standard" | "outlined" | "filled";
   onEnterPressed?: () => void;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  autoFocus?: boolean;
 }): ReactElement {
   const handleKeyDown = (e: KeyboardEvent) => {
     if (onEnterPressed && e.key === "Enter") {
@@ -30,6 +32,7 @@ export function SiderealTextField({
 
   return (
     <TextField
+      autoFocus={autoFocus}
       variant={variant}
       label={label}
       type={type}

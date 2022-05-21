@@ -23,11 +23,11 @@ export function JoinGameModal(): ReactElement {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setId(parseInt(e.target.value));
   };
-  console.log(open);
 
   return (
     <BaseModal open={open} onClose={handleClose} title={"Join Game"}>
       <SiderealTextField
+        autoFocus
         label={"id"}
         onChange={handleChange}
         onEnterPressed={handleSubmit}
