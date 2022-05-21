@@ -32,6 +32,7 @@ export const modalsSlice = createSlice({
       state.joinGameModal = true;
     },
     closeJoinGameModal: (state) => {
+      console.log("closing join game modal");
       state.joinGameModal = false;
     },
     openPlayerDetailsModal: (state, action: PayloadAction<string>) => {
@@ -78,7 +79,7 @@ export const {
   openCardActionsModal,
   closeCardActionsModal,
 } = modalsSlice.actions;
-export const selectJoinGameModal = (state: RootState) =>
+export const selectJoinGameModal = (state: RootState): boolean =>
   state.modals.joinGameModal;
 export const selectPlayerDetailsModal = (state: RootState) =>
   state.modals.playerDetailsModal;

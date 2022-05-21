@@ -3,7 +3,6 @@ import React, { useEffect } from "react";
 import MainMenu from "./layout/MainMenu/MainMenu";
 import Modals from "./Modals";
 import Snackbars from "./components/Snackbars";
-import SocketActions from "./socket/SocketActions";
 import { useAppDispatch, useAppSelector } from "./redux/hooks";
 import { selectAuth, testAuth } from "./redux/reducers/auth";
 import SignInPage from "./layout/SignInPage/SignInPage";
@@ -31,7 +30,6 @@ function App() {
         <>
           <SiderealAppBar />
           {game ? <Game /> : <MainMenu />}
-          <SocketActions />
           <Modals />
         </>
       )}
