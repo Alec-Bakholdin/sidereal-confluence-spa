@@ -2,6 +2,7 @@ import React, { ReactElement, useState } from "react";
 import {
   AppBar,
   Box,
+  Button,
   IconButton,
   Menu,
   MenuItem,
@@ -12,10 +13,12 @@ import { AccountCircle } from "@mui/icons-material";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { selectUser } from "../../redux/reducers/user";
 import { signOut } from "../../redux/reducers/auth";
+import { destroyGame, selectGame } from "../../redux/reducers/game";
 
 export function SiderealAppBar(): ReactElement {
   const dispatch = useAppDispatch();
   const user = useAppSelector(selectUser);
+  const game = useAppSelector(selectGame);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const handleMenu = (e: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(e.currentTarget);
@@ -26,10 +29,24 @@ export function SiderealAppBar(): ReactElement {
   const handleSignOut = () => {
     dispatch(signOut({}));
   };
+  const handleDestroyGame = () => {
+    if (game) {
+      dispatch(destroyGame({ id: game.id }));
+    }
+  };
 
   return (
     <AppBar>
       <Toolbar variant={"dense"}>
+        {game && (
+          <>
+            <Button onClick={handleDestroyGame}>
+              <Typography variant={"h6"}>Destroy Game</Typography>
+            </Button>
+            <Box sx={{ flexGrow: 1 }} />
+            <Typography variant={"h6"}>Game Id: {game.id}</Typography>
+          </>
+        )}
         <Box sx={{ flexGrow: 1 }} />
         <Typography variant={"h6"}>{user?.username}</Typography>
         <IconButton onClick={handleMenu}>

@@ -1,12 +1,34 @@
 import { Box, Button, Typography, Zoom } from "@mui/material";
-import PropTypes, { InferProps } from "prop-types";
 import { useState } from "react";
+import hoverSound from "assets/audio/hover_button.mp3";
+
+type typographyVariant =
+  | "body1"
+  | "body2"
+  | "button"
+  | "caption"
+  | "h1"
+  | "h2"
+  | "h3"
+  | "h4"
+  | "h5"
+  | "h6"
+  | "inherit"
+  | "overline"
+  | "subtitle1"
+  | "subtitle2";
 
 export function SiderealButton({
   name,
   onClick,
-}: InferProps<typeof SiderealButton.propTypes>) {
+  textVariant = "body1",
+}: {
+  name: string;
+  onClick: () => void;
+  textVariant?: typographyVariant;
+}) {
   const [transition, setTransition] = useState(false);
+  const [audio] = useState(new Audio(hoverSound));
 
   const handleClick = () => {
     if (onClick) {
@@ -14,12 +36,23 @@ export function SiderealButton({
     }
   };
 
+  const handleFocus = async () => {
+    setTransition(true);
+    audio.volume = 0.2;
+    await audio.play();
+  };
+
+  const handleLoseFocus = () => {
+    setTransition(false);
+    audio.pause();
+  };
+
   return (
     <Box
-      onMouseEnter={() => setTransition(true)}
-      onMouseLeave={() => setTransition(false)}
-      onFocus={() => setTransition(true)}
-      onBlur={() => setTransition(false)}
+      onMouseEnter={handleFocus}
+      onMouseLeave={handleLoseFocus}
+      onFocus={handleFocus}
+      onBlur={handleLoseFocus}
       paddingTop={"15px"}
       paddingBottom={"15px"}
     >
@@ -33,11 +66,11 @@ export function SiderealButton({
           paddingBottom: 10,
         }}
       >
-        <Typography variant={"h4"} lineHeight={"0.85"}>
+        <Typography variant={textVariant} lineHeight={"0.85"}>
           {name}
         </Typography>
       </Button>
-      <Zoom in={transition} timeout={transition ? 100 : 0}>
+      <Zoom in={transition} timeout={transition ? 50 : 0}>
         <Box
           className={"menu-button-horizontal-bar"}
           bgcolor={"divider"}
@@ -47,10 +80,5 @@ export function SiderealButton({
     </Box>
   );
 }
-
-SiderealButton.propTypes = {
-  name: PropTypes.string,
-  onClick: PropTypes.func,
-};
 
 export default SiderealButton;

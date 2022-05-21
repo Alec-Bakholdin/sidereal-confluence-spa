@@ -10,10 +10,13 @@ import SignInPage from "./layout/SignInPage/SignInPage";
 import { Box } from "@mui/material";
 import LoadingIndicator from "./components/LoadingIndicator/LoadingIndicator";
 import SiderealAppBar from "./layout/SiderealAppBar/SiderealAppBar";
+import { selectGame } from "./redux/reducers/game";
+import Game from "./layout/Game/Game";
 
 function App() {
   const dispatch = useAppDispatch();
   const { loading, authenticated } = useAppSelector(selectAuth);
+  const game = useAppSelector(selectGame);
   useEffect(() => {
     dispatch(testAuth({}));
   }, [dispatch]);
@@ -27,7 +30,7 @@ function App() {
       ) : (
         <>
           <SiderealAppBar />
-          <MainMenu />
+          {game ? <Game /> : <MainMenu />}
           <SocketActions />
           <Modals />
         </>

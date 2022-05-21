@@ -23,6 +23,7 @@ export function SiderealTextField({
 }): ReactElement {
   const handleKeyDown = (e: KeyboardEvent) => {
     if (onEnterPressed && e.key === "Enter") {
+      e.stopPropagation();
       onEnterPressed();
     }
   };

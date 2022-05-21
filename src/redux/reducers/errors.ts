@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 import { signIn, signOut, signUp } from "./auth";
 import ErrorDto from "assets/dto/ErrorDto";
+import { createGame, destroyGame, joinGame } from "./game";
 
 interface ErrorsState {
   errors: string[];
@@ -32,7 +33,11 @@ export const errorsSlice = createSlice({
     builder
       .addCase(signIn.rejected, handleError)
       .addCase(signUp.rejected, handleError)
-      .addCase(signOut.rejected, handleError);
+      .addCase(signOut.rejected, handleError)
+
+      .addCase(createGame.rejected, handleError)
+      .addCase(joinGame.rejected, handleError)
+      .addCase(destroyGame.rejected, handleError);
   },
 });
 
