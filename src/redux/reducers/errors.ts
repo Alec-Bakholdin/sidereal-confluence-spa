@@ -20,8 +20,8 @@ export const errorsSlice = createSlice({
     resetErrors: (state) => {
       state.errors = [];
     },
-    addError: (state, action: PayloadAction<string>) => {
-      state.errors.push(action.payload);
+    addError: (state, action: PayloadAction<ErrorDto>) => {
+      state.errors.push(action.payload.message);
     },
   },
   extraReducers: (builder) => {

@@ -4,5 +4,8 @@ export const TOPIC_GAME_UPDATE_GAME = (gameId: number) =>
   `/topic/game/${gameId}/updateGame`;
 export const TOPIC_GAME_UPDATE_PLAYER = (gameId: number) =>
   `/topic/game/${gameId}/updatePlayer`;
+export const TOPIC_GAME_ERRORS = (gameId: number) =>
+  `/topic/game/${gameId}/errors`;
+export const USER_ERRORS = "/user/queue/errors";
 
 export const APP_CHOOSE_RACE = "/app/chooseRace";
