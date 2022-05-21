@@ -4,6 +4,7 @@ import { selectGame } from "redux/reducers/game";
 import { Box } from "@mui/material";
 import { StompSessionProvider } from "react-stomp-hooks";
 import Lobby from "./Lobby/Lobby";
+import SocketActions from "../../socket/SocketActions";
 
 export function Game(): ReactElement {
   const game = useAppSelector(selectGame);
@@ -17,6 +18,7 @@ export function Game(): ReactElement {
           {game?.state}
         </Box>
       )}
+      <SocketActions />
     </StompSessionProvider>
   );
 }

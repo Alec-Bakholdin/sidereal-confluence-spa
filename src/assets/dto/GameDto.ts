@@ -1,12 +1,12 @@
 import GameState from "../enums/GameState";
 import GamePhase from "../enums/GamePhase";
-import UserDto from "./UserDto";
+import PlayerDto from "./PlayerDto";
 
 export interface GameDto {
   id: number;
   state: GameState;
   phase: GamePhase;
-  users: UserDto[];
+  players: { [username: string]: PlayerDto };
 }
 
 export default GameDto;

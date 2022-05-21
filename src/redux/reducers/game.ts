@@ -5,6 +5,9 @@ import { signIn, signOut, signUp, testAuth } from "./auth";
 import { RootState } from "../store";
 import { templateAsyncThunk } from "../utils";
 import api from "api";
+import UpdateGameDto from "../../assets/dto/UpdateGameDto";
+import UpdatePlayerDto from "../../assets/dto/UpdatePlayerDto";
+import PlayerDto from "../../assets/dto/PlayerDto";
 
 export const createGame = templateAsyncThunk("/game/create", api.game.create);
 export const joinGame = templateAsyncThunk("/game/join", api.game.join);
@@ -21,7 +24,28 @@ interface GameSliceState {
 const gameSlice = createSlice({
   name: "game",
   initialState: { loading: false } as GameSliceState,
-  reducers: {},
+  reducers: {
+    updateGame: (state, action: PayloadAction<UpdateGameDto>) => {
+      if (state.game) {
+        state.game = { ...state.game, ...action.payload };
+      }
+    },
+    updatePlayer: (state, action: PayloadAction<UpdatePlayerDto>) => {
+      if (state.game) {
+        const { username } = action.payload.user;
+        const player = state.game.players[username];
+        if (player) {
+          state.game.players[username] = { ...player, ...action.payload };
+        }
+      }
+    },
+    addPlayer: (state, action: PayloadAction<PlayerDto>) => {
+      if (state.game) {
+        const { username } = action.payload.user;
+        state.game.players[username] = action.payload;
+      }
+    },
+  },
   extraReducers: (builder) => {
     const setGameFromUser = (
       state: GameSliceState,
@@ -62,6 +86,7 @@ const gameSlice = createSlice({
   },
 });
 
+export const { updateGame, updatePlayer, addPlayer } = gameSlice.actions;
 export const selectGame = (state: RootState) => state.game.game;
 
 export default gameSlice.reducer;

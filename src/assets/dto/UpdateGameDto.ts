@@ -1,11 +1,9 @@
 import GameState from "../enums/GameState";
 import GamePhase from "../enums/GamePhase";
-import UserDto from "./UserDto";
 
-export interface GameUpdateDto {
+export interface UpdateGameDto {
   state?: GameState;
   phase?: GamePhase;
-  users?: UserDto[];
 }
 
-export default GameUpdateDto;
+export default UpdateGameDto;
