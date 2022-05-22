@@ -1,2 +1,2 @@
-export type GameState = "Lobby" | "PreGame" | "InProgress" | "PostGame";
+export type GameState = "Lobby" | "InProgress" | "PostGame";
 export default GameState;

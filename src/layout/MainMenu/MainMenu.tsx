@@ -1,4 +1,4 @@
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import planet from "assets/images/menacing-planet.png";
 import SiderealButton from "components/SiderealButton/SiderealButton";
 import { useAppDispatch, useAppSelector } from "redux/hooks";
@@ -27,10 +27,10 @@ export const MainMenu = () => {
         height: "100vh",
       }}
     >
-      <Grid
-        container
+      <Stack
         direction={"column"}
         className={"center-box"}
+        spacing={5}
         style={{ height: "100vh" }}
       >
         <Typography variant={"h1"}>SIDEREAL CONFLUENCE</Typography>
@@ -44,7 +44,7 @@ export const MainMenu = () => {
           textVariant={"h4"}
           name={"Join Game"}
         />
-      </Grid>
+      </Stack>
     </Box>
   );
 };

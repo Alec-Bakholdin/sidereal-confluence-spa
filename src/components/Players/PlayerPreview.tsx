@@ -1,11 +1,11 @@
 import { ReactElement } from "react";
-import Player from "assets/types/Player";
 import { Box, Typography } from "@mui/material";
 
 import "./PlayerPreview.scss";
 import PlayerResources from "../PlayerResources/PlayerResources";
 import { CardType } from "assets/types/Cards";
 import { Check } from "@mui/icons-material";
+import Player from "assets/types/Player";
 
 export function PlayerPreview({ player }: { player: Player }): ReactElement {
   const numCardsOfType = (type: CardType) => {

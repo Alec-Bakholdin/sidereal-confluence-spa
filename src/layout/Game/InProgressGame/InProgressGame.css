@@ -1,0 +1,16 @@
+.in-progress-game-section {
+  border: 1px solid white;
+  height: 100%;
+  width: 100%;
+}
+
+.in-progress-game-container {
+  position: relative;
+  padding-top: 52px;
+  height: 100%;
+  width: 100%;
+  border: 1px solid white;
+  overflow: auto;
+}
+
+/*# sourceMappingURL=InProgressGame.css.map */

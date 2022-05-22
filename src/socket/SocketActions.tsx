@@ -36,7 +36,6 @@ export function SocketActions({ game }: { game: GameDto }): ReactElement {
   });
   useSubscription(TOPIC_GAME_UPDATE_PLAYER(game.id), (message) => {
     const updatePlayerDto = JSON.parse(message.body) as UpdatePlayerDto;
-    console.log(game.players, updatePlayerDto);
     dispatch(updatePlayer(updatePlayerDto));
   });
   useSubscription(TOPIC_GAME_PLAYER_JOINED(game.id), (message) => {
