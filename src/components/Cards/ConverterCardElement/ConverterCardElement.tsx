@@ -1,16 +1,23 @@
 import { ReactElement } from "react";
 import CardBase from "../CardBase";
 import { Stack } from "@mui/material";
-import { ConverterCard } from "assets/types/Cards";
 import ConverterElement from "../../BaseElements/Converter/ConverterElement";
-import Converter from "assets/types/Converter";
+import ActiveCardDto from "assets/dto/ActiveCardDto";
+import ConverterDto from "assets/dto/ConverterDto";
 
 export function ConverterCardElement({
-  converterCard,
+  activeConverterCard,
 }: {
-  converterCard: ConverterCard;
+  activeConverterCard: ActiveCardDto;
 }): ReactElement {
-  const converterElementFromObj = (converterObj: Converter, index: number) => (
+  if (activeConverterCard.card.cardType !== "ConverterCard") {
+    throw Error("Card type should be ConverterCard");
+  }
+
+  const converterElementFromObj = (
+    converterObj: ConverterDto,
+    index: number
+  ) => (
     <ConverterElement
       converter={converterObj}
       key={`${index}`}
@@ -19,17 +26,18 @@ export function ConverterCardElement({
     />
   );
 
+  const { converterCard } = activeConverterCard.card;
   return (
     <>
       <CardBase
         title={
-          converterCard.upgraded
-            ? converterCard.upgradedName
-            : converterCard.name
+          activeConverterCard.upgraded
+            ? converterCard.backName
+            : converterCard.frontName
         }
       >
         <Stack>
-          {converterCard.upgraded
+          {activeConverterCard.upgraded
             ? converterCard.backConverters?.map(converterElementFromObj)
             : converterCard.frontConverters?.map(converterElementFromObj)}
         </Stack>

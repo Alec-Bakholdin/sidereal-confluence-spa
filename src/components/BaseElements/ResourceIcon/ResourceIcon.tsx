@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react";
-import { getResourceSprite, ResourceType } from "assets/types/Resources";
+import { getResourceSprite, ResourceType } from "assets/enums/ResourceType";
 import { Box, Icon, Typography } from "@mui/material";
 
 import "./ResourceIcon.scss";
@@ -10,7 +10,7 @@ export function ResourceIcon({
   donation,
   size = 25,
 }: {
-  type: ResourceType;
+  type: ResourceType | "upgrade" | "acquisition";
   qty?: number;
   size?: number;
   donation?: boolean;

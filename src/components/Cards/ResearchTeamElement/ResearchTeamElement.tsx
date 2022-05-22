@@ -1,22 +1,27 @@
 import { ReactElement } from "react";
-import { ResearchTeam } from "assets/types/Cards";
 import CardBase from "../CardBase";
 import { Stack, Typography } from "@mui/material";
-import ConverterElement from "../../BaseElements/Converter/ConverterElement";
+import ConverterElement from "components/BaseElements/Converter/ConverterElement";
+import ActiveCardDto from "../../../assets/dto/ActiveCardDto";
 
 export function ResearchTeamElement({
-  researchTeamObj,
+  activeResearchCard,
 }: {
-  researchTeamObj: ResearchTeam;
+  activeResearchCard: ActiveCardDto;
 }): ReactElement {
+  if (activeResearchCard.card.cardType !== "ResearchTeam") {
+    throw Error("card type should be ResearchTeam");
+  }
+  const { researchTeam } = activeResearchCard.card;
+
   return (
-    <CardBase title={researchTeamObj.name} era={researchTeamObj.era}>
+    <CardBase title={researchTeam.name} era={researchTeam.era}>
       <Stack className={"center-box"}>
         <div>
           <ConverterElement
             converter={{
-              input: researchTeamObj.researchOptions,
-              output: { points: researchTeamObj.points },
+              input: researchTeam.researchOptions,
+              output: { points: researchTeam.points },
               phase: "Trade",
             }}
             includeSlashes
@@ -24,8 +29,8 @@ export function ResearchTeamElement({
           />
         </div>
         <Typography variant={"body1"}>
-          {researchTeamObj.resultingTechnology &&
-            `Researches ${researchTeamObj.resultingTechnology}`}
+          {researchTeam.resultingTechnology &&
+            `Researches ${researchTeam.resultingTechnology}`}
         </Typography>
       </Stack>
     </CardBase>

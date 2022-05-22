@@ -1,31 +1,24 @@
 import { ReactElement } from "react";
-import { Grid } from "@mui/material";
-import Player, { emptyPlayer } from "assets/types/Player";
+import { Box, Paper, Stack } from "@mui/material";
 import PlayerPreview from "./PlayerPreview";
+import { useAppSelector } from "../../redux/hooks";
+import { selectGame } from "../../redux/reducers/game";
+import PlayerDto from "../../assets/dto/PlayerDto";
 
-export function Players({
-  maxPerRow = 5,
-}: {
-  maxPerRow?: number;
-}): ReactElement {
-  const playerArr: Player[] = [emptyPlayer()];
+export function Players(): ReactElement {
+  const game = useAppSelector(selectGame);
+  const playerArr = Object.values(game?.players ?? {}) as PlayerDto[];
 
   return (
-    <Grid container height={"100%"} direction={"row"} display={"flex"}>
-      {playerArr
-        .filter((player) => player.id !== "")
-        .map((player: Player) => (
-          <Grid
-            className={"player-preview-grid-item"}
-            item
-            width={`${100 / maxPerRow}%`}
-            padding={"10px"}
-            key={player.id}
-          >
-            <PlayerPreview player={player} key={player.id} />
-          </Grid>
+    <Paper sx={{ minHeight: "100%", maxWidth: "100vw", overflow: "auto" }}>
+      <Stack direction={"row"} spacing={2}>
+        {playerArr.map((player: PlayerDto) => (
+          <Box minWidth={"20%"} key={player.user.username}>
+            <PlayerPreview player={player} />
+          </Box>
         ))}
-    </Grid>
+      </Stack>
+    </Paper>
   );
 }
 

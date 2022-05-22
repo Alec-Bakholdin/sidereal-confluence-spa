@@ -2,7 +2,7 @@ import React, { ReactElement } from "react";
 import { Box, Grid } from "@mui/material";
 import { Forward } from "@mui/icons-material";
 import "./ConverterElement.scss";
-import Converter from "assets/types/Converter";
+import ConverterDto from "assets/dto/ConverterDto";
 import ResourcesElement from "../ResourcesElement/ResourcesElement";
 
 export function ConverterElement({
@@ -14,7 +14,7 @@ export function ConverterElement({
   onClick,
   allowPropagation,
 }: {
-  converter: Converter;
+  converter: ConverterDto;
   selected?: boolean;
   upgrade?: boolean;
   acquisition?: boolean;

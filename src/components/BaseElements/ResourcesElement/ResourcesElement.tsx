@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react";
-import Resources from "assets/types/Resources";
+import ResourcesDto from "assets/dto/ResourcesDto";
 import ResourceIcon from "../ResourceIcon/ResourceIcon";
 import { Stack } from "@mui/material";
 
@@ -10,7 +10,7 @@ export function ResourcesElement({
   acquisition,
   includeSlashes,
 }: {
-  resources: Resources;
+  resources: ResourcesDto;
   donation?: boolean;
   upgrade?: boolean;
   acquisition?: boolean;
@@ -21,12 +21,12 @@ export function ResourcesElement({
     acquisition && <ResourceIcon key={"acquisition"} type={"acquisition"} />,
     ...Object.keys(resources).map(
       (type) =>
-        resources[type as keyof Resources] && (
+        resources[type as keyof ResourcesDto] && (
           <ResourceIcon
             donation={donation}
             key={type}
-            qty={resources[type as keyof Resources]}
-            type={type as keyof Resources}
+            qty={resources[type as keyof ResourcesDto]}
+            type={type as keyof ResourcesDto}
           />
         )
     ),

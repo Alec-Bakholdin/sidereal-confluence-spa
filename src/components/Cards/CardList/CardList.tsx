@@ -2,21 +2,21 @@ import { ReactElement, MouseEvent } from "react";
 import { Grid, Paper, Typography } from "@mui/material";
 import { useAppDispatch } from "redux/hooks";
 import { openCardActionsModal } from "redux/reducers/modals";
-import { Card, Colony, ConverterCard, ResearchTeam } from "assets/types/Cards";
 import ConverterCardElement from "../ConverterCardElement/ConverterCardElement";
 import ColonyElement from "../ColonyElement/ColonyElement";
 import "./CardList.scss";
 import ResearchTeamElement from "../ResearchTeamElement/ResearchTeamElement";
 import CardBase from "../CardBase";
+import ActiveCardDto from "../../../assets/dto/ActiveCardDto";
 
 export function CardList({
-  ids,
+  cards,
   currentPlayerCards,
   shipMinima,
   colonyBidTrack,
   researchTeamBidTrack,
 }: {
-  ids: string[];
+  cards: ActiveCardDto[];
   currentPlayerCards?: boolean;
   shipMinima?: number[];
   colonyBidTrack?: boolean;
@@ -30,46 +30,42 @@ export function CardList({
   const isInteractive =
     currentPlayerCards || colonyBidTrack || researchTeamBidTrack;
 
-  const handleClick = (e: MouseEvent<HTMLDivElement>, id: string) => {
+  const handleClick = (e: MouseEvent<HTMLDivElement>, card: ActiveCardDto) => {
     if (isInteractive) {
       e.stopPropagation();
-      dispatch(openCardActionsModal(id));
+      dispatch(openCardActionsModal(""));
     }
   };
 
-  const renderCard = (card: Card) => {
-    if (!card) {
+  const renderCard = (activeCard: ActiveCardDto) => {
+    if (!activeCard) {
       return <CardBase blank />;
     }
-    switch (card.type) {
+    switch (activeCard.card.cardType) {
       case "Colony":
-        return <ColonyElement colonyObj={card as Colony} />;
+        return <ColonyElement activeColonyCard={activeCard} />;
       case "ResearchTeam":
-        return <ResearchTeamElement researchTeamObj={card as ResearchTeam} />;
+        return <ResearchTeamElement activeResearchCard={activeCard} />;
       case "ConverterCard":
-        return <ConverterCardElement converterCard={card as ConverterCard} />;
+        return <ConverterCardElement activeConverterCard={activeCard} />;
       default:
-        console.error(`Card type ${card.type} not implemented`);
+        console.error(`Card type ${activeCard.card.cardType} not implemented`);
     }
   };
   return (
     <Paper className={"card-list"}>
       <Grid container direction={"row"}>
-        {ids.map((id, i) => (
+        {cards.map((card, i) => (
           <Grid
             className={`card-list-card ${isInteractive && "interactive-card"}`}
             item
             key={i}
-            onClick={(e) => handleClick(e, id)}
+            onClick={(e) => handleClick(e, card)}
           >
             <Typography variant={"h5"} textAlign={"center"}>
               {shipMinima && shipMinima[i]}
             </Typography>
-            {renderCard({
-              type: "ConverterCard",
-              id: "testid",
-              name: "name" /*cards[id]*/,
-            })}
+            {renderCard(card)}
           </Grid>
         ))}
       </Grid>

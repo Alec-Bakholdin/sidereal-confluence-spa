@@ -1,26 +1,28 @@
 import { ReactElement } from "react";
 import CardBase from "../CardBase";
-import { Colony } from "assets/types/Cards";
 import ConverterElement from "../../BaseElements/Converter/ConverterElement";
 import { Stack } from "@mui/material";
+import ActiveCardDto from "../../../assets/dto/ActiveCardDto";
 
 export function ColonyElement({
-  colonyObj,
+  activeColonyCard,
 }: {
-  colonyObj: Colony;
+  activeColonyCard: ActiveCardDto;
 }): ReactElement {
+  if (activeColonyCard.card.cardType !== "Colony") {
+    throw Error("should be colony type");
+  }
+  const { colony } = activeColonyCard.card;
+
   return (
-    <CardBase
-      title={colonyObj.name}
-      doubledWithCaylion={colonyObj.doubledWithCaylion}
-    >
+    <CardBase title={colony.name}>
       <Stack>
         <ConverterElement
           key={"colony-front-converter"}
           converter={
-            colonyObj.upgraded
-              ? colonyObj.backConverter
-              : colonyObj.frontConverter
+            activeColonyCard.upgraded
+              ? colony.backConverter
+              : colony.frontConverter
           }
           selected={true}
           onClick={() => {}}

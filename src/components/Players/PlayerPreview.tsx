@@ -3,26 +3,30 @@ import { Box, Typography } from "@mui/material";
 
 import "./PlayerPreview.scss";
 import PlayerResources from "../PlayerResources/PlayerResources";
-import { CardType } from "assets/types/Cards";
 import { Check } from "@mui/icons-material";
-import Player from "assets/types/Player";
+import PlayerDto from "../../assets/dto/PlayerDto";
+import CardType from "../../assets/enums/CardType";
 
-export function PlayerPreview({ player }: { player: Player }): ReactElement {
+export function PlayerPreview({ player }: { player: PlayerDto }): ReactElement {
   const numCardsOfType = (type: CardType) => {
-    /*const filteredCards = player.cards.filter(
-      (cardId) => allCards[cardId]?.type === type
-    );*/
-    return type.length;
+    const filteredCards = player.activeCards?.filter(
+      (activeCard) => activeCard.card.cardType === type
+    );
+    return filteredCards?.length ?? 0;
   };
   const handleClick = () => {};
 
   return (
-    <Box className={"player-preview"} key={player.id} onClick={handleClick}>
+    <Box
+      className={"player-preview"}
+      key={player.user.username}
+      onClick={handleClick}
+    >
       <Typography variant={"h5"}>
-        {player.name} {player.ready && <Check color={"success"} />}
+        {player.user.username} {player.ready && <Check color={"success"} />}
       </Typography>
       <Typography variant={"h6"} color={"secondary"}>
-        {player.race.name}
+        {player.race?.name}
       </Typography>
       <div className={"player-preview-resources"}>
         <PlayerResources resources={player.resources} />
